@@ -1,0 +1,88 @@
+tank-0.png
+size: 1843, 2004
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+1
+  rotate: false
+  xy: 1, 1
+  size: 1440, 1280
+  orig: 1440, 1280
+  offset: 0, 0
+  index: -1
+3
+  rotate: true
+  xy: 1283, 1283
+  size: 700, 410
+  orig: 700, 410
+  offset: 0, 0
+  index: -1
+5
+  rotate: true
+  xy: 1, 1283
+  size: 720, 1280
+  orig: 720, 1280
+  offset: 0, 0
+  index: -1
+7
+  rotate: false
+  xy: 1443, 1
+  size: 399, 399
+  orig: 399, 399
+  offset: 0, 0
+  index: -1
+10
+  rotate: false
+  xy: 1443, 612
+  size: 200, 200
+  orig: 200, 200
+  offset: 0, 0
+  index: -1
+11
+  rotate: false
+  xy: 1443, 402
+  size: 208, 208
+  orig: 208, 208
+  offset: 0, 0
+  index: -1
+
+tank-1.png
+size: 1858, 2019
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+2
+  rotate: true
+  xy: 1, 1203
+  size: 700, 1054
+  orig: 700, 1054
+  offset: 0, 0
+  index: -1
+4
+  rotate: false
+  xy: 1057, 1218
+  size: 800, 800
+  orig: 800, 800
+  offset: 0, 0
+  index: -1
+6
+  rotate: false
+  xy: 1353, 1
+  size: 500, 565
+  orig: 500, 565
+  offset: 0, 0
+  index: -1
+8
+  rotate: false
+  xy: 1, 1
+  size: 1350, 1200
+  orig: 1350, 1200
+  offset: 0, 0
+  index: -1
+9
+  rotate: true
+  xy: 1353, 568
+  size: 648, 405
+  orig: 648, 405
+  offset: 0, 0
+  index: -1
