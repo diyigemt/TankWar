@@ -23,13 +23,12 @@ public class Constants {
     public static final int MAX_CHANCES = 4;
 
 
-<<<<<<< HEAD
     //墙
     public static final float WALL_SIZE = 0.2f;
-=======
+
     // 默认移动速度等
     //TODO 确定移动速度
     public static final int DEFAULT_SHOOT_SPEED = 2;
     public static final int DEFAULT_MOVE_SPEED = 3;
->>>>>>> 2816fed32f40e3aa2201e0d21b17e7afd192645a
+
 }
