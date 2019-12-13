@@ -106,24 +106,32 @@ public class Tank extends AbstractGameObject {
                 if(this.south) {
                     this.translate(0,-this.moveSpeed);
                     this.north = true;
+                    this.west = true;
+                    this.east = true;
                 }
                 break;
             case NORTH:
                 if(this.north) {
                     this.translate(0,this.moveSpeed);
                     this.south = true;
+                    this.west = true;
+                    this.east = true;
                 }
                 break;
             case WEST:
                 if(this.west) {
                     this.translate(-this.moveSpeed, 0);
                     this.east = true;
+                    this.north = true;
+                    this.south = true;
                 }
                 break;
             case EAST:
                 if(this.east) {
                     this.translate(this.moveSpeed,0);
                     this.west = true;
+                    this.south = true;
+                    this.north = true;
                 }
                 break;
         }
@@ -268,10 +276,12 @@ public class Tank extends AbstractGameObject {
         {
             for(AbstractGameObject gameObject : conflicts)
             {
+                //子弹
                 if(gameObject.getType() == ObjectType.BULLET)
                 {
                     this.beenAttacked();
                 }
+                //墙
                 else if(gameObject.getType() == ObjectType.WALL)
                 {
                     Wall wall = (Wall)gameObject;
@@ -281,7 +291,25 @@ public class Tank extends AbstractGameObject {
                             wall.getWallType().equals(WallType.WATER_WALL)
                     )
                     {
-                        this.blockForward();
+                        switch (this.direct)
+                        {
+                            case NORTH:
+                                this.setY(wall.getY() - this.getHeight());
+                                this.north = false;
+                                break;
+                            case SOUTH:
+                                this.setY(wall.getY() + wall.getHeight());
+                                this.south = false;
+                                break;
+                            case EAST:
+                                this.setX(wall.getX() - this.getWidth());
+                                this.east = false;
+                                break;
+                            case WEST:
+                                this.setX(wall.getX() + wall.getWidth());
+                                this.west = false;
+                                break;
+                        }
                     }
                 }
             }
