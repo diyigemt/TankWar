@@ -20,12 +20,16 @@ public class Tank extends AbstractGameObject {
     // 描述坦克的种类
     private TankType tankType;
     // 坦克的移动速度
-    private int moveSpeed;
+    private float moveSpeed;
     // 坦克的射速
-    private int shootSpeed;
+    private float shootSpeed;
     //坦克方向
     private Constants.DIRECT direct;
-    //
+    //方向是否堵塞
+    private boolean north;
+    private boolean south;
+    private boolean east;
+    private boolean west;
 
     public static TankManager tankManager;
 
@@ -69,7 +73,7 @@ public class Tank extends AbstractGameObject {
         this.isAlive = alive;
     }
 
-    public int getShootSpeed() {
+    public float getShootSpeed() {
         return shootSpeed;
     }
 
@@ -77,7 +81,7 @@ public class Tank extends AbstractGameObject {
         this.shootSpeed = shootSpeed;
     }
 
-    public int getMoveSpeed() {
+    public float getMoveSpeed() {
         return moveSpeed;
     }
 
@@ -88,7 +92,36 @@ public class Tank extends AbstractGameObject {
     //坦克移动
     public void moveTank(Constants.DIRECT direct)
     {
-
+        this.direct = direct;
+        //改变图片
+        switch(direct)
+        {
+            case SOUTH:
+                if(this.south) {
+                    this.setY(this.getY() - this.moveSpeed);
+                    this.north = true;
+                }
+                break;
+            case NORTH:
+                if(this.north) {
+                    this.setY(this.getY() + this.moveSpeed);
+                    this.south = true;
+                }
+                break;
+            case WEST:
+                if(this.west) {
+                    this.setX(this.getX() - this.moveSpeed);
+                    this.east = true;
+                }
+                break;
+            case EAST:
+                if(this.east) {
+                    this.setX(this.getX() + this.moveSpeed);
+                    this.west = true;
+                }
+                break;
+        }
+        this.checkCrash();
     }
     //射击
     public Bullet shoot()
