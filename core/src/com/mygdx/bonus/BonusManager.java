@@ -2,6 +2,8 @@ package com.mygdx.bonus;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.enumeration.BonusType;
+import com.mygdx.game.AbstractGameObject;
+import com.mygdx.wall.Wall;
 
 import java.util.ArrayList;
 
@@ -61,5 +63,27 @@ public class BonusManager {
 
     public void setBonuses(ArrayList<Bonus> bonuses) {
         this.bonuses = bonuses;
+    }
+
+
+
+
+    public static boolean checkCrash(AbstractGameObject gameObject)
+    {
+        //Wall i;
+        boolean isCrashed = false;
+        for(Bonus i : Bonus.bonusManager.getBonuses())
+        {
+            if(i.getX() < gameObject.getX() + gameObject.getWidth() &&
+                    i.getX() + i.getWidth() > gameObject.getX() &&
+                    i.getY() < gameObject.getY() + gameObject.getHeight() &&
+                    i.getY() + i.getHeight() > gameObject.getHeight())
+            {
+                i.isCrashed();
+                gameObject.isCrashed();
+                isCrashed = true;
+            }
+        }
+        return isCrashed;
     }
 }

@@ -2,9 +2,9 @@ package com.mygdx.game;
 
 public class Constants {
     // Visible game world is 5 meters wide
-    public static final float VIEWPORT_WIDTH = 5.0f;
+    public static final float VIEWPORT_WIDTH = 18.0f;
     // Visible game world is 5 meters tall
-    public static final float VIEWPORT_HEIGHT = 5.0f;
+    public static final float VIEWPORT_HEIGHT = 18.0f;
     // Location of description file for texture atlas
     public static final String TEXTURE_ATLAS_OBJECTS =
             "images/tank.atlas";
@@ -24,7 +24,7 @@ public class Constants {
 
 
     //墙
-    public static final float WALL_SIZE = 0.2f;
+    public static final float WALL_SIZE = 1f;
 
     // 默认移动速度等
     //TODO 确定移动速度
@@ -32,8 +32,8 @@ public class Constants {
     public static final int DEFAULT_MOVE_SPEED = 3;
 
     // 游戏窗口的设置常量
-    public static final int WINDOW_WIDTH = 1000;
-    public static final int WINDOW_HEIGHT = 800;
+    public static final int WINDOW_WIDTH = 900;
+    public static final int WINDOW_HEIGHT = 900;
     public static final String WINDOW_TITLE = "TankWar";
 
 }

@@ -9,6 +9,7 @@ import com.mygdx.tank.HeroTank;
  */
 public abstract class Bonus extends AbstractGameObject {
 
+    public static BonusManager bonusManager = new BonusManager();
     // 额外奖励类型
     private BonusType bonusType;
     // 额外奖励是否被激活
@@ -68,4 +69,5 @@ public abstract class Bonus extends AbstractGameObject {
     public void setActive(boolean active) {
         isActive = active;
     }
+
 }

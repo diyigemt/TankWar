@@ -2,7 +2,10 @@ package com.mygdx.tank;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.enumeration.TankType;
+import com.mygdx.game.AbstractGameObject;
 import com.mygdx.game.Constants;
+import com.mygdx.wall.Wall;
+
 import java.util.ArrayList;
 
 /**
@@ -88,6 +91,26 @@ public class TankManager {
 
     public void setManagerType(int managerType) {
         this.managerType = managerType;
+    }
+
+
+    public static boolean checkCrash(AbstractGameObject gameObject)
+    {
+        //Wall i;
+        boolean isCrashed = false;
+        for(Tank i : Tank.tankManager.getTanks())
+        {
+            if(i.getX() < gameObject.getX() + gameObject.getWidth() &&
+                    i.getX() + i.getWidth() > gameObject.getX() &&
+                    i.getY() < gameObject.getY() + gameObject.getHeight() &&
+                    i.getY() + i.getHeight() > gameObject.getHeight())
+            {
+                i.isCrashed();
+                gameObject.isCrashed();
+                isCrashed = true;
+            }
+        }
+        return isCrashed;
     }
 
 }

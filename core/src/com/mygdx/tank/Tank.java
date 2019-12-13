@@ -1,9 +1,12 @@
 package com.mygdx.tank;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.mygdx.bonus.BonusManager;
+import com.mygdx.bonus.TankBonus;
 import com.mygdx.enumeration.TankType;
 import com.mygdx.game.AbstractGameObject;
 import com.mygdx.game.Constants;
+import com.mygdx.wall.WallManager;
 
 public class Tank extends AbstractGameObject {
 
@@ -15,6 +18,8 @@ public class Tank extends AbstractGameObject {
     private int moveSpeed;
     // 坦克的射速
     private int shootSpeed;
+    //
+    public static TankManager tankManager;
 
     public Tank() {
         super();
@@ -70,5 +75,34 @@ public class Tank extends AbstractGameObject {
 
     public void setMoveSpeed(int moveSpeed) {
         this.moveSpeed = moveSpeed;
+    }
+
+
+    //碰撞检测
+    @Override
+    public boolean checkCrash()
+    {
+        boolean isCrash = false;
+        if(WallManager.checkCrash(this))
+        {
+            isCrash = true;
+            //和墙碰撞
+        }
+        if(BonusManager.checkCrash(this))
+        {
+            isCrash = true;
+            //和buff碰撞
+        }
+        if(TankManager.checkCrash(this))
+        {
+            isCrash = true;
+            //和坦克碰撞
+        }
+        if(TankManager.checkCrash(this))
+        {
+            isCrash = true;
+            //和子弹碰撞
+        }
+        return isCrash;
     }
 }
