@@ -1,5 +1,6 @@
 package com.mygdx.tank;
 
+import com.mygdx.enumeration.TankType;
 import com.mygdx.game.Constants;
 
 public class EnemyTank extends Tank {
@@ -10,6 +11,11 @@ public class EnemyTank extends Tank {
     private boolean hasBonus;
     // 描述敌方坦克是否被冰冻住
     private boolean isFrozen;
+
+    public EnemyTank(boolean hasBonus, TankType tankType) {
+        super(tankType);
+        this.hasBonus = hasBonus;
+    }
 
     @Override
     public boolean changeStatus(int mode) {
@@ -46,8 +52,5 @@ public class EnemyTank extends Tank {
         this.hasBonus = hasBonus;
     }
 
-    public EnemyTank(boolean hasBonus) {
-        super();
-        this.hasBonus = hasBonus;
-    }
+
 }

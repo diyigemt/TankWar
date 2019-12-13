@@ -35,9 +35,10 @@ public class Tank extends AbstractGameObject {
 
     public static TankManager tankManager;
 
-    public Tank() {
-        super();
+    public Tank(TankType tankType) {
+        super(tankType.getTankRegion());
         this.isAlive = true;
+        this.tankType = tankType;
         this.moveSpeed = Constants.DEFAULT_MOVE_SPEED;
         this.shootSpeed = Constants.DEFAULT_SHOOT_SPEED;
     }
