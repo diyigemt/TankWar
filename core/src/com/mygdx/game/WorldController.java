@@ -42,7 +42,7 @@ public class WorldController {
     //
     private void WallInit()
     {
-        this.generator.generate(1);
+        this.generator.generate(2);
         //this.wallList.add(new BrickWall(0,Constants.WALL_SIZE));
     }
 
