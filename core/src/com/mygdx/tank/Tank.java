@@ -87,7 +87,28 @@ public class Tank extends AbstractGameObject {
     //射击
     public Bullet shoot()
     {
-        return null;
+        Bullet bullet = new Bullet();
+        if(this.direct == Constants.DIRECT.EAST)
+        {
+            bullet.setPosition(this.getX() + this.getWidth(), this.getY() + this.getHeight()/2);
+            bullet.setOrigin(bullet.getWidth()/2,bullet.getHeight()/2);
+        }
+        else if(this.direct == Constants.DIRECT.WEST)
+        {
+            bullet.setPosition(this.getX(), this.getY() + this.getHeight());
+            bullet.setOrigin(bullet.getWidth()/2,bullet.getHeight()/2);
+        }
+        else if(this.direct == Constants.DIRECT.NORTH)
+        {
+            bullet.setPosition(this.getX() + this.getWidth()/2, this.getY() + this.getHeight());
+            bullet.setOrigin(bullet.getWidth()/2,bullet.getHeight()/2);
+        }
+        else if(this.direct == Constants.DIRECT.SOUTH)
+        {
+            bullet.setPosition(this.getX() + this.getWidth()/2, this.getY());
+            bullet.setOrigin(bullet.getWidth()/2,bullet.getHeight()/2);
+        }
+        return bullet;
     }
     //碰撞检测
     @Override
