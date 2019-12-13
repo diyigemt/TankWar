@@ -125,12 +125,19 @@ public class WorldController {
             moveSelectedSprite(-sprMoveSpeed, 0);
             this.heroTankManger.getTanks().get(0).moveTank(Constants.DIRECT.WEST);
         }
-        if (Gdx.input.isKeyPressed(Input.Keys.D))
+        if (Gdx.input.isKeyPressed(Input.Keys.D)) {
             moveSelectedSprite(sprMoveSpeed, 0);
-        if (Gdx.input.isKeyPressed(Input.Keys.W))
+            this.heroTankManger.getTanks().get(0).moveTank(Constants.DIRECT.EAST);
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.W)) {
             moveSelectedSprite(0, sprMoveSpeed);
-        if (Gdx.input.isKeyPressed(Input.Keys.S))
+            this.heroTankManger.getTanks().get(0).moveTank(Constants.DIRECT.NORTH);
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.S)) {
             moveSelectedSprite(0, -sprMoveSpeed);
+            this.heroTankManger.getTanks().get(0).moveTank(Constants.DIRECT.SOUTH);
+        }
+
     }
 
     private void moveSelectedSprite(float x, float y) {
