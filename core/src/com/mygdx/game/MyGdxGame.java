@@ -3,9 +3,9 @@ package com.mygdx.game;
 import com.badlogic.gdx.Application;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.mygdx.utils.Assets;
 
 public class MyGdxGame extends ApplicationAdapter {
 
@@ -18,6 +18,8 @@ public class MyGdxGame extends ApplicationAdapter {
 	public void create () {
 		// Set libgdx log level to DEBUG
 		Gdx.app.setLogLevel(Application.LOG_DEBUG);
+		// 初始化资源
+		Assets.instance.init(new AssetManager());
 		// 初始化controller和renderer
 		this.worldController = new WorldController();
 		this.worldRenderer = new WorldRenderer(this.worldController);
@@ -52,5 +54,6 @@ public class MyGdxGame extends ApplicationAdapter {
 	@Override
 	public void dispose () {
 		this.worldRenderer.dispose();
+		Assets.instance.dispose();
 	}
 }
