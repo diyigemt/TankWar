@@ -49,4 +49,13 @@ public class Constants {
     public static enum DIRECT{
         NORTH,SOUTH,WEST,EAST
     }
+
+    // Buff的持续时间
+    public static final int BOOM_BUFF_DURATION = 0;
+    public static final int CLOCK_BUFF_DURATION = 6;
+    public static final int HELMET_BUFF_DURATION = 6;
+    public static final int SHOVEL_BUFF_DURATION = 6;
+    public static final int STAR_BUFF_DURATION = 3;
+    public static final int TANK_BUFF_DURATION = 0;
+    public static final int BONUS_DURATION = 8;
 }

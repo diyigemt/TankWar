@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Timer;
 import com.mygdx.enumeration.BonusType;
 import com.mygdx.game.AbstractGameObject;
+import com.mygdx.game.Constants;
 import com.mygdx.tank.Tank;
 import com.mygdx.wall.Wall;
 
@@ -21,6 +22,7 @@ public class BonusManager extends Timer {
     // 注册创建的Bonus
     public void registerBonus(Bonus bonus) {
         this.bonuses.add(bonus);
+        this.scheduleTask(new BonusTask(bonus), Constants.BONUS_DURATION);
     }
 
     // 创建一个Bonus实例并且注册

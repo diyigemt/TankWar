@@ -33,7 +33,7 @@ public abstract class Bonus extends AbstractGameObject {
     public void addBuff(HeroTank heroTank) {
         // 标记为激活状态
         this.setActive(true);
-        bonusManager.scheduleTask(new BonusTask(this), this.duration);
+        bonusManager.scheduleTask(new BuffTask( this), this.duration);
     }
 
     public void removeBuff() {
