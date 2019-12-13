@@ -32,6 +32,12 @@ public class WorldController {
         this.wallList.add(new BrickWall(-9,-9));
         //this.wallList.add(new BrickWall(0,Constants.WALL_SIZE));
     }
+
+
+    private void TankInit()
+    {
+        
+    }
     //
 
     private void init() {
@@ -117,4 +123,11 @@ public class WorldController {
         // Set new rotation value to selected sprite
         testSprites[selectedSprite].setRotation(rotation);
     }
+
+    public void worldInit()
+    {
+
+    }
+
+
 }
