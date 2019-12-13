@@ -68,9 +68,9 @@ public class BonusManager {
 
 
     //返回相撞的Bonus
-    public static ArrayList<Bonus> checkCrash(AbstractGameObject gameObject)
+    public static ArrayList<AbstractGameObject> checkCrash(AbstractGameObject gameObject)
     {
-        ArrayList<Bonus>crashBonus = new ArrayList<Bonus>();
+        ArrayList<AbstractGameObject>crashBonus = new ArrayList<AbstractGameObject>();
         for(Bonus bonus : Bonus.bonusManager.getBonuses())
         {
             if(bonus.getX() < gameObject.getX() + gameObject.getWidth() &&

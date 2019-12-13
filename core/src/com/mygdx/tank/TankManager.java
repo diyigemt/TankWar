@@ -96,9 +96,9 @@ public class TankManager {
 
 
     //坦克和坦克相撞
-    public static ArrayList<Tank> checkCrash(AbstractGameObject gameObject)
+    public static ArrayList<AbstractGameObject> checkCrash(AbstractGameObject gameObject)
     {
-        ArrayList<Tank>crashTank = new ArrayList<Tank>();
+        ArrayList<AbstractGameObject>crashTank = new ArrayList<AbstractGameObject>();
         for(Tank tank : Tank.tankManager.getTanks())
         {
             if(tank.getX() < gameObject.getX() + gameObject.getWidth() &&

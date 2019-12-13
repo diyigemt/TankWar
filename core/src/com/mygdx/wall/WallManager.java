@@ -102,9 +102,9 @@ public class WallManager {
     }
 
     //返回和东西相撞的墙
-    public static ArrayList<Wall> checkCrash(AbstractGameObject gameObject)
+    public static ArrayList<AbstractGameObject> checkCrash(AbstractGameObject gameObject)
     {
-        ArrayList<Wall>crashWall = new ArrayList<Wall>();
+        ArrayList<AbstractGameObject>crashWall = new ArrayList<AbstractGameObject>();
         for(Wall wall : Wall.wallManager.getWalls())
         {
             if(wall.getX() < gameObject.getX() + gameObject.getWidth() &&

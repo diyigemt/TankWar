@@ -87,12 +87,49 @@ public class Tank extends AbstractGameObject {
     public boolean checkCrash()
     {
         boolean isCrash = false;
-        //和墙
-        ArrayList<Wall> walls = WallManager.checkCrash(this);
+        //和墙碰撞
+        ArrayList<AbstractGameObject> walls = WallManager.checkCrash(this);
+        if(walls.isEmpty() == false)
+        {
+            this.isCrashed(walls);
+            ArrayList<AbstractGameObject> temp = new ArrayList<AbstractGameObject>();
+            for(AbstractGameObject gameObject:walls)
+            {
+                temp.clear();
+                temp.add(gameObject);
+                gameObject.isCrashed(temp);
+            }
+
+            isCrash = true;
+        }
         //和buff
-        ArrayList<Bonus> bonus = BonusManager.checkCrash(this);
+        ArrayList<AbstractGameObject> bonus = BonusManager.checkCrash(this);
+        if(bonus.isEmpty() == false)
+        {
+            isCrash = true;
+            this.isCrashed(bonus);
+            ArrayList<AbstractGameObject> temp = new ArrayList<AbstractGameObject>();
+            for(AbstractGameObject gameObject : bonus)
+            {
+                temp.clear();
+                temp.add(gameObject);
+                gameObject.isCrashed(temp);
+            }
+        }
         //和坦克
-        ArrayList<Tank> tank = TankManager.checkCrash(this);
+        ArrayList<AbstractGameObject> tanks = TankManager.checkCrash(this);
+        if(tanks.isEmpty() == false)
+        {
+            this.isCrashed(tanks);
+            ArrayList<AbstractGameObject> temp = new ArrayList<AbstractGameObject>();
+            for(AbstractGameObject gameObject : tanks)
+            {
+                temp.clear();
+                temp.add(gameObject);
+                gameObject.isCrashed(temp);
+            }
+            isCrash = true;
+        }
         return isCrash;
     }
 }

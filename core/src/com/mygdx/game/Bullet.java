@@ -30,20 +30,45 @@ public class Bullet extends AbstractGameObject {
     public boolean checkCrash()
     {
         boolean isCrash = false;
-        ArrayList<Wall>walls = WallManager.checkCrash(this);
-        if(walls != null)
+        ArrayList<AbstractGameObject> walls = WallManager.checkCrash(this);
+        if(walls.isEmpty() == false)
         {
-            for(Wall wall : walls)
+            this.isCrashed(walls);
+            ArrayList<AbstractGameObject> temp = new ArrayList<AbstractGameObject>();
+            for(AbstractGameObject gameObject:walls)
             {
-                wall.isCrashed();
+                temp.clear();
+                temp.add(gameObject);
+                gameObject.isCrashed(temp);
+            }
+            isCrash = true;
+        }
+        ArrayList<AbstractGameObject> bonus = BonusManager.checkCrash(this);
+        if(bonus.isEmpty() == false)
+        {
+            isCrash = true;
+            this.isCrashed(bonus);
+            ArrayList<AbstractGameObject> temp = new ArrayList<AbstractGameObject>();
+            for(AbstractGameObject gameObject : bonus)
+            {
+                temp.clear();
+                temp.add(gameObject);
+                gameObject.isCrashed(temp);
             }
         }
-        ArrayList<Bonus> bonus = BonusManager.checkCrash(this);
-        if(bonus != null)
+        ArrayList<AbstractGameObject> tanks = TankManager.checkCrash(this);
+        if(tanks.isEmpty() == false)
         {
-
+            isCrash = true;
+            this.isCrashed(tanks);
+            ArrayList<AbstractGameObject> temp = new ArrayList<AbstractGameObject>();
+            for(AbstractGameObject gameObject : tanks)
+            {
+                temp.clear();
+                temp.add(gameObject);
+                gameObject.isCrashed(temp);
+            }
         }
-        ArrayList<Tank> tanks = TankManager.checkCrash(this);
         return isCrash;
     }
 
