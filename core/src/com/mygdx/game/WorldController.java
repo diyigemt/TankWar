@@ -33,6 +33,7 @@ public class WorldController {
     private BonusManager bonusManager = Bonus.bonusManager;
     private TankManager heroTankManger = HeroTank.heroTankManager;
     private TankManager enemyTankManger = EnemyTank.enemyTankManager;
+    private HeroTank heroTank;
     //墙
 
     public WorldController() {
@@ -49,10 +50,10 @@ public class WorldController {
 
     private void TankInit()
     {
-        Tank tank = new HeroTank(false, TankType.P1HERO);
-        tank.setSize(1,1);
-        tank.setPosition(1, 3);
-        HeroTank.heroTankManager.registerTank(tank);
+        this.heroTank = new HeroTank(false, TankType.P1HERO);
+        this.heroTank.setSize(0.8f,0.8f);
+        this.heroTank.setPosition(1, 3);
+        HeroTank.heroTankManager.registerTank(this.heroTank);
     }
     //
 
@@ -119,7 +120,6 @@ public class WorldController {
     private void handleDebugInput(float deltaTime) {
         if (Gdx.app.getType() != Application.ApplicationType.Desktop)
             return;
-        // Selected Sprite Controls
         if (Gdx.input.isKeyPressed(Input.Keys.A)) {
             this.heroTankManger.getTanks().get(0).moveTank(Constants.DIRECT.WEST);
         }
