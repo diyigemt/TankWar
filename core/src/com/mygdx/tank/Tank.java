@@ -26,6 +26,7 @@ public class Tank extends AbstractGameObject {
     //坦克方向
     private Constants.DIRECT direct;
     //
+    
     public static TankManager tankManager;
 
     public Tank() {
