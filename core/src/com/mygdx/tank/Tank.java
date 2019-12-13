@@ -45,7 +45,7 @@ public class Tank extends AbstractGameObject {
 
     @Override
     public void render(SpriteBatch spriteBatch) {
-
+        this.draw(spriteBatch);
     }
 
     // 根据类别得到一个坦克的实例
