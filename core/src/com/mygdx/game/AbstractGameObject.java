@@ -3,6 +3,7 @@ package com.mygdx.game;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.mygdx.wall.WallManager;
 
 public abstract class AbstractGameObject extends Sprite {
@@ -13,6 +14,11 @@ public abstract class AbstractGameObject extends Sprite {
     public AbstractGameObject(Texture texture) {
         super(texture);
     }
+
+    public AbstractGameObject(TextureRegion region) {
+        super(region);
+    }
+
     public void update() {
 
     }
