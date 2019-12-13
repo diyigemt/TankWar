@@ -10,20 +10,27 @@ import java.io.File;
  * 用来表示墙类别的枚举类
  */
 public enum WallType {
-    GRASS_WALL(new Pixmap(Gdx.files.internal("badlogic.jpg"))),
-    IRON_WALL(new Pixmap(Gdx.files.internal("badlogic.jpg"))),
-    BRICK_WALL(new Pixmap(Gdx.files.internal("badlogic.jpg"))), //这里等之后填上正确的文件路径或者被资源类的方法替代
-    WATER_WALL(new Pixmap(Gdx.files.internal("badlogic.jpg")));
+    BRICK_WALL(0),
+    GRASS_WALL(1),
+    IRON_WALL(2),
+     //这里等之后填上正确的文件路径或者被资源类的方法替代
+    WATER_WALL(3);
 
-    private Pixmap appearance;
-    /**
-     * @param pixmap 不同的墙类别的图片
-     */
-    private WallType(Pixmap pixmap) {
-        this.appearance = pixmap;
+    private int index;
+
+    private WallType(int index) {
     }
 
-    public Pixmap getAppearance() {
-        return this.appearance;
+    public static WallType getInstance(int index) {
+        for (WallType wallType : WallType.values()) {
+            if (wallType.getIndex() == index) {
+                return wallType;
+            }
+        }
+        return null;
+    }
+
+    public int getIndex() {
+        return index;
     }
 }

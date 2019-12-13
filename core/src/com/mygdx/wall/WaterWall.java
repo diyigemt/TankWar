@@ -19,7 +19,6 @@ public class WaterWall extends Wall {
     public WaterWall() {
         super(Assets.instance.assetWall.water);
         this.setWallType(WallType.WATER_WALL);
-        this.setTexture(new Texture(this.getWallType().getAppearance()));
         this.setSize(Constants.WALL_SIZE * 2, Constants.WALL_SIZE * 2);
     }
     @Override

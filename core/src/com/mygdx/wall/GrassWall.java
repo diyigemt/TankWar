@@ -19,7 +19,6 @@ public class GrassWall extends Wall {
     public GrassWall() {
         super(Assets.instance.assetWall.grass);
         this.setWallType(WallType.GRASS_WALL);
-        this.setTexture(new Texture(this.getWallType().getAppearance()));
         this.setSize(Constants.WALL_SIZE * 2, Constants.WALL_SIZE * 2);
     }
 

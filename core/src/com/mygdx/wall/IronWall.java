@@ -18,7 +18,6 @@ public class IronWall extends Wall {
     public IronWall() {
         super(Assets.instance.assetWall.iron);
         this.setWallType(WallType.IRON_WALL);
-        this.setTexture(new Texture(this.getWallType().getAppearance()));
     }
 
     @Override
