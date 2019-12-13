@@ -26,7 +26,7 @@ public class Tank extends AbstractGameObject {
     //坦克方向
     private Constants.DIRECT direct;
     //
-    
+
     public static TankManager tankManager;
 
     public Tank() {
@@ -85,6 +85,11 @@ public class Tank extends AbstractGameObject {
         this.moveSpeed = moveSpeed;
     }
 
+    //坦克移动
+    public void moveTank(Constants.DIRECT direct)
+    {
+
+    }
     //射击
     public Bullet shoot()
     {
