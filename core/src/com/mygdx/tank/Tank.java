@@ -104,31 +104,32 @@ public class Tank extends AbstractGameObject {
         {
             case SOUTH:
                 if(this.south) {
-                    this.translate(0,this.getY() - this.moveSpeed);
+                    this.translate(0,-this.moveSpeed);
                     this.north = true;
                 }
                 break;
             case NORTH:
                 if(this.north) {
-                    this.translate(0,this.getY() + this.moveSpeed);
+                    this.translate(0,this.moveSpeed);
                     this.south = true;
                 }
                 break;
             case WEST:
                 if(this.west) {
-                    this.translate(this.getX() - this.moveSpeed, 0);
+                    this.translate(-this.moveSpeed, 0);
                     this.east = true;
                 }
                 break;
             case EAST:
                 if(this.east) {
-                    this.translate(this.getX() + this.moveSpeed,0);
+                    this.translate(this.moveSpeed,0);
                     this.west = true;
                 }
                 break;
         }
         this.checkCrash();
     }
+
     //射击
     public Bullet shoot()
     {
