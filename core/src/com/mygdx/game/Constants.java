@@ -45,4 +45,8 @@ public class Constants {
     public static final float MAP_TRANSLATION_X = 10.0f;
     public static final float MAP_TRANSLATION_Y = 0.0f;
 
+    //方向
+    public static enum DIRECT{
+        NORTH,SOUTH,WEST,EAST
+    }
 }

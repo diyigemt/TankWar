@@ -22,6 +22,8 @@ public class Tank extends AbstractGameObject {
     private int moveSpeed;
     // 坦克的射速
     private int shootSpeed;
+    //坦克方向
+    private Constants.DIRECT direc;
     //
     public static TankManager tankManager;
 
@@ -132,4 +134,6 @@ public class Tank extends AbstractGameObject {
         }
         return isCrash;
     }
+
+
 }

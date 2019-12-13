@@ -39,6 +39,7 @@ public abstract class Wall extends AbstractGameObject {
      */
     @Override
     public boolean checkCrash() {
+
         return super.checkCrash();
     }
 
