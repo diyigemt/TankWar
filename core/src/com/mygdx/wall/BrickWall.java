@@ -29,7 +29,7 @@ public class BrickWall extends Wall implements Destroyable {
 //        this.setColor(1.0F, 1.0F, 1.0F, 1.0F);
 //        this.setSize((float)Math.abs(srcWidth), (float)Math.abs(srcHeight));
 //        this.setOrigin(this.getRegionWidth() / 2.0F, this.getRegionHeight() / 2.0F);
-        //this.setTexture(appearance);
+//        this.setTexture(appearance);
         this.setSize(1, 1);
 
 }
