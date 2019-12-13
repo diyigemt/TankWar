@@ -259,5 +259,14 @@ public class EnemyTank extends Tank {
         this.hasBonus = hasBonus;
     }
 
-
+    @Override
+    public boolean checkCrash() {
+        boolean result = super.checkCrash();
+        if (result) {
+            if (this.hasBonus) {
+                // TODO
+            }
+        }
+        return result;
+    }
 }
