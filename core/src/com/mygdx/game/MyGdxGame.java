@@ -14,7 +14,7 @@ public class MyGdxGame extends Game {
 	private Screen screen;
 	private boolean paused;
 	private boolean isMenu;
-	
+	private float start, end;
 	@Override
 	public void create () {
 		// Set libgdx log level to DEBUG
@@ -27,6 +27,7 @@ public class MyGdxGame extends Game {
 		this.paused = true;
 		this.isMenu = true;
 		this.setScreen(new MenuScreen(this));
+		start = Gdx.graphics.getDeltaTime();
 	}
 
 	@Override
@@ -36,7 +37,13 @@ public class MyGdxGame extends Game {
 
 	@Override
 	public void render () {
-		if (this.isMenu)
+		end = Gdx.graphics.getDeltaTime();
+		if (this.isMenu) {
+			if (end - start > 10) {
+				end = start;
+				this.screen.show();
+			}
+		}
 			this.screen.show();
 		if (!this.paused) {
 			worldController.update(Gdx.graphics.getDeltaTime());
@@ -83,6 +90,17 @@ public class MyGdxGame extends Game {
 		return paused;
 	}
 
+	public boolean isMenu() {
+		return isMenu;
+	}
+
+	public void setMenu(boolean menu) {
+		isMenu = menu;
+	}
+
+	public void setMapId(int id) {
+		worldController.setMap(id);
+	}
 	public void setPaused(boolean paused) {
 		this.paused = paused;
 	}
