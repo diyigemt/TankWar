@@ -15,6 +15,7 @@ import com.mygdx.enumeration.TankType;
 import com.mygdx.enumeration.WallType;
 import com.mygdx.map.MapGenerator;
 import com.mygdx.tank.EnemyTank;
+import com.mygdx.tank.HeroTank;
 import com.mygdx.wall.*;
 
 import java.util.ArrayList;
@@ -83,6 +84,7 @@ public class WorldController {
             selectedSprite = 0;
         }
         Bonus bonus = Bonus.bonusManager.createBonus(BonusType.BOOM, 3, 3);
+        bonus.addBuff(new HeroTank(false));
     }
 
     // 自定义的创建以一个像素图的方法，在这里是画一个箱子

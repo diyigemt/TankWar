@@ -4,7 +4,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.bonus.Bonus;
 import com.mygdx.bonus.BonusManager;
 import com.mygdx.bonus.TankBonus;
+import com.mygdx.enumeration.ObjectType;
 import com.mygdx.enumeration.TankType;
+import com.mygdx.enumeration.WallType;
 import com.mygdx.game.AbstractGameObject;
 import com.mygdx.game.Bullet;
 import com.mygdx.game.Constants;
@@ -20,12 +22,16 @@ public class Tank extends AbstractGameObject {
     // 描述坦克的种类
     private TankType tankType;
     // 坦克的移动速度
-    private int moveSpeed;
+    private float moveSpeed;
     // 坦克的射速
-    private int shootSpeed;
+    private float shootSpeed;
     //坦克方向
     private Constants.DIRECT direct;
-    //
+    //方向是否堵塞
+    private boolean north;
+    private boolean south;
+    private boolean east;
+    private boolean west;
 
     public static TankManager tankManager;
 
@@ -69,15 +75,15 @@ public class Tank extends AbstractGameObject {
         this.isAlive = alive;
     }
 
-    public int getShootSpeed() {
+    public float getShootSpeed() {
         return shootSpeed;
     }
 
-    public void setShootSpeed(int shootSpeed) {
+    public void setShootSpeed(float shootSpeed) {
         this.shootSpeed = shootSpeed;
     }
 
-    public int getMoveSpeed() {
+    public float getMoveSpeed() {
         return moveSpeed;
     }
 
@@ -88,7 +94,36 @@ public class Tank extends AbstractGameObject {
     //坦克移动
     public void moveTank(Constants.DIRECT direct)
     {
-
+        this.direct = direct;
+        //改变图片
+        switch(direct)
+        {
+            case SOUTH:
+                if(this.south) {
+                    this.setY(this.getY() - this.moveSpeed);
+                    this.north = true;
+                }
+                break;
+            case NORTH:
+                if(this.north) {
+                    this.setY(this.getY() + this.moveSpeed);
+                    this.south = true;
+                }
+                break;
+            case WEST:
+                if(this.west) {
+                    this.setX(this.getX() - this.moveSpeed);
+                    this.east = true;
+                }
+                break;
+            case EAST:
+                if(this.east) {
+                    this.setX(this.getX() + this.moveSpeed);
+                    this.west = true;
+                }
+                break;
+        }
+        this.checkCrash();
     }
     //射击
     public Bullet shoot()
@@ -179,5 +214,58 @@ public class Tank extends AbstractGameObject {
         return isCrash;
     }
 
+
+    public void beenAttacked()
+    {
+
+    }
+
+    public void blockForward()
+    {
+        switch(this.direct)
+        {
+            case NORTH:
+                this.north = false;
+                break;
+            case SOUTH:
+                this.south = false;
+                break;
+            case WEST:
+                this.west = false;
+                break;
+            case EAST:
+                this.east = false;
+                break;
+        }
+    }
+    //碰撞反应,碰到子弹后生命值减少
+    @Override
+    public void isCrashed(ArrayList<AbstractGameObject> conflicts) {
+        if(conflicts.isEmpty() == true)
+        {
+            this.blockForward();
+        }
+        else
+        {
+            for(AbstractGameObject gameObject : conflicts)
+            {
+                if(gameObject.getType() == ObjectType.BULLET)
+                {
+                    this.beenAttacked();
+                }
+                else if(gameObject.getType() == ObjectType.WALL)
+                {
+                    Wall wall = (Wall)gameObject;
+                    if(wall.getType().equals(WallType.BRICK_WALL) ||
+                            wall.getType().equals(WallType.IRON_WALL) ||
+                            wall.getType().equals(WallType.WATER_WALL)
+                    )
+                    {
+                        this.blockForward();
+                    }
+                }
+            }
+        }
+    }
 
 }
