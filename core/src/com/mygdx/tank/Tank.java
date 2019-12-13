@@ -1,12 +1,16 @@
 package com.mygdx.tank;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.mygdx.bonus.Bonus;
 import com.mygdx.bonus.BonusManager;
 import com.mygdx.bonus.TankBonus;
 import com.mygdx.enumeration.TankType;
 import com.mygdx.game.AbstractGameObject;
 import com.mygdx.game.Constants;
+import com.mygdx.wall.Wall;
 import com.mygdx.wall.WallManager;
+
+import java.util.ArrayList;
 
 public class Tank extends AbstractGameObject {
 
@@ -83,25 +87,48 @@ public class Tank extends AbstractGameObject {
     public boolean checkCrash()
     {
         boolean isCrash = false;
-        if(WallManager.checkCrash(this))
+        //和墙碰撞
+        ArrayList<AbstractGameObject> walls = WallManager.checkCrash(this);
+        if(walls.isEmpty() == false)
         {
+            this.isCrashed(walls);
+            ArrayList<AbstractGameObject> temp = new ArrayList<AbstractGameObject>();
+            for(AbstractGameObject gameObject:walls)
+            {
+                temp.clear();
+                temp.add(gameObject);
+                gameObject.isCrashed(temp);
+            }
+
             isCrash = true;
-            //和墙碰撞
         }
-        if(BonusManager.checkCrash(this))
+        //和buff
+        ArrayList<AbstractGameObject> bonus = BonusManager.checkCrash(this);
+        if(bonus.isEmpty() == false)
         {
             isCrash = true;
-            //和buff碰撞
+            this.isCrashed(bonus);
+            ArrayList<AbstractGameObject> temp = new ArrayList<AbstractGameObject>();
+            for(AbstractGameObject gameObject : bonus)
+            {
+                temp.clear();
+                temp.add(gameObject);
+                gameObject.isCrashed(temp);
+            }
         }
-        if(TankManager.checkCrash(this))
+        //和坦克
+        ArrayList<AbstractGameObject> tanks = TankManager.checkCrash(this);
+        if(tanks.isEmpty() == false)
         {
+            this.isCrashed(tanks);
+            ArrayList<AbstractGameObject> temp = new ArrayList<AbstractGameObject>();
+            for(AbstractGameObject gameObject : tanks)
+            {
+                temp.clear();
+                temp.add(gameObject);
+                gameObject.isCrashed(temp);
+            }
             isCrash = true;
-            //和坦克碰撞
-        }
-        if(TankManager.checkCrash(this))
-        {
-            isCrash = true;
-            //和子弹碰撞
         }
         return isCrash;
     }

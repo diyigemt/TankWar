@@ -3,6 +3,7 @@ package com.mygdx.tank;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.enumeration.TankType;
 import com.mygdx.game.AbstractGameObject;
+import com.mygdx.game.Bullet;
 import com.mygdx.game.Constants;
 import com.mygdx.wall.Wall;
 
@@ -95,22 +96,19 @@ public class TankManager {
 
 
     //坦克和坦克相撞
-    public static boolean checkCrash(Tank gameObject)
+    public static ArrayList<AbstractGameObject> checkCrash(AbstractGameObject gameObject)
     {
-        boolean isCrashed = false;
-        for(Tank i : Tank.tankManager.getTanks())
+        ArrayList<AbstractGameObject>crashTank = new ArrayList<AbstractGameObject>();
+        for(Tank tank : Tank.tankManager.getTanks())
         {
-            if(i.getX() < gameObject.getX() + gameObject.getWidth() &&
-                    i.getX() + i.getWidth() > gameObject.getX() &&
-                    i.getY() < gameObject.getY() + gameObject.getHeight() &&
-                    i.getY() + i.getHeight() > gameObject.getHeight())
+            if(tank.getX() < gameObject.getX() + gameObject.getWidth() &&
+                    tank.getX() + tank.getWidth() > gameObject.getX() &&
+                    tank.getY() < gameObject.getY() + gameObject.getHeight() &&
+                    tank.getY() + tank.getHeight() > gameObject.getHeight())
             {
-                i.isCrashed();
-                gameObject.isCrashed();
-                isCrashed = true;
+                crashTank.add(tank);
             }
         }
-        return isCrashed;
+        return crashTank;
     }
-
 }

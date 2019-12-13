@@ -1,8 +1,11 @@
 package com.mygdx.bonus;
 
 import com.mygdx.enumeration.BonusType;
+import com.mygdx.enumeration.ObjectType;
 import com.mygdx.game.AbstractGameObject;
 import com.mygdx.tank.HeroTank;
+
+import java.util.ArrayList;
 
 /**
  * 这是打败特殊坦克之后随机出现在屏幕上的额外奖励，奖励类型随机，奖励出现的位置也是随机的
@@ -70,4 +73,18 @@ public abstract class Bonus extends AbstractGameObject {
         isActive = active;
     }
 
+    /**
+     * 碰撞检测之后的行为函数
+     *
+     * @param conflicts 与该Object碰撞的Objects
+     */
+    @Override
+    public void isCrashed(ArrayList<AbstractGameObject> conflicts) {
+        for (AbstractGameObject conflict : conflicts) {
+            if (conflict.getType().equals(ObjectType.HEROTANK)) {
+                this.addBuff((HeroTank)conflict);
+                break;
+            }
+        }
+    }
 }

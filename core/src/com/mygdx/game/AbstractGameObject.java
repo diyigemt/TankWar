@@ -4,9 +4,15 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.mygdx.enumeration.ObjectType;
 import com.mygdx.wall.WallManager;
 
+import java.util.ArrayList;
+
 public abstract class AbstractGameObject extends Sprite {
+
+    private ObjectType type;
+
     public AbstractGameObject() {
         super();
     }
@@ -36,7 +42,15 @@ public abstract class AbstractGameObject extends Sprite {
 
     /**
      * 碰撞检测之后的行为函数
+     * @param conflicts 与该Object碰撞的Objects
      */
-    public void isCrashed() {}
+    public void isCrashed(ArrayList<AbstractGameObject> conflicts) {}
 
+    public ObjectType getType() {
+        return type;
+    }
+
+    public void setType(ObjectType type) {
+        this.type = type;
+    }
 }
