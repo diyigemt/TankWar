@@ -1,11 +1,10 @@
 package com.mygdx.tank;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Timer;
 import com.mygdx.enumeration.ObjectType;
 import com.mygdx.enumeration.TankType;
-import com.mygdx.game.AbstractGameObject;
-import com.mygdx.game.Bullet;
-import com.mygdx.game.Constants;
+import com.mygdx.game.*;
 import com.mygdx.wall.Wall;
 
 import java.util.ArrayList;
@@ -13,16 +12,21 @@ import java.util.ArrayList;
 /**
  * 用来管理Tank的Manager类
  */
-public class TankManager {
+public class TankManager extends Timer {
 
     // 坦克管理器类型，只有两种，不使用枚举，使用常量表示
     private int managerType;
     // 现已创建的坦克list
     private ArrayList<Tank> tanks;
+    // 整个场景目前的冰冻状态
+    private boolean isFrozen;
 
     public TankManager(int managerType) {
         this.managerType = managerType;
         this.tanks = new ArrayList<>();
+        this.isFrozen = false;
+        this.scheduleTask(new ShootTask(), 0, Constants.SHOOT_CD, Constants.INFINITY);
+        this.scheduleTask(new EnemyTankGenerator(), 0, Constants.CREATE_ENEMY_CD, Constants.ENEMY_NUMBER);
     }
 
     // 注册创建的坦克
@@ -70,12 +74,20 @@ public class TankManager {
         for (Tank tank : this.tanks) {
             tank.changeStatus(Constants.FREEZE);
         }
+        this.isFrozen = true;
     }
 
     // 解冻所有坦克
     public void unfreezeAll() {
         for (Tank tank : this.tanks) {
             tank.changeStatus(Constants.UNFREEZE);
+        }
+        this.isFrozen = false;
+    }
+    // 调用所有坦克的shoot函数
+    public void shoot() {
+        for (Tank tank : this.tanks) {
+            tank.shoot();
         }
     }
 
@@ -123,5 +135,13 @@ public class TankManager {
             }
         }
         return crashTank;
+    }
+
+    public boolean isFrozen() {
+        return isFrozen;
+    }
+
+    public void setFrozen(boolean frozen) {
+        isFrozen = frozen;
     }
 }
