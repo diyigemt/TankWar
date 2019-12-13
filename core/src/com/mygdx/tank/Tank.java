@@ -4,7 +4,9 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.bonus.Bonus;
 import com.mygdx.bonus.BonusManager;
 import com.mygdx.bonus.TankBonus;
+import com.mygdx.enumeration.ObjectType;
 import com.mygdx.enumeration.TankType;
+import com.mygdx.enumeration.WallType;
 import com.mygdx.game.AbstractGameObject;
 import com.mygdx.game.Bullet;
 import com.mygdx.game.Constants;
@@ -212,5 +214,58 @@ public class Tank extends AbstractGameObject {
         return isCrash;
     }
 
+
+    public void beenAttacked()
+    {
+
+    }
+
+    public void blockForward()
+    {
+        switch(this.direct)
+        {
+            case NORTH:
+                this.north = false;
+                break;
+            case SOUTH:
+                this.south = false;
+                break;
+            case WEST:
+                this.west = false;
+                break;
+            case EAST:
+                this.east = false;
+                break;
+        }
+    }
+    //碰撞反应,碰到子弹后生命值减少
+    @Override
+    public void isCrashed(ArrayList<AbstractGameObject> conflicts) {
+        if(conflicts.isEmpty() == true)
+        {
+            this.blockForward();
+        }
+        else
+        {
+            for(AbstractGameObject gameObject : conflicts)
+            {
+                if(gameObject.getType() == ObjectType.BULLET)
+                {
+                    this.beenAttacked();
+                }
+                else if(gameObject.getType() == ObjectType.WALL)
+                {
+                    Wall wall = (Wall)gameObject;
+                    if(wall.getType().equals(WallType.BRICK_WALL) ||
+                            wall.getType().equals(WallType.IRON_WALL) ||
+                            wall.getType().equals(WallType.WATER_WALL)
+                    )
+                    {
+                        this.blockForward();
+                    }
+                }
+            }
+        }
+    }
 
 }
