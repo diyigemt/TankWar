@@ -19,7 +19,7 @@ public class Bullet extends AbstractGameObject {
     //子弹集合
     static private ArrayList<Bullet> bullets = new ArrayList<Bullet>();
     //子弹速度
-    private float speed;
+    private float speed = 0.06f;
 
     public Bullet() {
         super(Assets.instance.assetGame.bullet);
@@ -31,7 +31,6 @@ public class Bullet extends AbstractGameObject {
         this();
         this.setSize(0.5f, 0.5f);
         this.setOrigin(this.getWidth() / 2.0f, this.getHeight() / 2.0f);
-        this.speed = 0.001f;//test
         this.direct = direct;
     }
 
@@ -40,13 +39,18 @@ public class Bullet extends AbstractGameObject {
         this.bullets.add(bullet);
     }
 
+    public void setDirect(Constants.DIRECT direct)
+    {
+        this.direct = direct;
+    }
     //移动函数
     public void move()
     {
         switch (this.direct)
         {
             case NORTH:
-                this.setY(this.getY() + this.speed);
+                System.out.println(this.getY());
+                this.translateY(this.speed);
                 break;
             case SOUTH:
                 this.setY(this.getY() - this.speed);
@@ -60,7 +64,7 @@ public class Bullet extends AbstractGameObject {
             default:
                 break;
         }
-        this.checkCrash();
+        //this.checkCrash();
     }
 
     @Override
@@ -131,7 +135,7 @@ public class Bullet extends AbstractGameObject {
             Bullet.bullets.remove(this);
     }
 
-    public ArrayList<Bullet> getBullets()
+    static public ArrayList<Bullet> getBullets()
     {
         return Bullet.bullets;
     }
@@ -150,4 +154,5 @@ public class Bullet extends AbstractGameObject {
             bullet.draw(spriteBatch);
         }
     }
+
 }

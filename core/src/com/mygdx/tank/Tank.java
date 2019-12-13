@@ -143,26 +143,30 @@ public class Tank extends AbstractGameObject {
     {
         Bullet bullet = new Bullet();
         bullet.registerBullet(bullet);
-
+        bullet.setSize(0.1f, 0.1f);
         if(this.direct == Constants.DIRECT.EAST)
         {
-            bullet.setPosition(this.getX() + this.getWidth(), this.getY() + this.getHeight()/2);
+            bullet.setPosition(this.getX() + this.getWidth() + 0.01f, this.getY() + this.getHeight()/2);
             bullet.setOrigin(bullet.getWidth()/2,bullet.getHeight()/2);
+            bullet.setDirect(Constants.DIRECT.EAST);
         }
         else if(this.direct == Constants.DIRECT.WEST)
         {
-            bullet.setPosition(this.getX(), this.getY() + this.getHeight());
+            bullet.setPosition(this.getX() - 0.01f, this.getY() + this.getHeight()/2);
             bullet.setOrigin(bullet.getWidth()/2,bullet.getHeight()/2);
+            bullet.setDirect(Constants.DIRECT.WEST);
         }
         else if(this.direct == Constants.DIRECT.NORTH)
         {
-            bullet.setPosition(this.getX() + this.getWidth()/2, this.getY() + this.getHeight());
+            bullet.setPosition(this.getX() + this.getWidth()/2, this.getY() + this.getHeight() + 0.01f);
             bullet.setOrigin(bullet.getWidth()/2,bullet.getHeight()/2);
+            bullet.setDirect(Constants.DIRECT.NORTH);
         }
         else if(this.direct == Constants.DIRECT.SOUTH)
         {
-            bullet.setPosition(this.getX() + this.getWidth()/2, this.getY());
+            bullet.setPosition(this.getX() + this.getWidth()/2, this.getY() - 0.01f);
             bullet.setOrigin(bullet.getWidth()/2,bullet.getHeight()/2);
+            bullet.setDirect(Constants.DIRECT.SOUTH);
         }
         return bullet;
     }

@@ -33,6 +33,7 @@ public class WorldController {
     private BonusManager bonusManager = Bonus.bonusManager;
     private TankManager heroTankManger = HeroTank.heroTankManager;
     private TankManager enemyTankManger = EnemyTank.enemyTankManager;
+    private ArrayList<Bullet> bullets = Bullet.getBullets();
     private HeroTank heroTank;
     //墙
 
@@ -114,9 +115,18 @@ public class WorldController {
 
     public void update(float deltaTime) {
         handleDebugInput(deltaTime);
+        this.updateBullet();
         this.updateTestObjects(deltaTime);
     }
 
+    private void updateBullet()
+    {
+        int i;
+        for(i=0;i<this.bullets.size();i++)
+        {
+            this.bullets.get(i).move();
+        }
+    }
     private void handleDebugInput(float deltaTime) {
         if (Gdx.app.getType() != Application.ApplicationType.Desktop)
             return;
