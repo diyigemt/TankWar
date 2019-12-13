@@ -1,6 +1,7 @@
 package com.mygdx.bonus;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.utils.Timer;
 import com.mygdx.enumeration.BonusType;
 import com.mygdx.game.AbstractGameObject;
 import com.mygdx.tank.Tank;
@@ -8,7 +9,7 @@ import com.mygdx.wall.Wall;
 
 import java.util.ArrayList;
 
-public class BonusManager {
+public class BonusManager extends Timer {
 
     // 记录的有效的Bonus的list
     private ArrayList<Bonus> bonuses;

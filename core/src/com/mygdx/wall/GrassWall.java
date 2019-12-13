@@ -2,9 +2,13 @@ package com.mygdx.wall;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.mygdx.enumeration.ObjectType;
 import com.mygdx.enumeration.WallType;
+import com.mygdx.game.AbstractGameObject;
 import com.mygdx.game.Constants;
 import com.mygdx.utils.Assets;
+
+import java.util.ArrayList;
 
 public class GrassWall extends Wall {
 
@@ -27,9 +31,15 @@ public class GrassWall extends Wall {
 
     }
 
+    //被攻击无反应
     @Override
     public void beenAttacked(int hit) {
         return ;
+    }
+
+    //无碰撞反应
+    @Override
+    public void isCrashed(ArrayList<AbstractGameObject> conflicts) {
     }
 
 }

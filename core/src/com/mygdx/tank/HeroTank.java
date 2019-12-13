@@ -1,7 +1,13 @@
 package com.mygdx.tank;
 
+import com.mygdx.enumeration.ObjectType;
 import com.mygdx.enumeration.TankType;
+import com.mygdx.enumeration.WallType;
+import com.mygdx.game.AbstractGameObject;
 import com.mygdx.game.Constants;
+import com.mygdx.wall.Wall;
+
+import java.util.ArrayList;
 
 public class HeroTank extends Tank {
 
@@ -50,5 +56,42 @@ public class HeroTank extends Tank {
 
     public boolean isProtected() {
         return isProtected;
+    }
+
+    //坦克被攻击
+    private void beenAttacked()
+    {
+        this.setChances(this.getChances() - 1);
+        if(this.getChances() <= 0)
+            this.changeStatus(Constants.DEAD);
+    }
+    //碰撞反应,碰到子弹后生命值减少
+    @Override
+    public void isCrashed(ArrayList<AbstractGameObject> conflicts) {
+        if(conflicts.isEmpty() == true)
+        {
+            //坦克碰到墙
+        }
+        else
+        {
+            for(AbstractGameObject gameObject : conflicts)
+            {
+                if(gameObject.getType() == ObjectType.BULLET)
+                {
+                    this.beenAttacked();
+                }
+                else if(gameObject.getType() == ObjectType.WALL)
+                {
+                    Wall wall = (Wall)gameObject;
+                    if(wall.getType().equals(WallType.BRICK_WALL) ||
+                            wall.getType().equals(WallType.IRON_WALL) ||
+                            wall.getType().equals(WallType.WATER_WALL)
+                    )
+                    {
+                        //坦克不能前进
+                    }
+                }
+            }
+        }
     }
 }

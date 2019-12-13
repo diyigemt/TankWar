@@ -2,8 +2,12 @@ package com.mygdx.wall;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.mygdx.enumeration.ObjectType;
 import com.mygdx.enumeration.WallType;
+import com.mygdx.game.AbstractGameObject;
 import com.mygdx.utils.Assets;
+
+import java.util.ArrayList;
 
 public class IronWall extends Wall {
 
@@ -20,14 +24,21 @@ public class IronWall extends Wall {
         this.setWallType(WallType.IRON_WALL);
     }
 
+
     @Override
     public void render(SpriteBatch spriteBatch) {
 
     }
 
+    //攻击无效
     @Override
     public void beenAttacked(int hit)
     {
         return;
+    }
+
+    //碰撞反应,碰到子弹后生命值减少
+    @Override
+    public void isCrashed(ArrayList<AbstractGameObject> conflicts) {
     }
 }

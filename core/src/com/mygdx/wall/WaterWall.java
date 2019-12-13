@@ -26,10 +26,11 @@ public class WaterWall extends Wall {
 
     }
 
+    //被攻击无反应
     @Override
     public void beenAttacked(int hit)
     {
-        return;
     }
+
 
 }

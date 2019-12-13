@@ -3,6 +3,7 @@ package com.mygdx.bonus;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.enumeration.BonusType;
 import com.mygdx.tank.HeroTank;
+import com.mygdx.utils.Assets;
 import com.mygdx.wall.Wall;
 
 /**
@@ -11,7 +12,7 @@ import com.mygdx.wall.Wall;
  */
     public class ShovelBonus extends Bonus {
         public ShovelBonus() {
-            super();
+            super(Assets.instance.assetBonus.shovel);
             this.setBonusType(BonusType.SHOVEL);
         }
 
@@ -22,8 +23,7 @@ import com.mygdx.wall.Wall;
 
     @Override
     public void addBuff(HeroTank heroTank) {
-        // 标记为激活状态
-        this.setActive(true);
+        super.addBuff(heroTank);
         // TODO 保护基地，目前定用WallManager进行逻辑上的保护
         Wall.wallManager.protectBase(true);
     }
@@ -31,7 +31,6 @@ import com.mygdx.wall.Wall;
     @Override
     public void removeBuff() {
         Wall.wallManager.protectBase(false);
-        // 标记为未激活状态
-        this.setActive(true);
+        super.removeBuff();
     }
 }
