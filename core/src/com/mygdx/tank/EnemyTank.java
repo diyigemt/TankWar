@@ -18,6 +18,7 @@ public class EnemyTank extends Tank {
         super(tankType);
         this.setType(ObjectType.ENEMYTANK);
         this.hasBonus = hasBonus;
+        this.setDirect(Constants.DIRECT.SOUTH);
     }
 
     @Override

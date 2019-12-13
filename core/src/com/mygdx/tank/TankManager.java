@@ -1,6 +1,7 @@
 package com.mygdx.tank;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.mygdx.enumeration.ObjectType;
 import com.mygdx.enumeration.TankType;
 import com.mygdx.game.AbstractGameObject;
 import com.mygdx.game.Bullet;
@@ -100,25 +101,25 @@ public class TankManager {
     {
         //英雄坦克
         ArrayList<AbstractGameObject>crashTank = new ArrayList<AbstractGameObject>();
-        for(Tank tank : HeroTank.heroTankManager.getTanks())
-        {
-            if(tank.getX() < gameObject.getX() + gameObject.getWidth() &&
-                    tank.getX() + tank.getWidth() > gameObject.getX() &&
-                    tank.getY() < gameObject.getY() + gameObject.getHeight() &&
-                    tank.getY() + tank.getHeight() > gameObject.getY())
-            {
-                crashTank.add(tank);
+        if(!gameObject.getType().equals(ObjectType.HEROTANK)) {
+            for (Tank tank : HeroTank.heroTankManager.getTanks()) {
+                if (tank.getX() < gameObject.getX() + gameObject.getWidth() &&
+                        tank.getX() + tank.getWidth() > gameObject.getX() &&
+                        tank.getY() < gameObject.getY() + gameObject.getHeight() &&
+                        tank.getY() + tank.getHeight() > gameObject.getY()) {
+                    crashTank.add(tank);
+                }
             }
         }
         //敌方坦克
-        for(Tank tank : EnemyTank.enemyTankManager.getTanks())
-        {
-            if(tank.getX() < gameObject.getX() + gameObject.getWidth() &&
-                    tank.getX() + tank.getWidth() > gameObject.getX() &&
-                    tank.getY() < gameObject.getY() + gameObject.getHeight() &&
-                    tank.getY() + tank.getHeight() > gameObject.getHeight())
-            {
-                crashTank.add(tank);
+        if(!gameObject.getType().equals(ObjectType.ENEMYTANK)) {
+            for (Tank tank : EnemyTank.enemyTankManager.getTanks()) {
+                if (tank.getX() < gameObject.getX() + gameObject.getWidth() &&
+                        tank.getX() + tank.getWidth() > gameObject.getX() &&
+                        tank.getY() < gameObject.getY() + gameObject.getHeight() &&
+                        tank.getY() + tank.getHeight() > gameObject.getHeight()) {
+                    crashTank.add(tank);
+                }
             }
         }
         return crashTank;
