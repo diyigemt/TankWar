@@ -35,6 +35,7 @@ public class Constants {
     //TODO 确定移动速度
     public static final float DEFAULT_SHOOT_SPEED = 0.06f;
     public static final float DEFAULT_MOVE_SPEED = 0.04f;
+    public static final float FAST_MOVE_SPEED = 2 * DEFAULT_MOVE_SPEED;
 
     // 游戏窗口的设置常量
     public static final int WINDOW_WIDTH = 1300;
@@ -60,5 +61,20 @@ public class Constants {
     public static final int BONUS_DURATION = 8;
 
     //坦克大小
-    public static  final float TANK_SIZE = 0.8f;
+    public static final float TANK_SIZE = 0.8f;
+
+    public static final int HEROTANK_LIFE = 1;
+    public static final int NORMAL_ENEMYTANK_LIFE = 1;
+    public static final int FAST_ENEMYTANK_LIFE = 1;
+    public static final int HARD_ENEMYTANK_LIFE = 4;
+
+    // 敌方坦克自动发射子弹的间隔
+    public static final int SHOOT_CD = 2;
+    public static final int CREATE_ENEMY_CD = 4;
+
+    // 生成敌方坦克数量
+    public static final int ENEMY_NUMBER = 20;
+
+    // 狭义无穷大
+    public static final int INFINITY = 1000000000;
 }

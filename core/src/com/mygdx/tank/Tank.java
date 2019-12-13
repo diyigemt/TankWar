@@ -27,6 +27,8 @@ public class Tank extends AbstractGameObject {
     private float shootSpeed;
     //坦克方向
     private Constants.DIRECT direct;
+    //
+    private int Life = 2;
     //方向是否堵塞
     private boolean north = true;
     private boolean south = true;
@@ -178,19 +180,17 @@ public class Tank extends AbstractGameObject {
     @Override
     public boolean checkCrash()
     {
-        System.out.println(this.getY());
         boolean isCrash = false;
         //和墙碰撞
         ArrayList<AbstractGameObject> walls = WallManager.checkCrash(this);
         if(walls.isEmpty() == false)
         {
-            System.out.println("yes");
             this.isCrashed(walls);
             ArrayList<AbstractGameObject> temp = new ArrayList<AbstractGameObject>();
             for(AbstractGameObject gameObject:walls)
             {
                 temp.clear();
-                temp.add(gameObject);
+                temp.add(this);
                 gameObject.isCrashed(temp);
             }
 
@@ -206,7 +206,7 @@ public class Tank extends AbstractGameObject {
             for(AbstractGameObject gameObject : bonus)
             {
                 temp.clear();
-                temp.add(gameObject);
+                temp.add(this);
                 gameObject.isCrashed(temp);
             }
         }
@@ -219,8 +219,8 @@ public class Tank extends AbstractGameObject {
             for(AbstractGameObject gameObject : tanks)
             {
                 temp.clear();
-                temp.add(gameObject);
-                gameObject.isCrashed(temp);
+                temp.add(this);
+                //gameObject.isCrashed(temp);
             }
             isCrash = true;
         }
@@ -241,7 +241,23 @@ public class Tank extends AbstractGameObject {
 
     public void beenAttacked()
     {
+        this.Life -= 1;
+        if(this.Life <= 0)
+        {
+            this.isAlive = false;
+        }
 
+        if(this.isAlive == false)
+        {
+            if(this.getType().equals(ObjectType.HEROTANK))
+            {
+                //game over
+            }
+            else
+            {
+                EnemyTank.enemyTankManager.getTanks().remove(this);
+            }
+        }
     }
 
     public void blockForward()
@@ -264,6 +280,7 @@ public class Tank extends AbstractGameObject {
     //碰撞反应,碰到子弹后生命值减少
     @Override
     public void isCrashed(ArrayList<AbstractGameObject> conflicts) {
+        //撞到边界
         if(conflicts == null)
         {
             switch(this.direct)
@@ -296,7 +313,6 @@ public class Tank extends AbstractGameObject {
                 else if(gameObject.getType() == ObjectType.WALL)
                 {
                     Wall wall = (Wall)gameObject;
-                    System.out.println(wall.getType());
                     if(wall.getWallType().equals(WallType.BRICK_WALL) ||
                             wall.getWallType().equals(WallType.IRON_WALL) ||
                             wall.getWallType().equals(WallType.WATER_WALL)
@@ -321,6 +337,28 @@ public class Tank extends AbstractGameObject {
                                 this.west = false;
                                 break;
                         }
+                    }
+                }
+                else if(gameObject.getType() == ObjectType.ENEMYTANK ||
+                        gameObject.getType() == ObjectType.HEROTANK)
+                {
+                    switch (this.direct) {
+                        case NORTH:
+                            this.setY(gameObject.getY() - this.getHeight());
+                            this.north = false;
+                            break;
+                        case SOUTH:
+                            this.setY(gameObject.getY() + gameObject.getHeight());
+                            this.south = false;
+                            break;
+                        case EAST:
+                            this.setX(gameObject.getX() - this.getWidth());
+                            this.east = false;
+                            break;
+                        case WEST:
+                            this.setX(gameObject.getX() + gameObject.getWidth());
+                            this.west = false;
+                            break;
                     }
                 }
             }
@@ -365,5 +403,9 @@ public class Tank extends AbstractGameObject {
 
     public void setWest(boolean west) {
         this.west = west;
+    }
+
+    public int getLife() {
+        return Life;
     }
 }
