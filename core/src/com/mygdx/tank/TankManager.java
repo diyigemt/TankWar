@@ -94,9 +94,9 @@ public class TankManager {
     }
 
 
-    public static boolean checkCrash(AbstractGameObject gameObject)
+    //坦克和坦克相撞
+    public static boolean checkCrash(Tank gameObject)
     {
-        //Wall i;
         boolean isCrashed = false;
         for(Tank i : Tank.tankManager.getTanks())
         {

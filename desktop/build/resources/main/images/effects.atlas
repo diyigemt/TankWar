@@ -1,0 +1,89 @@
+effects.png
+size: 1328, 107
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+blast1
+  rotate: false
+  xy: 0, 0
+  size: 136, 107
+  orig: 136, 107
+  offset: 0, 0
+  index: -1
+blast2
+  rotate: false
+  xy: 136, 0
+  size: 136, 107
+  orig: 136, 107
+  offset: 0, 0
+  index: -1
+blast3
+  rotate: false
+  xy: 272, 0
+  size: 136, 107
+  orig: 136, 107
+  offset: 0, 0
+  index: -1
+blast4
+  rotate: false
+  xy: 408, 0
+  size: 136, 107
+  orig: 136, 107
+  offset: 0, 0
+  index: -1
+blast5
+  rotate: false
+  xy: 544, 0
+  size: 136, 107
+  orig: 136, 107
+  offset: 0, 0
+  index: -1
+blast6
+  rotate: false
+  xy: 680, 0
+  size: 136, 107
+  orig: 136, 107
+  offset: 0, 0
+  index: -1
+blast7
+  rotate: false
+  xy: 816, 0
+  size: 136, 107
+  orig: 136, 107
+  offset: 0, 0
+  index: -1
+blast8
+  rotate: false
+  xy: 952, 0
+  size: 136, 107
+  orig: 136, 107
+  offset: 0, 0
+  index: -1
+born1
+  rotate: false
+  xy: 1088, 0
+  size: 60, 60
+  orig: 60, 60
+  offset: 0, 0
+  index: -1
+born2
+  rotate: false
+  xy: 1148, 0
+  size: 60, 60
+  orig: 60, 60
+  offset: 0, 0
+  index: -1
+born3
+  rotate: false
+  xy: 1208, 0
+  size: 60, 60
+  orig: 60, 60
+  offset: 0, 0
+  index: -1
+born4
+  rotate: false
+  xy: 1268, 0
+  size: 60, 60
+  orig: 60, 60
+  offset: 0, 0
+  index: -1

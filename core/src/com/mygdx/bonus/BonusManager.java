@@ -3,6 +3,7 @@ package com.mygdx.bonus;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.enumeration.BonusType;
 import com.mygdx.game.AbstractGameObject;
+import com.mygdx.tank.Tank;
 import com.mygdx.wall.Wall;
 
 import java.util.ArrayList;
@@ -66,11 +67,9 @@ public class BonusManager {
     }
 
 
-
-
-    public static boolean checkCrash(AbstractGameObject gameObject)
+    //坦克和buff相撞
+    public static boolean checkCrash(Tank gameObject)
     {
-        //Wall i;
         boolean isCrashed = false;
         for(Bonus i : Bonus.bonusManager.getBonuses())
         {
