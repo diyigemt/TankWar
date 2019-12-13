@@ -29,10 +29,15 @@ public class Bullet extends AbstractGameObject {
     public Bullet(float x, float y, Constants.DIRECT direct)
     {
         this();
-        this.setSize(Constants.WALL_SIZE, Constants.WALL_SIZE);
+        this.setSize(0.5f, 0.5f);
         this.setOrigin(this.getWidth() / 2.0f, this.getHeight() / 2.0f);
-        this.speed = 1;//test
+        this.speed = 0.001f;//test
         this.direct = direct;
+    }
+
+    public void registerBullet(Bullet bullet)
+    {
+        this.bullets.add(bullet);
     }
 
     //移动函数
@@ -56,10 +61,6 @@ public class Bullet extends AbstractGameObject {
                 break;
         }
         this.checkCrash();
-    }
-    @Override
-    public void render(SpriteBatch spriteBatch) {
-
     }
 
     @Override
@@ -133,5 +134,20 @@ public class Bullet extends AbstractGameObject {
     public ArrayList<Bullet> getBullets()
     {
         return Bullet.bullets;
+    }
+
+    @Override
+    public void render(SpriteBatch spriteBatch)
+    {
+        for(Bullet bullet : bullets) {
+            bullet.draw(spriteBatch);
+        }
+    }
+
+    static public void renderCopy(SpriteBatch spriteBatch)
+    {
+        for(Bullet bullet : bullets) {
+            bullet.draw(spriteBatch);
+        }
     }
 }
