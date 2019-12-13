@@ -43,8 +43,7 @@ public class WorldRenderer implements Disposable {
             sprite.draw(this.batch);
         }
 
-        WaterWall temp = new WaterWall(1,1);
-        temp.render(new SpriteBatch());
+
     }
 
     public void resize(int width, int height) {

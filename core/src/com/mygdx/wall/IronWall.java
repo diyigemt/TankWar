@@ -2,6 +2,7 @@ package com.mygdx.wall;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.mygdx.enumeration.ObjectType;
 import com.mygdx.enumeration.WallType;
 import com.mygdx.game.AbstractGameObject;
@@ -19,17 +20,15 @@ public class IronWall extends Wall {
         this.setLife(1);
     }
 
+    public IronWall(TextureRegion region, float x, float y) {
+        this(x, y);
+        this.setRegion(region);
+    }
+
     public IronWall() {
         super(Assets.instance.assetWall.iron);
         this.setWallType(WallType.IRON_WALL);
     }
-
-
-    @Override
-    public void render(SpriteBatch spriteBatch) {
-
-    }
-
     //攻击无效
     @Override
     public void beenAttacked(int hit)

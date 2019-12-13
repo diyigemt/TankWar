@@ -25,12 +25,6 @@ public class GrassWall extends Wall {
         this.setWallType(WallType.GRASS_WALL);
         this.setSize(Constants.WALL_SIZE * 2, Constants.WALL_SIZE * 2);
     }
-
-    @Override
-    public void render(SpriteBatch spriteBatch) {
-
-    }
-
     //被攻击无反应
     @Override
     public void beenAttacked(int hit) {

@@ -21,11 +21,6 @@ public class WaterWall extends Wall {
         this.setWallType(WallType.WATER_WALL);
         this.setSize(Constants.WALL_SIZE * 2, Constants.WALL_SIZE * 2);
     }
-    @Override
-    public void render(SpriteBatch spriteBatch) {
-
-    }
-
     //被攻击无反应
     @Override
     public void beenAttacked(int hit)
