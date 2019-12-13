@@ -3,6 +3,7 @@ package com.mygdx.tank;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.enumeration.TankType;
 import com.mygdx.game.AbstractGameObject;
+import com.mygdx.game.Bullet;
 import com.mygdx.game.Constants;
 import com.mygdx.wall.Wall;
 
@@ -95,7 +96,7 @@ public class TankManager {
 
 
     //坦克和坦克相撞
-    public static boolean checkCrash(Tank gameObject)
+    public static Tank checkCrash(AbstractGameObject gameObject)
     {
         boolean isCrashed = false;
         for(Tank i : Tank.tankManager.getTanks())
@@ -105,12 +106,9 @@ public class TankManager {
                     i.getY() < gameObject.getY() + gameObject.getHeight() &&
                     i.getY() + i.getHeight() > gameObject.getHeight())
             {
-                i.isCrashed();
-                gameObject.isCrashed();
-                isCrashed = true;
+                return i;
             }
         }
-        return isCrashed;
+        return null;
     }
-
 }

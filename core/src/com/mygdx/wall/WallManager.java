@@ -100,22 +100,19 @@ public class WallManager {
         }
     }
 
-    //坦克和墙相撞
-    public static boolean checkCrash(AbstractGameObject gameObject)
+    //返回和东西相撞的墙
+    public static Wall checkCrash(AbstractGameObject gameObject)
     {
-        boolean isCrashed = false;
         for(Wall i : Wall.wallManager.getWalls())
         {
             if(i.getX() < gameObject.getX() + gameObject.getWidth() &&
-               i.getX() + i.getWidth() > gameObject.getX() &&
-               i.getY() < gameObject.getY() + gameObject.getHeight() &&
-               i.getY() + i.getHeight() > gameObject.getHeight())
+                    i.getX() + i.getWidth() > gameObject.getX() &&
+                    i.getY() < gameObject.getY() + gameObject.getHeight() &&
+                    i.getY() + i.getHeight() > gameObject.getHeight())
             {
-                i.isCrashed();
-                gameObject.isCrashed();
-                isCrashed = true;
+                return i;
             }
         }
-        return isCrashed;
+        return null;
     }
 }

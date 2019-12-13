@@ -1,11 +1,13 @@
 package com.mygdx.tank;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.mygdx.bonus.Bonus;
 import com.mygdx.bonus.BonusManager;
 import com.mygdx.bonus.TankBonus;
 import com.mygdx.enumeration.TankType;
 import com.mygdx.game.AbstractGameObject;
 import com.mygdx.game.Constants;
+import com.mygdx.wall.Wall;
 import com.mygdx.wall.WallManager;
 
 public class Tank extends AbstractGameObject {
@@ -83,26 +85,12 @@ public class Tank extends AbstractGameObject {
     public boolean checkCrash()
     {
         boolean isCrash = false;
-        if(WallManager.checkCrash(this))
-        {
-            isCrash = true;
-            //和墙碰撞
-        }
-        if(BonusManager.checkCrash(this))
-        {
-            isCrash = true;
-            //和buff碰撞
-        }
-        if(TankManager.checkCrash(this))
-        {
-            isCrash = true;
-            //和坦克碰撞
-        }
-        if(TankManager.checkCrash(this))
-        {
-            isCrash = true;
-            //和子弹碰撞
-        }
+        //和墙
+        Wall wall = WallManager.checkCrash(this);
+        //和buff
+        Bonus bonus = BonusManager.checkCrash(this);
+        //和坦克
+        Tank tank = TankManager.checkCrash(this);
         return isCrash;
     }
 }

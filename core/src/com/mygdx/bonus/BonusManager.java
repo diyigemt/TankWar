@@ -67,8 +67,8 @@ public class BonusManager {
     }
 
 
-    //坦克和buff相撞
-    public static boolean checkCrash(Tank gameObject)
+    //返回相撞的Bonus
+    public static Bonus checkCrash(AbstractGameObject gameObject)
     {
         boolean isCrashed = false;
         for(Bonus i : Bonus.bonusManager.getBonuses())
@@ -78,11 +78,10 @@ public class BonusManager {
                     i.getY() < gameObject.getY() + gameObject.getHeight() &&
                     i.getY() + i.getHeight() > gameObject.getHeight())
             {
-                i.isCrashed();
-                gameObject.isCrashed();
-                isCrashed = true;
+                return i;
             }
         }
-        return isCrashed;
+        return null;
     }
+
 }
