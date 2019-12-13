@@ -1,0 +1,180 @@
+EnemyTank.png
+size: 1455, 60
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+enemy1D
+  rotate: false
+  xy: 0, 0
+  size: 60, 60
+  orig: 60, 60
+  offset: 0, 0
+  index: -1
+enemy1L
+  rotate: false
+  xy: 60, 0
+  size: 60, 60
+  orig: 60, 60
+  offset: 0, 0
+  index: -1
+enemy1R
+  rotate: false
+  xy: 120, 0
+  size: 60, 60
+  orig: 60, 60
+  offset: 0, 0
+  index: -1
+enemy1U
+  rotate: false
+  xy: 180, 0
+  size: 60, 60
+  orig: 60, 60
+  offset: 0, 0
+  index: -1
+enemy2D
+  rotate: false
+  xy: 240, 0
+  size: 60, 60
+  orig: 60, 60
+  offset: 0, 0
+  index: -1
+enemy2L
+  rotate: false
+  xy: 300, 0
+  size: 60, 60
+  orig: 60, 60
+  offset: 0, 0
+  index: -1
+enemy2R
+  rotate: false
+  xy: 360, 0
+  size: 60, 60
+  orig: 60, 60
+  offset: 0, 0
+  index: -1
+enemy2U
+  rotate: false
+  xy: 420, 0
+  size: 60, 60
+  orig: 60, 60
+  offset: 0, 0
+  index: -1
+enemy3D
+  rotate: false
+  xy: 480, 0
+  size: 60, 60
+  orig: 60, 60
+  offset: 0, 0
+  index: -1
+enemy3L
+  rotate: false
+  xy: 540, 0
+  size: 60, 60
+  orig: 60, 60
+  offset: 0, 0
+  index: -1
+enemy3R
+  rotate: false
+  xy: 600, 0
+  size: 60, 60
+  orig: 60, 60
+  offset: 0, 0
+  index: -1
+enemy3U
+  rotate: false
+  xy: 660, 0
+  size: 60, 60
+  orig: 60, 60
+  offset: 0, 0
+  index: -1
+enemy4D
+  rotate: false
+  xy: 720, 0
+  size: 60, 60
+  orig: 60, 60
+  offset: 0, 0
+  index: -1
+enemy4L
+  rotate: false
+  xy: 780, 0
+  size: 60, 60
+  orig: 60, 60
+  offset: 0, 0
+  index: -1
+enemy4R
+  rotate: false
+  xy: 840, 0
+  size: 60, 60
+  orig: 60, 60
+  offset: 0, 0
+  index: -1
+enemy4U
+  rotate: false
+  xy: 900, 0
+  size: 60, 60
+  orig: 60, 60
+  offset: 0, 0
+  index: -1
+enemy5D
+  rotate: false
+  xy: 960, 0
+  size: 60, 60
+  orig: 60, 60
+  offset: 0, 0
+  index: -1
+enemy5L
+  rotate: false
+  xy: 1020, 0
+  size: 60, 60
+  orig: 60, 60
+  offset: 0, 0
+  index: -1
+enemy5R
+  rotate: false
+  xy: 1080, 0
+  size: 60, 60
+  orig: 60, 60
+  offset: 0, 0
+  index: -1
+enemy5U
+  rotate: false
+  xy: 1140, 0
+  size: 60, 60
+  orig: 60, 60
+  offset: 0, 0
+  index: -1
+enemy6D
+  rotate: false
+  xy: 1200, 0
+  size: 60, 60
+  orig: 60, 60
+  offset: 0, 0
+  index: -1
+enemy6L
+  rotate: false
+  xy: 1260, 0
+  size: 60, 60
+  orig: 60, 60
+  offset: 0, 0
+  index: -1
+enemy6R
+  rotate: false
+  xy: 1320, 0
+  size: 60, 60
+  orig: 60, 60
+  offset: 0, 0
+  index: -1
+enemy6U
+  rotate: false
+  xy: 1380, 0
+  size: 60, 60
+  orig: 60, 60
+  offset: 0, 0
+  index: -1
+enemymissile
+  rotate: false
+  xy: 1440, 0
+  size: 15, 15
+  orig: 15, 15
+  offset: 0, 0
+  index: -1
