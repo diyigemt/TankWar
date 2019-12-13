@@ -4,11 +4,14 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.bonus.Bonus;
 import com.mygdx.bonus.BonusManager;
 import com.mygdx.enumeration.ObjectType;
+import com.mygdx.enumeration.WallType;
 import com.mygdx.tank.Tank;
 import com.mygdx.tank.TankManager;
 import com.mygdx.utils.Assets;
+import com.mygdx.wall.BrickWall;
 import com.mygdx.wall.Wall;
 import com.mygdx.wall.WallManager;
+import com.sun.org.apache.bcel.internal.Const;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -64,7 +67,7 @@ public class Bullet extends AbstractGameObject {
             default:
                 break;
         }
-        //this.checkCrash();
+        this.checkCrash();
     }
 
     @Override
@@ -76,14 +79,18 @@ public class Bullet extends AbstractGameObject {
         ArrayList<AbstractGameObject> walls = WallManager.checkCrash(this);
         if(walls.isEmpty() == false)
         {
-            this.isCrashed(walls);
             ArrayList<AbstractGameObject> temp = new ArrayList<AbstractGameObject>();
             for(AbstractGameObject gameObject:walls)
             {
                 temp.clear();
-                temp.add(gameObject);
-                gameObject.isCrashed(temp);
+                temp.add(this);
+                Wall wall = (Wall)gameObject;
+                if(wall.getWallType().equals(WallType.BRICK_WALL))
+                {
+                    ((BrickWall)wall).isCrashed(temp);
+                }
             }
+            this.isCrashed(walls);
             isCrash = true;
         }
         //和buff
@@ -96,7 +103,7 @@ public class Bullet extends AbstractGameObject {
             for(AbstractGameObject gameObject : bonus)
             {
                 temp.clear();
-                temp.add(gameObject);
+                temp.add(this);
                 gameObject.isCrashed(temp);
             }
         }
@@ -110,16 +117,15 @@ public class Bullet extends AbstractGameObject {
             for(AbstractGameObject gameObject : tanks)
             {
                 temp.clear();
-                temp.add(gameObject);
+                temp.add(this);
                 gameObject.isCrashed(temp);
             }
         }
         //和边界碰撞
         if(this.getX() < -Constants.VIEWPORT_WIDTH/2 ||
-                this.getX() + this.getWidth() > Constants.VIEWPORT_WIDTH/2 ||
+                this.getX() + this.getWidth() > Constants.VIEWPORT_WIDTH/2 + Constants.MAP_TRANSLATION_X*2 ||
                 this.getY() < -Constants.VIEWPORT_HEIGHT/2 ||
                 this.getY() + this.getHeight() > Constants.VIEWPORT_HEIGHT
-
         )
         {
             //和边界碰撞

@@ -41,10 +41,8 @@ public class WorldController extends InputAdapter {
         this.init();
     }
 
-    //
     private void WallInit()
     {
-        //this.wallList.add(new BrickWall(0,Constants.WALL_SIZE));
         this.generator.generate(1);
     }
 
@@ -52,12 +50,20 @@ public class WorldController extends InputAdapter {
     private void TankInit()
     {
         this.heroTank = new HeroTank(false, TankType.P1HERO);
-        this.heroTank.setSize(0.8f,0.8f);
+        this.heroTank.setSize(Constants.TANK_SIZE,Constants.TANK_SIZE);
         this.heroTank.setPosition(1, 3);
         HeroTank.heroTankManager.registerTank(this.heroTank);
-    }
-    //
 
+        addEnemyTank();
+    }
+
+    private void addEnemyTank()
+    {
+        EnemyTank tank = new EnemyTank(true, TankType.HARDENEMY);
+        tank.setSize(Constants.TANK_SIZE,Constants.TANK_SIZE);
+        tank.setPosition(0,5);
+        this.enemyTankManger.registerTank(tank);
+    }
     private void init() {
         this.initTestObjects();
         this.TankInit();
@@ -65,10 +71,6 @@ public class WorldController extends InputAdapter {
 
     private void initTestObjects() {
         this.WallInit();
-        //
-
-
-        //
         // Create new array for 5 sprites
         testSprites = new Sprite[5];
         // Create empty POT-sized Pixmap with 8 bit RGBA pixel data
