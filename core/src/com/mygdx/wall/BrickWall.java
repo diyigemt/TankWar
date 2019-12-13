@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.mygdx.enumeration.ObjectType;
 import com.mygdx.enumeration.WallType;
 import com.mygdx.game.AbstractGameObject;
@@ -21,6 +22,10 @@ public class BrickWall extends Wall implements Destroyable {
         this.setY(y);
         this.setLife(2);
 
+    }
+    public BrickWall(TextureRegion region, float x, float y) {
+        this(x, y);
+        this.setRegion(region);
     }
     public BrickWall()
     {

@@ -3,6 +3,8 @@ package com.mygdx.wall;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.enumeration.WallType;
 import com.mygdx.game.AbstractGameObject;
+import com.mygdx.game.Constants;
+import com.mygdx.utils.Assets;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -11,7 +13,8 @@ import java.util.ArrayList;
  * 这是用来管理Wall的Manager类，目前只设置一种，整个游戏也只会有一个静态实例
  */
 public class WallManager {
-
+    // 基地
+    private BrickWall base;
     // 被管理的普通Wall的list
     private ArrayList<Wall> walls;
     // 基地周围的8块特殊的墙
@@ -20,6 +23,10 @@ public class WallManager {
     public WallManager() {
         this.walls = new ArrayList<>();
         this.baseWalls = new ArrayList<>(8);
+        //初始化基地
+        this.base = new BrickWall(Assets.instance.assetGame.symbol, -0.5f + Constants.MAP_TRANSLATION_X, -6.5f + Constants.MAP_TRANSLATION_Y);
+        this.base.setSize(Constants.WALL_SIZE * 2,Constants.WALL_SIZE * 2);
+        this.initBaseWall();
     }
 
     // 注册创建的普通墙
@@ -73,6 +80,8 @@ public class WallManager {
 
     // 渲染所有的墙
     public void render(SpriteBatch spriteBatch) {
+        //渲染基地
+        this.base.render(spriteBatch);
         // 渲染基地部分的墙
         for (Wall wall : this.baseWalls) {
             wall.render(spriteBatch);
@@ -92,11 +101,15 @@ public class WallManager {
     }
 
     // 创建基地部分的墙
-    public void initBase() {
-        for (int i = 0; i < 8; i++) {
-            Wall wall = new BrickWall();
-            this.baseWalls.add(wall);
-        }
+    public void initBaseWall() {
+        this.baseWalls.add(new BrickWall(-1.0f + Constants.MAP_TRANSLATION_X, -6.5f + Constants.MAP_TRANSLATION_Y));
+        this.baseWalls.add(new BrickWall(-1.0f + Constants.MAP_TRANSLATION_X, -6.0f + Constants.MAP_TRANSLATION_Y));
+        this.baseWalls.add(new BrickWall(-1.0f + Constants.MAP_TRANSLATION_X, -5.5f + Constants.MAP_TRANSLATION_Y));
+        this.baseWalls.add(new BrickWall(-0.5f + Constants.MAP_TRANSLATION_X, -5.5f + Constants.MAP_TRANSLATION_Y));
+        this.baseWalls.add(new BrickWall(0.0f + Constants.MAP_TRANSLATION_X, -5.5f + Constants.MAP_TRANSLATION_Y));
+        this.baseWalls.add(new BrickWall(0.5f + Constants.MAP_TRANSLATION_X, -5.5f + Constants.MAP_TRANSLATION_Y));
+        this.baseWalls.add(new BrickWall(0.5f + Constants.MAP_TRANSLATION_X, -6.0f + Constants.MAP_TRANSLATION_Y));
+        this.baseWalls.add(new BrickWall(0.5f + Constants.MAP_TRANSLATION_X, -6.5f + Constants.MAP_TRANSLATION_Y));
     }
 
     // 改变基地部分的墙的状态，用于ShovelBonus的调用
