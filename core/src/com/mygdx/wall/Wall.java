@@ -99,4 +99,6 @@ public abstract class Wall extends AbstractGameObject {
     public void setLife(int life) {
         this.life = life;
     }
+
+
 }
