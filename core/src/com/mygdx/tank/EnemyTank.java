@@ -58,13 +58,6 @@ public class EnemyTank extends Tank {
         //前进，遇到障碍重新回到原位
         this.move(this.getDirect());
         this.checkCrash();
-
-/*         if(roadLevel<=0) findWay();
-         else
-         {
-             move(int2direct(Road.pop()));
-             roadLevel--;
-         }*/
     }
 
     //坦克移动
@@ -76,12 +69,16 @@ public class EnemyTank extends Tank {
                 if (this.isSouth()) {
                     this.translate(0, -this.getMoveSpeed());
                     this.setNorth(true);
+                    this.setEast(true);
+                    this.setWest(true);
                 }
                 break;
             case NORTH:
                 if (this.isNorth()) {
                     this.translate(0, this.getMoveSpeed());
                     this.setSouth(true);
+                    this.setWest(true);
+                    this.setEast(true);
                     ;
                 }
                 break;
@@ -89,14 +86,16 @@ public class EnemyTank extends Tank {
                 if (this.isWest()) {
                     this.translate(-this.getMoveSpeed(), 0);
                     this.setEast(true);
-                    ;
+                    this.setNorth(true);
+                    ;this.setSouth(true);
                 }
                 break;
             case EAST:
                 if (this.isEast()) {
                     this.translate(this.getMoveSpeed(), 0);
-                    this.setEast(true);
-                    ;
+                    this.setWest(true);
+                    this.setNorth(true);
+                    this.setSouth(true);
                 }
                 break;
         }
