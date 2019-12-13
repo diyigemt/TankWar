@@ -105,7 +105,7 @@ public class TankManager {
             if(tank.getX() < gameObject.getX() + gameObject.getWidth() &&
                     tank.getX() + tank.getWidth() > gameObject.getX() &&
                     tank.getY() < gameObject.getY() + gameObject.getHeight() &&
-                    tank.getY() + tank.getHeight() > gameObject.getHeight())
+                    tank.getY() + tank.getHeight() > gameObject.getY())
             {
                 crashTank.add(tank);
             }

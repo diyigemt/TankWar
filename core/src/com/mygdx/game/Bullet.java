@@ -4,9 +4,11 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.bonus.Bonus;
 import com.mygdx.bonus.BonusManager;
 import com.mygdx.enumeration.ObjectType;
+import com.mygdx.enumeration.WallType;
 import com.mygdx.tank.Tank;
 import com.mygdx.tank.TankManager;
 import com.mygdx.utils.Assets;
+import com.mygdx.wall.BrickWall;
 import com.mygdx.wall.Wall;
 import com.mygdx.wall.WallManager;
 
@@ -64,7 +66,7 @@ public class Bullet extends AbstractGameObject {
             default:
                 break;
         }
-        //this.checkCrash();
+        this.checkCrash();
     }
 
     @Override
@@ -76,14 +78,18 @@ public class Bullet extends AbstractGameObject {
         ArrayList<AbstractGameObject> walls = WallManager.checkCrash(this);
         if(walls.isEmpty() == false)
         {
-            this.isCrashed(walls);
             ArrayList<AbstractGameObject> temp = new ArrayList<AbstractGameObject>();
             for(AbstractGameObject gameObject:walls)
             {
                 temp.clear();
-                temp.add(gameObject);
-                gameObject.isCrashed(temp);
+                temp.add(this);
+                Wall wall = (Wall)gameObject;
+                if(wall.getWallType().equals(WallType.BRICK_WALL))
+                {
+                    ((BrickWall)wall).isCrashed(temp);
+                }
             }
+            this.isCrashed(walls);
             isCrash = true;
         }
         //和buff
@@ -96,7 +102,7 @@ public class Bullet extends AbstractGameObject {
             for(AbstractGameObject gameObject : bonus)
             {
                 temp.clear();
-                temp.add(gameObject);
+                temp.add(this);
                 gameObject.isCrashed(temp);
             }
         }
@@ -110,7 +116,7 @@ public class Bullet extends AbstractGameObject {
             for(AbstractGameObject gameObject : tanks)
             {
                 temp.clear();
-                temp.add(gameObject);
+                temp.add(this);
                 gameObject.isCrashed(temp);
             }
         }
