@@ -38,7 +38,7 @@ public class Tank extends AbstractGameObject {
         super(tankType.getTankRegion());
         this.isAlive = true;
         this.tankType = tankType;
-        this.moveSpeed = Constants.DEFAULT_MOVE_SPEED;
+        this.moveSpeed = 0.1f;//Constants.DEFAULT_MOVE_SPEED;
         this.shootSpeed = Constants.DEFAULT_SHOOT_SPEED;
     }
 
@@ -47,6 +47,10 @@ public class Tank extends AbstractGameObject {
         this.draw(spriteBatch);
     }
 
+    public void setDirect(Constants.DIRECT direct)
+    {
+        this.direct = direct;
+    }
     // 根据类别得到一个坦克的实例
     public static Tank getInstance(TankType tankType) {
         Tank tank = null;
@@ -241,7 +245,7 @@ public class Tank extends AbstractGameObject {
     //碰撞反应,碰到子弹后生命值减少
     @Override
     public void isCrashed(ArrayList<AbstractGameObject> conflicts) {
-        if(conflicts.isEmpty() == true)
+        if(conflicts == null)
         {
             switch(this.direct)
             {

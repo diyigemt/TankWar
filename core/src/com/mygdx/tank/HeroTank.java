@@ -27,6 +27,7 @@ public class HeroTank extends Tank {
         this.setType(ObjectType.HEROTANK);
         this.isProtected = isProtected;
         this.chances = Constants.MAX_CHANCES;
+        this.setDirect(Constants.DIRECT.NORTH);
     }
 
     public void setProtected(boolean isProtected) {
