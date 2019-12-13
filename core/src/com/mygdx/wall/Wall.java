@@ -3,10 +3,12 @@ package com.mygdx.wall;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Pixmap;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.enumeration.WallType;
 import com.mygdx.game.AbstractGameObject;
 import com.mygdx.game.Constants;
+import org.w3c.dom.Text;
 
 public abstract class Wall extends AbstractGameObject {
 
@@ -18,19 +20,15 @@ public abstract class Wall extends AbstractGameObject {
     private int life;
 
     public Wall() {
-
+        super();
+        this.setSize(Constants.WALL_SIZE, Constants.WALL_SIZE);
+        this.setOrigin(this.getWidth() / 2.0f, this.getHeight() / 2.0f);
     }
 
-    public Wall(float x, float y, int life) {
-        //x、y左上角坐标
-        super();
-        //this.setTexture(Wall.texture);
-        this.setSize(Constants.WALL_SIZE,Constants.WALL_SIZE);
+    public Wall(Texture texture) {
+        super(texture);
+        this.setSize(Constants.WALL_SIZE, Constants.WALL_SIZE);
         this.setOrigin(this.getWidth() / 2.0f, this.getHeight() / 2.0f);
-        this.setPosition(x, y);
-        this.setX(x);
-        this.setY(y);
-        this.life = life;
     }
 
     /**
@@ -58,14 +56,18 @@ public abstract class Wall extends AbstractGameObject {
 
     @Override
     public void render(SpriteBatch spriteBatch) {
-        OrthographicCamera camera = new OrthographicCamera(Constants.VIEWPORT_WIDTH, Constants.VIEWPORT_HEIGHT);
-        camera.position.set(0, 0, 0);
-        camera.update();
-
-        spriteBatch.setProjectionMatrix(camera.combined);
-        spriteBatch.begin();
+//        OrthographicCamera camera = new OrthographicCamera(Constants.VIEWPORT_WIDTH, Constants.VIEWPORT_HEIGHT);
+//        camera.position.set(0, 0, 0);
+//        camera.update();
+//        spriteBatch.setProjectionMatrix(camera.combined);
+//        spriteBatch.begin();
+//        SpriteBatch batch = new SpriteBatch();
+//        batch.begin();
+//        spriteBatch.draw(this.getTexture(), this.getX() - 50, this.getY() - 50, this.getTexture().getWidth(), this.getTexture().getHeight());
         this.draw(spriteBatch);
-        spriteBatch.end();
+//        batch.end();
+//        spriteBatch.draw(this.getTexture(), this.getTexture().getWidth(), this.getTexture().getHeight());
+//        spriteBatch.end();
 
     }
 
@@ -73,5 +75,21 @@ public abstract class Wall extends AbstractGameObject {
     public static Wall getInstance(WallType wallType){
         // TODO 得到实例类
         return null;
+    }
+
+    public WallType getWallType() {
+        return wallType;
+    }
+
+    public void setWallType(WallType wallType) {
+        this.wallType = wallType;
+    }
+
+    public int getLife() {
+        return life;
+    }
+
+    public void setLife(int life) {
+        this.life = life;
     }
 }

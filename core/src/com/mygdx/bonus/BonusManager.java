@@ -1,5 +1,6 @@
 package com.mygdx.bonus;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.enumeration.BonusType;
 
 import java.util.ArrayList;
@@ -31,8 +32,27 @@ public class BonusManager {
     }
 
     // 删除一个Bonus
-    public void deleteBonus(Bonus bonus) {
+    public boolean deleteBonus(Bonus bonus) {
+        if (this.bonuses.contains(bonus)) {
+            this.bonuses.remove(bonus);
+            return true;
+        } else {
+            return false;
+        }
+    }
 
+    // 删除所有的bonus
+    public void deleteAll() {
+        this.bonuses.clear();
+    }
+
+    // 渲染所有不是活跃状态的bonus
+    public void render(SpriteBatch spriteBatch) {
+        for (Bonus bonus : this.bonuses) {
+            if (!bonus.isActive()) {
+                bonus.render(spriteBatch);
+            }
+        }
     }
 
     public ArrayList<Bonus> getBonuses() {

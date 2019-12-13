@@ -29,13 +29,15 @@ public class WorldRenderer implements Disposable {
     private void renderTestObjects() {
         this.batch.setProjectionMatrix(camera.combined);
         this.batch.begin();
+
         for (Sprite sprite : worldController.testSprites) {
             sprite.draw(this.batch);
         }
         int i;
+
         for(i=0;i<this.worldController.wallList.size();i++)
         {
-            this.worldController.wallList.get(i).draw(this.batch);
+            this.worldController.wallList.get(i).render(this.batch);
         }
 
         this.batch.end();

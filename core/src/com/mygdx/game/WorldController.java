@@ -29,7 +29,7 @@ public class WorldController {
     private void WallInit()
     {
         this.wallList = new ArrayList<Wall>();
-        this.wallList.add(new BrickWall(0,0));
+        this.wallList.add(new BrickWall(1,1));
         this.wallList.add(new BrickWall(0,Constants.WALL_SIZE));
     }
     //

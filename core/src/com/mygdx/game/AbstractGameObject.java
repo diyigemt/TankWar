@@ -1,5 +1,6 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
@@ -8,6 +9,9 @@ public abstract class AbstractGameObject extends Sprite {
         super();
     }
 
+    public AbstractGameObject(Texture texture) {
+        super(texture);
+    }
     public void update() {
 
     }

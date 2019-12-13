@@ -31,4 +31,9 @@ public class Constants {
     public static final int DEFAULT_SHOOT_SPEED = 2;
     public static final int DEFAULT_MOVE_SPEED = 3;
 
+    // 游戏窗口的设置常量
+    public static final int WINDOW_WIDTH = 1000;
+    public static final int WINDOW_HEIGHT = 800;
+    public static final String WINDOW_TITLE = "TankWar";
+
 }
