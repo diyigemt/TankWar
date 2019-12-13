@@ -35,7 +35,6 @@ public class WorldRenderer implements Disposable {
 
         this.batch.setProjectionMatrix(camera.combined);
         this.batch.begin();
-        this.renderTestObjects();
         Wall.wallManager.render(this.batch);
         Bonus.bonusManager.render(this.batch);
         HeroTank.heroTankManager.render(this.batch);
@@ -45,15 +44,6 @@ public class WorldRenderer implements Disposable {
 
     }
 
-    private void renderTestObjects() {
-
-
-        for (Sprite sprite : worldController.testSprites) {
-            sprite.draw(this.batch);
-        }
-
-
-    }
 
     public void resize(int width, int height) {
         camera.viewportWidth = (Constants.VIEWPORT_HEIGHT / height) * width;

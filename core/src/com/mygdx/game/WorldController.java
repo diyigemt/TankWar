@@ -34,6 +34,7 @@ public class WorldController extends InputAdapter {
     private ArrayList<Bullet> bullets = Bullet.getBullets();
     private HeroTank heroTank;
     private Game game;
+    private int mapId;
     //墙
 
     public WorldController(Game game) {
@@ -43,7 +44,7 @@ public class WorldController extends InputAdapter {
 
     private void WallInit()
     {
-        this.generator.generate(1);
+        this.generator.generate(3);
     }
 
 
@@ -51,11 +52,15 @@ public class WorldController extends InputAdapter {
     {
         this.heroTank = new HeroTank(false, TankType.P1HERO);
         this.heroTank.setSize(Constants.TANK_SIZE,Constants.TANK_SIZE);
-        this.heroTank.setPosition(1, 3);
+        this.heroTank.setPosition(Constants.MAP_TRANSLATION_X + -2.5f, Constants.MAP_TRANSLATION_Y + -6.5f);
         HeroTank.heroTankManager.registerTank(this.heroTank);
+<<<<<<< HEAD
+        addEnemyTank();
+=======
 
         addEnemyTank(-9, 0);
         addEnemyTank(3,0);
+>>>>>>> af607ec72b278021f6ee32bb7611c20024e70a2e
     }
 
     private void addEnemyTank(float x, float y)
@@ -67,11 +72,12 @@ public class WorldController extends InputAdapter {
     }
     private void init() {
         this.initTestObjects();
+        this.WallInit();
         this.TankInit();
     }
 
     private void initTestObjects() {
-        this.WallInit();
+        /*
         // Create new array for 5 sprites
         testSprites = new Sprite[5];
         // Create empty POT-sized Pixmap with 8 bit RGBA pixel data
@@ -98,6 +104,8 @@ public class WorldController extends InputAdapter {
         }
         //Bonus bonus = Bonus.bonusManager.createBonus(BonusType.BOOM, 3, 3);
         //bonus.addBuff(new HeroTank(false));
+        */
+
     }
 
     // 自定义的创建以一个像素图的方法，在这里是画一个箱子
@@ -167,19 +175,17 @@ public class WorldController extends InputAdapter {
 
     private void updateTestObjects(float deltaTime) {
         // Get current rotation from selected sprite
-        float rotation = testSprites[selectedSprite].getRotation();
+        //float rotation = testSprites[selectedSprite].getRotation();
         // Rotate sprite by 90 degrees per second
-        rotation += 90 * deltaTime;
+        //rotation += 90 * deltaTime;
         // Wrap around at 360 degrees
-        rotation %= 360;
+        //rotation %= 360;
         // Set new rotation value to selected sprite
-        testSprites[selectedSprite].setRotation(rotation);
+        //testSprites[selectedSprite].setRotation(rotation);
     }
 
-    public void worldInit()
-    {
-
+    public void setMap(int mapId) {
+        this.mapId = mapId;
     }
-
 
 }
