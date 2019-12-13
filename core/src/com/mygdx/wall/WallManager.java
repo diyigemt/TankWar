@@ -63,6 +63,10 @@ public class WallManager {
         }
     }
 
+    public ArrayList<Wall> getBaseWalls()
+    {
+        return this.baseWalls;
+    }
     // 删除一个普通墙
     public boolean deleteWall(Wall wall) {
         if (this.walls.contains(wall)) {
@@ -144,7 +148,17 @@ public class WallManager {
             if(wall.getX() < gameObject.getX() + gameObject.getWidth() &&
                     wall.getX() + wall.getWidth() > gameObject.getX() &&
                     wall.getY() < gameObject.getY() + gameObject.getHeight() &&
-                    wall.getY() + wall.getHeight() > gameObject.getHeight())
+                    wall.getY() + wall.getHeight() > gameObject.getY())
+            {
+                crashWall.add(wall);
+            }
+        }
+        for(Wall wall : Wall.wallManager.getBaseWalls())
+        {
+            if(wall.getX() < gameObject.getX() + gameObject.getWidth() &&
+                    wall.getX() + wall.getWidth() > gameObject.getX() &&
+                    wall.getY() < gameObject.getY() + gameObject.getHeight() &&
+                    wall.getY() + wall.getHeight() > gameObject.getY())
             {
                 crashWall.add(wall);
             }

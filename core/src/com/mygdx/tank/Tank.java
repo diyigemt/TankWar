@@ -165,6 +165,7 @@ public class Tank extends AbstractGameObject {
         ArrayList<AbstractGameObject> walls = WallManager.checkCrash(this);
         if(walls.isEmpty() == false)
         {
+            System.out.println("yes");
             this.isCrashed(walls);
             ArrayList<AbstractGameObject> temp = new ArrayList<AbstractGameObject>();
             for(AbstractGameObject gameObject:walls)
@@ -209,7 +210,6 @@ public class Tank extends AbstractGameObject {
                 this.getX() + this.getWidth() > Constants.VIEWPORT_WIDTH/2 ||
                 this.getY() < -Constants.VIEWPORT_HEIGHT/2 ||
                 this.getY() + this.getHeight() > Constants.VIEWPORT_HEIGHT
-
         )
         {
             //和边界碰撞
@@ -227,8 +227,7 @@ public class Tank extends AbstractGameObject {
 
     public void blockForward()
     {
-        switch(this.direct)
-        {
+        switch(this.direct) {
             case NORTH:
                 this.north = false;
                 break;
@@ -254,10 +253,10 @@ public class Tank extends AbstractGameObject {
                     this.setX(-Constants.VIEWPORT_WIDTH/2);
                     break;
                 case NORTH:
-                    this.setY(Constants.VIEWPORT_HEIGHT/2);
+                    this.setY(Constants.VIEWPORT_HEIGHT/2 - this.getHeight());
                     break;
                 case EAST:
-                    this.setX(Constants.VIEWPORT_WIDTH/2);
+                    this.setX(Constants.VIEWPORT_WIDTH/2 - this.getWidth());
                     break;
                 case SOUTH:
                     this.setY(-Constants.VIEWPORT_HEIGHT/2);
@@ -276,9 +275,10 @@ public class Tank extends AbstractGameObject {
                 else if(gameObject.getType() == ObjectType.WALL)
                 {
                     Wall wall = (Wall)gameObject;
-                    if(wall.getType().equals(WallType.BRICK_WALL) ||
-                            wall.getType().equals(WallType.IRON_WALL) ||
-                            wall.getType().equals(WallType.WATER_WALL)
+                    System.out.println(wall.getType());
+                    if(wall.getWallType().equals(WallType.BRICK_WALL) ||
+                            wall.getWallType().equals(WallType.IRON_WALL) ||
+                            wall.getWallType().equals(WallType.WATER_WALL)
                     )
                     {
                         this.blockForward();
