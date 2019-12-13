@@ -1,8 +1,8 @@
 package com.mygdx.bonus;
 
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.enumeration.BonusType;
+import com.mygdx.game.Constants;
 import com.mygdx.tank.EnemyTank;
 import com.mygdx.tank.HeroTank;
 import com.mygdx.utils.Assets;
@@ -16,6 +16,7 @@ public class ClockBonus extends Bonus {
     public ClockBonus() {
         super(Assets.instance.assetBonus.clock);
         this.setBonusType(BonusType.CLOCK);
+        this.setDuration(Constants.CLOCK_BUFF_DURATION);
     }
     @Override
     public void addBuff(HeroTank heroTank) {

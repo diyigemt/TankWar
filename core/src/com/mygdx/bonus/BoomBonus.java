@@ -1,7 +1,5 @@
 package com.mygdx.bonus;
 
-
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.enumeration.BonusType;
 import com.mygdx.game.Constants;
 import com.mygdx.tank.EnemyTank;

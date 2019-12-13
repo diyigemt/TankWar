@@ -35,9 +35,10 @@ public class Tank extends AbstractGameObject {
 
     public static TankManager tankManager;
 
-    public Tank() {
-        super();
+    public Tank(TankType tankType) {
+        super(tankType.getTankRegion());
         this.isAlive = true;
+        this.tankType = tankType;
         this.moveSpeed = Constants.DEFAULT_MOVE_SPEED;
         this.shootSpeed = Constants.DEFAULT_SHOOT_SPEED;
     }
@@ -243,6 +244,21 @@ public class Tank extends AbstractGameObject {
     public void isCrashed(ArrayList<AbstractGameObject> conflicts) {
         if(conflicts.isEmpty() == true)
         {
+            switch(this.direct)
+            {
+                case WEST:
+                    this.setX(-Constants.VIEWPORT_WIDTH/2);
+                    break;
+                case NORTH:
+                    this.setY(Constants.VIEWPORT_HEIGHT/2);
+                    break;
+                case EAST:
+                    this.setX(Constants.VIEWPORT_WIDTH/2);
+                    break;
+                case SOUTH:
+                    this.setY(-Constants.VIEWPORT_HEIGHT/2);
+                    break;
+            }
             this.blockForward();
         }
         else
