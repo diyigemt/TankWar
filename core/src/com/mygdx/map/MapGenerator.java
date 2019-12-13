@@ -15,7 +15,7 @@ public class MapGenerator {
 	public void generate(int mapId) {
 		String divide[] = Gdx.files.internal("map/" + String.valueOf(mapId) + ".txt").readString().split("\\r\\n");
 		for (int i = 0; i < 4; i++) {
-			if (divide[0].equals("0"))
+			if (divide[i].equals("0"))
 				continue;
 			WallType type = WallType.getInstance(i);
 			String position[] = divide[i].split("'");
