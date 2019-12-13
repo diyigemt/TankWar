@@ -41,10 +41,8 @@ public class WorldController {
         this.init();
     }
 
-    //
     private void WallInit()
     {
-        //this.wallList.add(new BrickWall(0,Constants.WALL_SIZE));
         this.generator.generate(1);
     }
 
@@ -56,7 +54,6 @@ public class WorldController {
         this.heroTank.setPosition(1, 3);
         HeroTank.heroTankManager.registerTank(this.heroTank);
     }
-    //
 
     private void init() {
         this.initTestObjects();
@@ -65,10 +62,6 @@ public class WorldController {
 
     private void initTestObjects() {
         this.WallInit();
-        //
-
-
-        //
         // Create new array for 5 sprites
         testSprites = new Sprite[5];
         // Create empty POT-sized Pixmap with 8 bit RGBA pixel data

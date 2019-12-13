@@ -4,7 +4,7 @@ public class Constants {
     // Visible game world is 5 meters wide
     public static final float VIEWPORT_WIDTH = 18.0f;
     // Visible game world is 5 meters tall
-    public static final float VIEWPORT_HEIGHT = 18.0f;
+    public static final float VIEWPORT_HEIGHT = 13.0f;
     // Location of description file for texture atlas
     public static final String HEROTANK_ATLAS_OBJECTS = "images/HeroTank.atlas";
     public static final String ENEMYTANK_ATLAS_OBJECTS = "images/EnemyTank.atlas";
@@ -37,7 +37,7 @@ public class Constants {
     public static final float DEFAULT_MOVE_SPEED = 0.04f;
 
     // 游戏窗口的设置常量
-    public static final int WINDOW_WIDTH = 900;
+    public static final int WINDOW_WIDTH = 1200;
     public static final int WINDOW_HEIGHT = 900;
     public static final String WINDOW_TITLE = "TankWar";
 
