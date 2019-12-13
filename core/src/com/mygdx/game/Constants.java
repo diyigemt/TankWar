@@ -6,8 +6,13 @@ public class Constants {
     // Visible game world is 5 meters tall
     public static final float VIEWPORT_HEIGHT = 18.0f;
     // Location of description file for texture atlas
-    public static final String TEXTURE_ATLAS_OBJECTS =
-            "images/tank.atlas";
+    public static final String HEROTANK_ATLAS_OBJECTS = "images/HeroTank.atlas";
+    public static final String ENEMYTANK_ATLAS_OBJECTS = "images/EnemyTank.atlas";
+    public static final String EFFECTS_ATLAS_OBJECTS = "images/effects.atlas";
+    public static final String BONUS_ATLAS_OBJECTS = "images/Bonus.atlas";
+    public static final String GAME_ATLAS_OBJECTS = "images/game.atlas";
+    public static final String WALL_ATLAS_OBJECTS = "images/Wall.atlas";
+
 
 
     // 坦克管理器类别，0为英雄坦克，1为敌方坦克

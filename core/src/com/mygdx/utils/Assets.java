@@ -23,7 +23,7 @@ public class Assets implements Disposable, AssetErrorListener {
         // 设置资源管理器错误处理
         this.assetManager.setErrorListener(this);
         // 加载纹理图块
-        this.assetManager.load(Constants.TEXTURE_ATLAS_OBJECTS, TextureAtlas.class);
+        this.assetManager.load(Constants.HEROTANK_ATLAS_OBJECTS, TextureAtlas.class);
         this.assetManager.finishLoading();
         Gdx.app.debug(TAG,
                 "# of assets loaded: " + this.assetManager.getAssetNames().size);
