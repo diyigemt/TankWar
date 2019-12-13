@@ -51,8 +51,10 @@ public class BrickWall extends Wall implements Destroyable {
                 {
                     this.beenAttacked(1);
                     System.out.println("this.getLife()");
-                    if(this.getLife() <= 0)
+                    if(this.getLife() <= 0) {
                         Wall.wallManager.getWalls().remove(this);
+                        Wall.wallManager.getBaseWalls().remove(this);
+                    }
                 }
             }
         }
