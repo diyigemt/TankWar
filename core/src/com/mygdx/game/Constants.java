@@ -29,7 +29,7 @@ public class Constants {
 
 
     //墙
-    public static final float WALL_SIZE = 1f;
+    public static final float WALL_SIZE = 0.5f;
 
     // 默认移动速度等
     //TODO 确定移动速度

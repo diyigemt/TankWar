@@ -3,6 +3,7 @@ package com.mygdx.wall;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.enumeration.WallType;
+import com.mygdx.game.Constants;
 import com.mygdx.utils.Assets;
 
 public class WaterWall extends Wall {
@@ -19,6 +20,7 @@ public class WaterWall extends Wall {
         super(Assets.instance.assetWall.water);
         this.setWallType(WallType.WATER_WALL);
         this.setTexture(new Texture(this.getWallType().getAppearance()));
+        this.setSize(Constants.WALL_SIZE * 2, Constants.WALL_SIZE * 2);
     }
     @Override
     public void render(SpriteBatch spriteBatch) {
