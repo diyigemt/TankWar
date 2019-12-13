@@ -1,7 +1,11 @@
 package com.mygdx.game;
+import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.utils.Disposable;
 import com.mygdx.bonus.Bonus;
 import com.mygdx.tank.HeroTank;
@@ -13,12 +17,14 @@ public class WorldRenderer implements Disposable {
     private SpriteBatch batch;
     private WorldController worldController;
 
+    private Screen startMenu;
+
     public WorldRenderer(WorldController worldController) {
         this.worldController = worldController;
         this.init();
     }
 
-    private void init() {
+    private void init(){
         this.batch = new SpriteBatch();
         this.camera = new OrthographicCamera(Constants.VIEWPORT_WIDTH, Constants.VIEWPORT_HEIGHT);
         camera.position.set(0, 0, 0);

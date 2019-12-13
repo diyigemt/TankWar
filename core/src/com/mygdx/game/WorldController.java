@@ -1,8 +1,6 @@
 package com.mygdx.game;
 
-import com.badlogic.gdx.Application;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
+import com.badlogic.gdx.*;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -23,7 +21,7 @@ import com.mygdx.wall.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WorldController {
+public class WorldController extends InputAdapter {
     private static final String TAG = WorldController.class.getName();
     //地图生成器
     private final MapGenerator generator = new MapGenerator();
@@ -35,9 +33,11 @@ public class WorldController {
     private TankManager enemyTankManger = EnemyTank.enemyTankManager;
     private ArrayList<Bullet> bullets = Bullet.getBullets();
     private HeroTank heroTank;
+    private Game game;
     //墙
 
-    public WorldController() {
+    public WorldController(Game game) {
+        this.game = game;
         this.init();
     }
 
