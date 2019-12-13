@@ -42,7 +42,7 @@ public class Constants {
     public static final String WINDOW_TITLE = "TankWar";
 
     //地图坐标平移
-    public static final float MAP_TRANSLATION_X = 10.0f;
+    public static final float MAP_TRANSLATION_X = -2.5f;
     public static final float MAP_TRANSLATION_Y = 0.0f;
 
     //方向
