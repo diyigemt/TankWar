@@ -24,8 +24,10 @@ public class BonusManager extends Timer {
     }
 
     // 创建一个Bonus实例并且注册
-    public Bonus createBonus(BonusType bonusType) {
+    public Bonus createBonus(BonusType bonusType, float x, float y) {
         Bonus bonus = Bonus.getInstance(bonusType);
+        bonus.setX(x);
+        bonus.setY(y);
         if (bonus != null) {
             this.registerBonus(bonus);
             return bonus;

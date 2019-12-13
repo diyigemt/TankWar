@@ -17,12 +17,6 @@ public class ClockBonus extends Bonus {
         super(Assets.instance.assetBonus.clock);
         this.setBonusType(BonusType.CLOCK);
     }
-
-    @Override
-    public void render(SpriteBatch spriteBatch) {
-
-    }
-
     @Override
     public void addBuff(HeroTank heroTank) {
         super.addBuff(heroTank);

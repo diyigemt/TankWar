@@ -10,12 +10,6 @@ public class TankBonus extends Bonus {
         super(Assets.instance.assetBonus.tankBonus);
         this.setBonusType(BonusType.TANK);
     }
-
-    @Override
-    public void render(SpriteBatch spriteBatch) {
-
-    }
-
     @Override
     public void addBuff(HeroTank heroTank) {
         super.addBuff(heroTank);

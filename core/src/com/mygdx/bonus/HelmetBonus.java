@@ -18,12 +18,6 @@ public class HelmetBonus extends Bonus {
         super(Assets.instance.assetBonus.helmet);
         this.setBonusType(BonusType.HELMET);
     }
-
-    @Override
-    public void render(SpriteBatch spriteBatch) {
-
-    }
-
     @Override
     public void addBuff(HeroTank heroTank) {
         super.addBuff(heroTank);

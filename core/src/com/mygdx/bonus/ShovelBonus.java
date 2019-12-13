@@ -15,12 +15,6 @@ import com.mygdx.wall.Wall;
             super(Assets.instance.assetBonus.shovel);
             this.setBonusType(BonusType.SHOVEL);
         }
-
-        @Override
-        public void render(SpriteBatch spriteBatch) {
-
-        }
-
     @Override
     public void addBuff(HeroTank heroTank) {
         super.addBuff(heroTank);

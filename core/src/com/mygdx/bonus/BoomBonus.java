@@ -14,11 +14,6 @@ public class BoomBonus extends Bonus {
     }
 
     @Override
-    public void render(SpriteBatch spriteBatch) {
-
-    }
-
-    @Override
     public void addBuff(HeroTank heroTank) {
         super.addBuff(heroTank);
         EnemyTank.enemyTankManager.deleteAll();

@@ -27,6 +27,7 @@ public abstract class Bonus extends AbstractGameObject {
         super(region);
         this.isActive = false;
         this.setSize(1, 1);
+        this.setOrigin(this.getWidth() / 2.0f, this.getHeight() / 2.0f);
     }
 
     public void addBuff(HeroTank heroTank) {

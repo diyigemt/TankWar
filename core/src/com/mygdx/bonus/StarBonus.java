@@ -18,12 +18,6 @@ public class StarBonus extends Bonus {
         super(Assets.instance.assetBonus.star);
         this.setBonusType(BonusType.STAR);
     }
-
-    @Override
-    public void render(SpriteBatch spriteBatch) {
-
-    }
-
     @Override
     public void addBuff(HeroTank heroTank) {
         super.addBuff(heroTank);
