@@ -243,6 +243,21 @@ public class Tank extends AbstractGameObject {
     public void isCrashed(ArrayList<AbstractGameObject> conflicts) {
         if(conflicts.isEmpty() == true)
         {
+            switch(this.direct)
+            {
+                case WEST:
+                    this.setX(-Constants.VIEWPORT_WIDTH/2);
+                    break;
+                case NORTH:
+                    this.setY(Constants.VIEWPORT_HEIGHT/2);
+                    break;
+                case EAST:
+                    this.setX(Constants.VIEWPORT_WIDTH/2);
+                    break;
+                case SOUTH:
+                    this.setY(-Constants.VIEWPORT_HEIGHT/2);
+                    break;
+            }
             this.blockForward();
         }
         else
