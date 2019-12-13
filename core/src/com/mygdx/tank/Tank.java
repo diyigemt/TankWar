@@ -77,7 +77,7 @@ public class Tank extends AbstractGameObject {
         return shootSpeed;
     }
 
-    public void setShootSpeed(int shootSpeed) {
+    public void setShootSpeed(float shootSpeed) {
         this.shootSpeed = shootSpeed;
     }
 
