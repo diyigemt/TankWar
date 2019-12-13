@@ -13,6 +13,8 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Bullet extends AbstractGameObject {
+    //子弹方向
+    private Constants.DIRECT direct;
     //子弹集合
     static private ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 
@@ -20,6 +22,13 @@ public class Bullet extends AbstractGameObject {
         super(Assets.instance.assetGame.bullet);
     }
 
+    public Bullet(float x, float y, Constants.DIRECT direct)
+    {
+        super();
+        this.setSize(Constants.WALL_SIZE, Constants.WALL_SIZE);
+        this.setOrigin(this.getWidth() / 2.0f, this.getHeight() / 2.0f);
+        this.direct = direct;
+    }
     @Override
     public void render(SpriteBatch spriteBatch) {
 

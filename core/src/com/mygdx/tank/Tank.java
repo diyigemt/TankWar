@@ -6,6 +6,7 @@ import com.mygdx.bonus.BonusManager;
 import com.mygdx.bonus.TankBonus;
 import com.mygdx.enumeration.TankType;
 import com.mygdx.game.AbstractGameObject;
+import com.mygdx.game.Bullet;
 import com.mygdx.game.Constants;
 import com.mygdx.wall.Wall;
 import com.mygdx.wall.WallManager;
@@ -23,7 +24,7 @@ public class Tank extends AbstractGameObject {
     // 坦克的射速
     private int shootSpeed;
     //坦克方向
-    private Constants.DIRECT direc;
+    private Constants.DIRECT direct;
     //
     public static TankManager tankManager;
 
@@ -83,7 +84,32 @@ public class Tank extends AbstractGameObject {
         this.moveSpeed = moveSpeed;
     }
 
-
+    //射击
+    public Bullet shoot()
+    {
+        Bullet bullet = new Bullet();
+        if(this.direct == Constants.DIRECT.EAST)
+        {
+            bullet.setPosition(this.getX() + this.getWidth(), this.getY() + this.getHeight()/2);
+            bullet.setOrigin(bullet.getWidth()/2,bullet.getHeight()/2);
+        }
+        else if(this.direct == Constants.DIRECT.WEST)
+        {
+            bullet.setPosition(this.getX(), this.getY() + this.getHeight());
+            bullet.setOrigin(bullet.getWidth()/2,bullet.getHeight()/2);
+        }
+        else if(this.direct == Constants.DIRECT.NORTH)
+        {
+            bullet.setPosition(this.getX() + this.getWidth()/2, this.getY() + this.getHeight());
+            bullet.setOrigin(bullet.getWidth()/2,bullet.getHeight()/2);
+        }
+        else if(this.direct == Constants.DIRECT.SOUTH)
+        {
+            bullet.setPosition(this.getX() + this.getWidth()/2, this.getY());
+            bullet.setOrigin(bullet.getWidth()/2,bullet.getHeight()/2);
+        }
+        return bullet;
+    }
     //碰撞检测
     @Override
     public boolean checkCrash()
