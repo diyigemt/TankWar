@@ -32,6 +32,7 @@ public class WorldRenderer implements Disposable {
         Wall.wallManager.render(this.batch);
         Bonus.bonusManager.render(this.batch);
         HeroTank.heroTankManager.render(this.batch);
+        Bullet.renderCopy(this.batch);
         this.batch.end();
 
     }

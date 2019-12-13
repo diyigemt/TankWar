@@ -142,6 +142,8 @@ public class Tank extends AbstractGameObject {
     public Bullet shoot()
     {
         Bullet bullet = new Bullet();
+        bullet.registerBullet(bullet);
+
         if(this.direct == Constants.DIRECT.EAST)
         {
             bullet.setPosition(this.getX() + this.getWidth(), this.getY() + this.getHeight()/2);

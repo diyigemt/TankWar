@@ -42,8 +42,7 @@ public class WorldController {
     //
     private void WallInit()
     {
-        this.generator.generate(2);
-        //this.wallList.add(new BrickWall(0,Constants.WALL_SIZE));
+        this.generator.generate(1);
     }
 
 
@@ -120,22 +119,20 @@ public class WorldController {
         if (Gdx.app.getType() != Application.ApplicationType.Desktop)
             return;
         // Selected Sprite Controls
-        float sprMoveSpeed = 5 * deltaTime;
         if (Gdx.input.isKeyPressed(Input.Keys.A)) {
-            moveSelectedSprite(-sprMoveSpeed, 0);
             this.heroTankManger.getTanks().get(0).moveTank(Constants.DIRECT.WEST);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.D)) {
-            moveSelectedSprite(sprMoveSpeed, 0);
             this.heroTankManger.getTanks().get(0).moveTank(Constants.DIRECT.EAST);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.W)) {
-            moveSelectedSprite(0, sprMoveSpeed);
             this.heroTankManger.getTanks().get(0).moveTank(Constants.DIRECT.NORTH);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.S)) {
-            moveSelectedSprite(0, -sprMoveSpeed);
             this.heroTankManger.getTanks().get(0).moveTank(Constants.DIRECT.SOUTH);
+        }
+        if(Gdx.input.isKeyJustPressed(Input.Keys.J)) {
+            this.heroTankManger.getTanks().get(0).shoot();
         }
 
     }
