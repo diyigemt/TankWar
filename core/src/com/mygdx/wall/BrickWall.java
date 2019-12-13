@@ -9,7 +9,7 @@ import com.mygdx.personal_interface.Destroyable;
 
 public class BrickWall extends Wall implements Destroyable {
 
-    public static Texture appearance = new Texture(Gdx.files.internal("images/1.jpg"));
+    public static Texture appearance = new Texture(Gdx.files.internal("images/Wall.png"));
     public BrickWall(float x, float y) {
         this();
         this.setPosition(x, y);
