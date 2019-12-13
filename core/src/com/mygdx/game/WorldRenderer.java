@@ -4,6 +4,8 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Disposable;
 import com.mygdx.bonus.Bonus;
+import com.mygdx.tank.HeroTank;
+import com.mygdx.tank.Tank;
 import com.mygdx.wall.*;
 
 public class WorldRenderer implements Disposable {
@@ -29,6 +31,7 @@ public class WorldRenderer implements Disposable {
         this.renderTestObjects();
         Wall.wallManager.render(this.batch);
         Bonus.bonusManager.render(this.batch);
+        HeroTank.heroTankManager.render(this.batch);
         this.batch.end();
 
     }

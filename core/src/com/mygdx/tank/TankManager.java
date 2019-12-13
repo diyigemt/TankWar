@@ -95,11 +95,23 @@ public class TankManager {
     }
 
 
-    //坦克和坦克相撞
+    //和坦克相撞
     public static ArrayList<AbstractGameObject> checkCrash(AbstractGameObject gameObject)
     {
+        //英雄坦克
         ArrayList<AbstractGameObject>crashTank = new ArrayList<AbstractGameObject>();
-        for(Tank tank : Tank.tankManager.getTanks())
+        for(Tank tank : HeroTank.heroTankManager.getTanks())
+        {
+            if(tank.getX() < gameObject.getX() + gameObject.getWidth() &&
+                    tank.getX() + tank.getWidth() > gameObject.getX() &&
+                    tank.getY() < gameObject.getY() + gameObject.getHeight() &&
+                    tank.getY() + tank.getHeight() > gameObject.getHeight())
+            {
+                crashTank.add(tank);
+            }
+        }
+        //敌方坦克
+        for(Tank tank : EnemyTank.enemyTankManager.getTanks())
         {
             if(tank.getX() < gameObject.getX() + gameObject.getWidth() &&
                     tank.getX() + tank.getWidth() > gameObject.getX() &&

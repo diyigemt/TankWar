@@ -33,7 +33,6 @@ public class Tank extends AbstractGameObject {
     private boolean east;
     private boolean west;
 
-    public static TankManager tankManager;
 
     public Tank(TankType tankType) {
         super(tankType.getTankRegion());

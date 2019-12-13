@@ -64,6 +64,7 @@ public class Bullet extends AbstractGameObject {
     //子弹的碰撞检测
     public boolean checkCrash()
     {
+        //和墙
         boolean isCrash = false;
         ArrayList<AbstractGameObject> walls = WallManager.checkCrash(this);
         if(walls.isEmpty() == false)
@@ -78,6 +79,7 @@ public class Bullet extends AbstractGameObject {
             }
             isCrash = true;
         }
+        //和buff
         ArrayList<AbstractGameObject> bonus = BonusManager.checkCrash(this);
         if(bonus.isEmpty() == false)
         {
@@ -91,6 +93,7 @@ public class Bullet extends AbstractGameObject {
                 gameObject.isCrashed(temp);
             }
         }
+        //和坦克
         ArrayList<AbstractGameObject> tanks = TankManager.checkCrash(this);
         if(tanks.isEmpty() == false)
         {
