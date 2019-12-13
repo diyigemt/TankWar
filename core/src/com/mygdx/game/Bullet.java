@@ -9,7 +9,11 @@ import com.mygdx.utils.Assets;
 import com.mygdx.wall.Wall;
 import com.mygdx.wall.WallManager;
 
+import java.util.ArrayList;
+
 public class Bullet extends AbstractGameObject {
+    //子弹集合
+    static private ArrayList<Bullet> bullets = new ArrayList<Bullet>();
 
     public Bullet() {
         super(Assets.instance.assetGame.bullet);
@@ -28,8 +32,11 @@ public class Bullet extends AbstractGameObject {
         Wall wall = WallManager.checkCrash(this);
         Bonus bonus = BonusManager.checkCrash(this);
         Tank tank = TankManager.checkCrash(this);
-
-
         return isCrash;
+    }
+
+    public ArrayList<Bullet>getBullets()
+    {
+        return Bullet.bullets;
     }
 }
