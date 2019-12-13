@@ -3,6 +3,8 @@ package com.mygdx.tank;
 import com.mygdx.enumeration.ObjectType;
 import com.mygdx.enumeration.TankType;
 import com.mygdx.game.Constants;
+import com.sun.org.apache.bcel.internal.Const;
+
 import java.util.Random;
 
 public class EnemyTank extends Tank {
@@ -40,26 +42,110 @@ public class EnemyTank extends Tank {
     }
 
     public void move() {
+        //System.out.println(""+this.isNorth()+this.isSouth()+this.isWest()+this.isEast());
+        Constants.DIRECT direct = this.getDirect();
+        if (this.getDirect().equals(Constants.DIRECT.EAST) && this.isEast()) {
+            direct = Constants.DIRECT.EAST;
+        } else if (this.getDirect().equals(Constants.DIRECT.WEST) && this.isWest()) {
+            direct = Constants.DIRECT.WEST;
+        } else if (this.getDirect().equals(Constants.DIRECT.NORTH) && this.isNorth()) {
+            direct = Constants.DIRECT.NORTH;
+        } else if (this.getDirect().equals(Constants.DIRECT.SOUTH) && this.isSouth()) {
+            direct = Constants.DIRECT.SOUTH;
+        } else {
+            Random r = new Random();
+            int rInt = r.nextInt(100);
+            {
+                int west = 1;
+                int north = 1;
+                int south = 1;
+                int east = 1;
 
-        //目标
-        float targetX = -2f + Constants.MAP_TRANSLATION_X;
-        float targetY = -2f + Constants.MAP_TRANSLATION_Y;
+                if ((HeroTank.heroTankManager.getTanks().get(0).getX() - this.getX()) > Constants.TANK_SIZE/2)
+                    east++;
+                else if ((HeroTank.heroTankManager.getTanks().get(0).getX() - this.getX()) < -Constants.TANK_SIZE/2)
+                    west++;
 
-        //方向随机
-        Random r = new Random();
-        int rInt = r.nextInt(10);
-        if (rInt > 7) {
-            if (this.getX() > targetX) this.setDirect(Constants.DIRECT.EAST);
-            if (this.getX() < targetX) this.setDirect(Constants.DIRECT.WEST);
-        } else if (rInt > 6) this.setDirect(Constants.DIRECT.EAST);
-        else if (rInt > 5) this.setDirect(Constants.DIRECT.WEST);
-        else if (rInt > 2) this.setDirect(Constants.DIRECT.SOUTH);
-        else if (rInt > 0) this.setDirect(Constants.DIRECT.NORTH);
+                if ((HeroTank.heroTankManager.getTanks().get(0).getY() - this.getY()) > Constants.TANK_SIZE/2)
+                    north++;
+                else if ((HeroTank.heroTankManager.getTanks().get(0).getY() - this.getY()) < -Constants.TANK_SIZE/2)
+                    south++;
 
-        //前进，遇到障碍重新回到原位
-        this.move(this.getDirect());
-        this.checkCrash();
+                if ((-0.5 - this.getX()) > Constants.TANK_SIZE)
+                    east++;
+                else if ((-0.5 - this.getX()) < -Constants.TANK_SIZE)
+                    west++;
+
+                if ((-6.5 - this.getY()) > Constants.TANK_SIZE)
+                    east++;
+                else if ((-6.5 - this.getY()) < -Constants.TANK_SIZE)
+                    west++;
+
+                int sum = east + west + south + north;
+                System.out.println(""+east+" "+west+" "+north+" "+south);
+                if ((float) rInt / 100 < (float) north / sum && this.isNorth()) {
+                    direct = Constants.DIRECT.NORTH;
+                } else if ((float) rInt / 100 < (float) (north + east) / sum && this.isEast()) {
+                    direct = Constants.DIRECT.EAST;
+                } else if ((float) rInt / 100 < (float) (north + east + south) / sum && this.isSouth()) {
+                    direct = Constants.DIRECT.SOUTH;
+                } else// if ((float) rInt / 100 <= 1 && this.isWest())
+                {
+                    direct = Constants.DIRECT.WEST;
+                }
+            }
+        }
+        move(direct);
+        if(this.checkCrash())
+        {
+            Random r = new Random();
+            int rInt = r.nextInt(100);
+            {
+                int west = 1;
+                int north = 1;
+                int south = 1;
+                int east = 1;
+
+                if ((HeroTank.heroTankManager.getTanks().get(0).getX() - this.getX()) > Constants.TANK_SIZE / 2)
+                    east++;
+                else if ((HeroTank.heroTankManager.getTanks().get(0).getX() - this.getX()) < -Constants.TANK_SIZE / 2)
+                    west++;
+
+                if ((HeroTank.heroTankManager.getTanks().get(0).getY() - this.getY()) > Constants.TANK_SIZE / 2)
+                    north++;
+                else if ((HeroTank.heroTankManager.getTanks().get(0).getY() - this.getY()) < -Constants.TANK_SIZE / 2)
+                    south++;
+
+                if ((-0.5 - this.getX()) > Constants.TANK_SIZE)
+                    east++;
+                else if ((-0.5 - this.getX()) < -Constants.TANK_SIZE)
+                    west++;
+
+                if ((-6.5 - this.getY()) > Constants.TANK_SIZE)
+                    east++;
+                else if ((-6.5 - this.getY()) < -Constants.TANK_SIZE)
+                    west++;
+
+                int sum = east + west + south + north;
+                System.out.println("" + east + " " + west + " " + north + " " + south);
+                if ((float) rInt / 100 < (float) north / sum && this.isNorth()) {
+                    direct = Constants.DIRECT.NORTH;
+                } else if ((float) rInt / 100 < (float) (north + east) / sum && this.isEast()) {
+                    direct = Constants.DIRECT.EAST;
+                } else if ((float) rInt / 100 < (float) (north + east + south) / sum && this.isSouth()) {
+                    direct = Constants.DIRECT.SOUTH;
+                } else// if ((float) rInt / 100 <= 1 && this.isWest())
+                {
+                    direct = Constants.DIRECT.WEST;
+                }
+                this.setDirect(direct);
+            }
+
+        }
+
     }
+
+
 
     //坦克移动
     public void move(Constants.DIRECT direct) {
@@ -100,7 +186,6 @@ public class EnemyTank extends Tank {
                 }
                 break;
         }
-        this.checkCrash();
     }
 
     @Override

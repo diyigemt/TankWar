@@ -61,7 +61,7 @@ public class WorldController extends InputAdapter {
     {
         EnemyTank tank = new EnemyTank(true, TankType.HARDENEMY);
         tank.setSize(Constants.TANK_SIZE,Constants.TANK_SIZE);
-        tank.setPosition(0,5);
+        tank.setPosition(-9f,5);
         this.enemyTankManger.registerTank(tank);
     }
     private void init() {
@@ -118,6 +118,7 @@ public class WorldController extends InputAdapter {
     public void update(float deltaTime) {
         handleDebugInput(deltaTime);
         this.updateBullet();
+        this.tankAI();
         this.updateTestObjects(deltaTime);
     }
 
@@ -127,6 +128,15 @@ public class WorldController extends InputAdapter {
         for(i=0;i<this.bullets.size();i++)
         {
             this.bullets.get(i).move();
+        }
+    }
+
+    private void tankAI()
+    {
+        int i;
+        for(i=0;i<this.enemyTankManger.getTanks().size();i++)
+        {
+            ((EnemyTank)this.enemyTankManger.getTanks().get(i)).move();
         }
     }
     private void handleDebugInput(float deltaTime) {

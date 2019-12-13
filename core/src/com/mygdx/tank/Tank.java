@@ -404,4 +404,8 @@ public class Tank extends AbstractGameObject {
     public void setWest(boolean west) {
         this.west = west;
     }
+
+    public int getLife() {
+        return Life;
+    }
 }
