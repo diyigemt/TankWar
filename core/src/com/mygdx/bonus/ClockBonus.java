@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.enumeration.BonusType;
 import com.mygdx.tank.EnemyTank;
 import com.mygdx.tank.HeroTank;
+import com.mygdx.utils.Assets;
 
 /**
  * 冻住屏幕上的所有坦克
@@ -13,7 +14,7 @@ import com.mygdx.tank.HeroTank;
  */
 public class ClockBonus extends Bonus {
     public ClockBonus() {
-        super();
+        super(Assets.instance.assetBonus.clock);
         this.setBonusType(BonusType.CLOCK);
     }
 
@@ -24,15 +25,13 @@ public class ClockBonus extends Bonus {
 
     @Override
     public void addBuff(HeroTank heroTank) {
-        // 标记为激活状态
-        this.setActive(true);
+        super.addBuff(heroTank);
         EnemyTank.enemyTankManager.freezeAll();
     }
 
     @Override
     public void removeBuff() {
         EnemyTank.enemyTankManager.unfreezeAll();
-        // 标记为未激活状态
-        this.setActive(true);
+        super.removeBuff();
     }
 }
