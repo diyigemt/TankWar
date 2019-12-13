@@ -68,20 +68,20 @@ public class BonusManager {
 
 
     //返回相撞的Bonus
-    public static Bonus checkCrash(AbstractGameObject gameObject)
+    public static ArrayList<Bonus> checkCrash(AbstractGameObject gameObject)
     {
-        boolean isCrashed = false;
-        for(Bonus i : Bonus.bonusManager.getBonuses())
+        ArrayList<Bonus>crashBonus = new ArrayList<Bonus>();
+        for(Bonus bonus : Bonus.bonusManager.getBonuses())
         {
-            if(i.getX() < gameObject.getX() + gameObject.getWidth() &&
-                    i.getX() + i.getWidth() > gameObject.getX() &&
-                    i.getY() < gameObject.getY() + gameObject.getHeight() &&
-                    i.getY() + i.getHeight() > gameObject.getHeight())
+            if(bonus.getX() < gameObject.getX() + gameObject.getWidth() &&
+                    bonus.getX() + bonus.getWidth() > gameObject.getX() &&
+                    bonus.getY() < gameObject.getY() + gameObject.getHeight() &&
+                    bonus.getY() + bonus.getHeight() > gameObject.getHeight())
             {
-                return i;
+                crashBonus.add(bonus);
             }
         }
-        return null;
+        return crashBonus;
     }
 
 }

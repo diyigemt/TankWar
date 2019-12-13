@@ -96,19 +96,19 @@ public class TankManager {
 
 
     //坦克和坦克相撞
-    public static Tank checkCrash(AbstractGameObject gameObject)
+    public static ArrayList<Tank> checkCrash(AbstractGameObject gameObject)
     {
-        boolean isCrashed = false;
-        for(Tank i : Tank.tankManager.getTanks())
+        ArrayList<Tank>crashTank = new ArrayList<Tank>();
+        for(Tank tank : Tank.tankManager.getTanks())
         {
-            if(i.getX() < gameObject.getX() + gameObject.getWidth() &&
-                    i.getX() + i.getWidth() > gameObject.getX() &&
-                    i.getY() < gameObject.getY() + gameObject.getHeight() &&
-                    i.getY() + i.getHeight() > gameObject.getHeight())
+            if(tank.getX() < gameObject.getX() + gameObject.getWidth() &&
+                    tank.getX() + tank.getWidth() > gameObject.getX() &&
+                    tank.getY() < gameObject.getY() + gameObject.getHeight() &&
+                    tank.getY() + tank.getHeight() > gameObject.getHeight())
             {
-                return i;
+                crashTank.add(tank);
             }
         }
-        return null;
+        return crashTank;
     }
 }

@@ -10,6 +10,8 @@ import com.mygdx.game.Constants;
 import com.mygdx.wall.Wall;
 import com.mygdx.wall.WallManager;
 
+import java.util.ArrayList;
+
 public class Tank extends AbstractGameObject {
 
     // 描述坦克是否还存活
@@ -86,11 +88,11 @@ public class Tank extends AbstractGameObject {
     {
         boolean isCrash = false;
         //和墙
-        Wall wall = WallManager.checkCrash(this);
+        ArrayList<Wall> walls = WallManager.checkCrash(this);
         //和buff
-        Bonus bonus = BonusManager.checkCrash(this);
+        ArrayList<Bonus> bonus = BonusManager.checkCrash(this);
         //和坦克
-        Tank tank = TankManager.checkCrash(this);
+        ArrayList<Tank> tank = TankManager.checkCrash(this);
         return isCrash;
     }
 }

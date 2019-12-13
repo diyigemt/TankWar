@@ -9,6 +9,7 @@ import com.mygdx.utils.Assets;
 import com.mygdx.wall.Wall;
 import com.mygdx.wall.WallManager;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Bullet extends AbstractGameObject {
@@ -24,14 +25,25 @@ public class Bullet extends AbstractGameObject {
 
     }
 
-    //
     @Override
+    //子弹的碰撞检测
     public boolean checkCrash()
     {
         boolean isCrash = false;
-        Wall wall = WallManager.checkCrash(this);
-        Bonus bonus = BonusManager.checkCrash(this);
-        Tank tank = TankManager.checkCrash(this);
+        ArrayList<Wall>walls = WallManager.checkCrash(this);
+        if(walls != null)
+        {
+            for(Wall wall : walls)
+            {
+                wall.isCrashed();
+            }
+        }
+        ArrayList<Bonus> bonus = BonusManager.checkCrash(this);
+        if(bonus != null)
+        {
+
+        }
+        ArrayList<Tank> tanks = TankManager.checkCrash(this);
         return isCrash;
     }
 

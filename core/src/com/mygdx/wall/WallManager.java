@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.enumeration.WallType;
 import com.mygdx.game.AbstractGameObject;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -101,18 +102,19 @@ public class WallManager {
     }
 
     //返回和东西相撞的墙
-    public static Wall checkCrash(AbstractGameObject gameObject)
+    public static ArrayList<Wall> checkCrash(AbstractGameObject gameObject)
     {
-        for(Wall i : Wall.wallManager.getWalls())
+        ArrayList<Wall>crashWall = new ArrayList<Wall>();
+        for(Wall wall : Wall.wallManager.getWalls())
         {
-            if(i.getX() < gameObject.getX() + gameObject.getWidth() &&
-                    i.getX() + i.getWidth() > gameObject.getX() &&
-                    i.getY() < gameObject.getY() + gameObject.getHeight() &&
-                    i.getY() + i.getHeight() > gameObject.getHeight())
+            if(wall.getX() < gameObject.getX() + gameObject.getWidth() &&
+                    wall.getX() + wall.getWidth() > gameObject.getX() &&
+                    wall.getY() < gameObject.getY() + gameObject.getHeight() &&
+                    wall.getY() + wall.getHeight() > gameObject.getHeight())
             {
-                return i;
+                crashWall.add(wall);
             }
         }
-        return null;
+        return crashWall;
     }
 }
