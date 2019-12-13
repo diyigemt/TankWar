@@ -3,10 +3,11 @@ package com.mygdx.bonus;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.enumeration.BonusType;
 import com.mygdx.tank.HeroTank;
+import com.mygdx.utils.Assets;
 
 public class TankBonus extends Bonus {
     public TankBonus() {
-        super();
+        super(Assets.instance.assetBonus.tankBonus);
         this.setBonusType(BonusType.TANK);
     }
 
@@ -17,15 +18,8 @@ public class TankBonus extends Bonus {
 
     @Override
     public void addBuff(HeroTank heroTank) {
-        // 标记为激活状态
-        this.setActive(true);
+        super.addBuff(heroTank);
         // 命数+1
         heroTank.setChances(heroTank.getChances() + 1);
-    }
-
-    @Override
-    public void removeBuff() {
-        // 标记为未激活状态
-        this.setActive(true);
     }
 }

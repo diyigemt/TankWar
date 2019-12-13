@@ -1,5 +1,6 @@
 package com.mygdx.bonus;
 
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.mygdx.enumeration.BonusType;
 import com.mygdx.enumeration.ObjectType;
 import com.mygdx.game.AbstractGameObject;
@@ -17,15 +18,26 @@ public abstract class Bonus extends AbstractGameObject {
     private BonusType bonusType;
     // 额外奖励是否被激活
     private boolean isActive;
+    // 奖励持续时间
+    private float duration;
 
     // 抽象的构造函数，用来初始化isActive变量
-    public Bonus() {
+    public Bonus(TextureRegion region) {
+        super(region);
         this.isActive = false;
     }
 
-    abstract public void addBuff(HeroTank heroTank);
+    public void addBuff(HeroTank heroTank) {
+        // 标记为激活状态
+        this.setActive(true);
+        bonusManager.scheduleTask(new BonusTask(this), this.duration);
+    }
 
-    abstract public void removeBuff();
+    public void removeBuff() {
+        // 标记为未激活状态
+        this.setActive(true);
+        bonusManager.deleteBonus(this);
+    }
 
     public BonusType getBonusType() {
         return this.bonusType;
@@ -86,5 +98,13 @@ public abstract class Bonus extends AbstractGameObject {
                 break;
             }
         }
+    }
+
+    public float getDuration() {
+        return duration;
+    }
+
+    public void setDuration(float duration) {
+        this.duration = duration;
     }
 }
