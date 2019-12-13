@@ -1,9 +1,8 @@
 package com.mygdx.bonus;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.enumeration.BonusType;
+import com.mygdx.game.Constants;
 import com.mygdx.tank.HeroTank;
-import com.mygdx.tank.Tank;
 import com.mygdx.utils.Assets;
 
 /**
@@ -17,6 +16,7 @@ public class HelmetBonus extends Bonus {
     public HelmetBonus () {
         super(Assets.instance.assetBonus.helmet);
         this.setBonusType(BonusType.HELMET);
+        this.setDuration(Constants.HELMET_BUFF_DURATION);
     }
     @Override
     public void addBuff(HeroTank heroTank) {

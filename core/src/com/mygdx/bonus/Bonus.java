@@ -26,6 +26,7 @@ public abstract class Bonus extends AbstractGameObject {
     public Bonus(TextureRegion region) {
         super(region);
         this.isActive = false;
+        this.duration = 0;
         this.setSize(1, 1);
         this.setOrigin(this.getWidth() / 2.0f, this.getHeight() / 2.0f);
     }

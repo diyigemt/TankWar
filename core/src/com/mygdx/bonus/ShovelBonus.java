@@ -1,7 +1,7 @@
 package com.mygdx.bonus;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.enumeration.BonusType;
+import com.mygdx.game.Constants;
 import com.mygdx.tank.HeroTank;
 import com.mygdx.utils.Assets;
 import com.mygdx.wall.Wall;
@@ -14,6 +14,7 @@ import com.mygdx.wall.Wall;
         public ShovelBonus() {
             super(Assets.instance.assetBonus.shovel);
             this.setBonusType(BonusType.SHOVEL);
+            this.setDuration(Constants.SHOVEL_BUFF_DURATION);
         }
     @Override
     public void addBuff(HeroTank heroTank) {

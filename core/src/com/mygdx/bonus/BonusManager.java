@@ -5,8 +5,6 @@ import com.badlogic.gdx.utils.Timer;
 import com.mygdx.enumeration.BonusType;
 import com.mygdx.game.AbstractGameObject;
 import com.mygdx.game.Constants;
-import com.mygdx.tank.Tank;
-import com.mygdx.wall.Wall;
 
 import java.util.ArrayList;
 
@@ -57,10 +55,9 @@ public class BonusManager extends Timer {
     // 渲染所有不是活跃状态的bonus
     public void render(SpriteBatch spriteBatch) {
         for (Bonus bonus : this.bonuses) {
-//            if (!bonus.isActive()) {
-//                bonus.render(spriteBatch);
-//            }
-            bonus.render(spriteBatch);
+            if (!bonus.isActive()) {
+                bonus.render(spriteBatch);
+            }
         }
     }
 
