@@ -149,24 +149,28 @@ public class Tank extends AbstractGameObject {
             bullet.setPosition(this.getX() + this.getWidth() + 0.1f, this.getY() + this.getHeight()/2);
             bullet.setOrigin(bullet.getWidth()/2,bullet.getHeight()/2);
             bullet.setDirect(Constants.DIRECT.EAST);
+            this.setEast(true);
         }
         else if(this.direct == Constants.DIRECT.WEST)
         {
             bullet.setPosition(this.getX() - 0.1f, this.getY() + this.getHeight()/2);
             bullet.setOrigin(bullet.getWidth()/2,bullet.getHeight()/2);
             bullet.setDirect(Constants.DIRECT.WEST);
+            this.setWest(true);
         }
         else if(this.direct == Constants.DIRECT.NORTH)
         {
             bullet.setPosition(this.getX() + this.getWidth()/2, this.getY() + this.getHeight() + 0.1f);
             bullet.setOrigin(bullet.getWidth()/2,bullet.getHeight()/2);
             bullet.setDirect(Constants.DIRECT.NORTH);
+            this.setNorth(true);
         }
         else if(this.direct == Constants.DIRECT.SOUTH)
         {
             bullet.setPosition(this.getX() + this.getWidth()/2, this.getY() - 0.1f);
             bullet.setOrigin(bullet.getWidth()/2,bullet.getHeight()/2);
             bullet.setDirect(Constants.DIRECT.SOUTH);
+            this.setSouth(true);
         }
         return bullet;
     }
@@ -174,6 +178,7 @@ public class Tank extends AbstractGameObject {
     @Override
     public boolean checkCrash()
     {
+        System.out.println(this.getY());
         boolean isCrash = false;
         //和墙碰撞
         ArrayList<AbstractGameObject> walls = WallManager.checkCrash(this);
@@ -223,7 +228,7 @@ public class Tank extends AbstractGameObject {
         if(this.getX() < -Constants.VIEWPORT_WIDTH/2 ||
                 this.getX() + this.getWidth() > Constants.VIEWPORT_WIDTH/2 + Constants.MAP_TRANSLATION_X*2||
                 this.getY() < -Constants.VIEWPORT_HEIGHT/2 ||
-                this.getY() + this.getHeight() > Constants.VIEWPORT_HEIGHT
+                this.getY() + this.getHeight() > Constants.VIEWPORT_HEIGHT/2
         )
         {
             //和边界碰撞
@@ -322,4 +327,43 @@ public class Tank extends AbstractGameObject {
         }
     }
 
+    public void setMoveSpeed(float moveSpeed) {
+        this.moveSpeed = moveSpeed;
+    }
+
+    public Constants.DIRECT getDirect() {
+        return direct;
+    }
+
+    public boolean isNorth() {
+        return north;
+    }
+
+    public void setNorth(boolean north) {
+        this.north = north;
+    }
+
+    public boolean isSouth() {
+        return south;
+    }
+
+    public void setSouth(boolean south) {
+        this.south = south;
+    }
+
+    public boolean isEast() {
+        return east;
+    }
+
+    public void setEast(boolean east) {
+        this.east = east;
+    }
+
+    public boolean isWest() {
+        return west;
+    }
+
+    public void setWest(boolean west) {
+        this.west = west;
+    }
 }

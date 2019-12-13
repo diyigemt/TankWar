@@ -55,6 +55,10 @@ public class WorldController {
         HeroTank.heroTankManager.registerTank(this.heroTank);
     }
 
+    private void addEnemyTank()
+    {
+
+    }
     private void init() {
         this.initTestObjects();
         this.TankInit();
