@@ -164,6 +164,18 @@ public class Tank extends AbstractGameObject {
             }
             isCrash = true;
         }
+        //和边界碰撞
+        if(this.getX() < -Constants.VIEWPORT_WIDTH/2 ||
+                this.getX() + this.getWidth() > Constants.VIEWPORT_WIDTH/2 ||
+                this.getY() < -Constants.VIEWPORT_HEIGHT/2 ||
+                this.getY() + this.getHeight() > Constants.VIEWPORT_HEIGHT
+
+        )
+        {
+            //和边界碰撞
+            this.isCrashed(null);
+            isCrash = true;
+        }
         return isCrash;
     }
 

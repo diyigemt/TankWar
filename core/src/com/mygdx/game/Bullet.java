@@ -104,13 +104,24 @@ public class Bullet extends AbstractGameObject {
                 gameObject.isCrashed(temp);
             }
         }
+        //和边界碰撞
+        if(this.getX() < -Constants.VIEWPORT_WIDTH/2 ||
+                this.getX() + this.getWidth() > Constants.VIEWPORT_WIDTH/2 ||
+                this.getY() < -Constants.VIEWPORT_HEIGHT/2 ||
+                this.getY() + this.getHeight() > Constants.VIEWPORT_HEIGHT
+
+        )
+        {
+            //和边界碰撞
+            this.isCrashed(null);
+            isCrash = true;
+        }
         return isCrash;
     }
 
     //碰撞反应函数
     @Override
     public void isCrashed(ArrayList<AbstractGameObject> conflicts) {
-        if(conflicts.isEmpty() == false)
             Bullet.bullets.remove(this);
     }
 
