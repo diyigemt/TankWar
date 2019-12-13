@@ -25,6 +25,7 @@ public abstract class Bonus extends AbstractGameObject {
     // 抽象的构造函数，用来初始化isActive变量
     public Bonus(TextureRegion region) {
         super(region);
+        this.setType(ObjectType.BONUS);
         this.isActive = false;
         this.duration = 0;
         this.setSize(1, 1);

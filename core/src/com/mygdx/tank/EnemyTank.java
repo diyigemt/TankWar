@@ -1,5 +1,6 @@
 package com.mygdx.tank;
 
+import com.mygdx.enumeration.ObjectType;
 import com.mygdx.enumeration.TankType;
 import com.mygdx.game.Constants;
 
@@ -14,6 +15,7 @@ public class EnemyTank extends Tank {
 
     public EnemyTank(boolean hasBonus, TankType tankType) {
         super(tankType);
+        this.setType(ObjectType.ENEMYTANK);
         this.hasBonus = hasBonus;
     }
 

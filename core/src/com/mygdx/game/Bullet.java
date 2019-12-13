@@ -3,6 +3,7 @@ package com.mygdx.game;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.bonus.Bonus;
 import com.mygdx.bonus.BonusManager;
+import com.mygdx.enumeration.ObjectType;
 import com.mygdx.tank.Tank;
 import com.mygdx.tank.TankManager;
 import com.mygdx.utils.Assets;
@@ -22,11 +23,12 @@ public class Bullet extends AbstractGameObject {
 
     public Bullet() {
         super(Assets.instance.assetGame.bullet);
+        this.setType(ObjectType.BULLET);
     }
 
     public Bullet(float x, float y, Constants.DIRECT direct)
     {
-        super();
+        this();
         this.setSize(Constants.WALL_SIZE, Constants.WALL_SIZE);
         this.setOrigin(this.getWidth() / 2.0f, this.getHeight() / 2.0f);
         this.speed = 1;//test

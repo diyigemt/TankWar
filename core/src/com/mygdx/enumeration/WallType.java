@@ -19,6 +19,7 @@ public enum WallType {
     private int index;
 
     private WallType(int index) {
+        this.index = index;
     }
 
     public static WallType getInstance(int index) {
@@ -31,6 +32,6 @@ public enum WallType {
     }
 
     public int getIndex() {
-        return index;
+        return this.index;
     }
 }
