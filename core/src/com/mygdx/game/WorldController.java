@@ -84,7 +84,7 @@ public class WorldController {
             selectedSprite = 0;
         }
         Bonus bonus = Bonus.bonusManager.createBonus(BonusType.BOOM, 3, 3);
-        bonus.addBuff(new HeroTank(false));
+        //bonus.addBuff(new HeroTank(false));
     }
 
     // 自定义的创建以一个像素图的方法，在这里是画一个箱子
