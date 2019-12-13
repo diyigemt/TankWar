@@ -1,0 +1,47 @@
+Bonus.png
+size: 186, 28
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+boom
+  rotate: false
+  xy: 0, 0
+  size: 31, 28
+  orig: 31, 28
+  offset: 0, 0
+  index: -1
+clock
+  rotate: false
+  xy: 31, 0
+  size: 31, 28
+  orig: 31, 28
+  offset: 0, 0
+  index: -1
+helmet
+  rotate: false
+  xy: 62, 0
+  size: 31, 28
+  orig: 31, 28
+  offset: 0, 0
+  index: -1
+shovel
+  rotate: false
+  xy: 93, 0
+  size: 31, 28
+  orig: 31, 28
+  offset: 0, 0
+  index: -1
+star
+  rotate: false
+  xy: 124, 0
+  size: 31, 28
+  orig: 31, 28
+  offset: 0, 0
+  index: -1
+tank
+  rotate: false
+  xy: 155, 0
+  size: 31, 28
+  orig: 31, 28
+  offset: 0, 0
+  index: -1

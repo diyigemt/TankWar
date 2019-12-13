@@ -100,9 +100,9 @@ public class WallManager {
         }
     }
 
+    //坦克和墙相撞
     public static boolean checkCrash(AbstractGameObject gameObject)
     {
-        //Wall i;
         boolean isCrashed = false;
         for(Wall i : Wall.wallManager.getWalls())
         {
