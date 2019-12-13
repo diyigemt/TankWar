@@ -3,6 +3,7 @@ package com.mygdx.wall;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.enumeration.WallType;
+import com.mygdx.utils.Assets;
 
 public class GrassWall extends Wall {
 
@@ -15,7 +16,7 @@ public class GrassWall extends Wall {
     }
 
     public GrassWall() {
-        super();
+        super(Assets.instance.assetWall.grass);
         this.setWallType(WallType.GRASS_WALL);
         this.setTexture(new Texture(this.getWallType().getAppearance()));
     }

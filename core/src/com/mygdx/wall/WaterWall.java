@@ -3,6 +3,7 @@ package com.mygdx.wall;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.enumeration.WallType;
+import com.mygdx.utils.Assets;
 
 public class WaterWall extends Wall {
 
@@ -15,7 +16,7 @@ public class WaterWall extends Wall {
         this.setLife(1);
     }
     public WaterWall() {
-        super();
+        super(Assets.instance.assetWall.water);
         this.setWallType(WallType.WATER_WALL);
         this.setTexture(new Texture(this.getWallType().getAppearance()));
     }

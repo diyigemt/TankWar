@@ -3,6 +3,7 @@ package com.mygdx.wall;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.mygdx.enumeration.WallType;
+import com.mygdx.utils.Assets;
 
 public class IronWall extends Wall {
 
@@ -15,7 +16,7 @@ public class IronWall extends Wall {
     }
 
     public IronWall() {
-        super();
+        super(Assets.instance.assetWall.iron);
         this.setWallType(WallType.IRON_WALL);
         this.setTexture(new Texture(this.getWallType().getAppearance()));
     }

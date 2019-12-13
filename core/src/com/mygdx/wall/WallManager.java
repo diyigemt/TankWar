@@ -18,12 +18,12 @@ public class WallManager {
 
     public WallManager() {
         this.walls = new ArrayList<>();
+        this.baseWalls = new ArrayList<>(8);
     }
 
     // 注册创建的普通墙
     public void registerWall(Wall wall) {
         this.walls.add(wall);
-        this.baseWalls = new ArrayList<>(8);
     }
 
     // 根据类别创建一个墙的实例并进行注册

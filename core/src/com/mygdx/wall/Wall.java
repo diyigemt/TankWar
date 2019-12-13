@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.mygdx.enumeration.WallType;
 import com.mygdx.game.AbstractGameObject;
 import com.mygdx.game.Constants;
@@ -25,8 +26,8 @@ public abstract class Wall extends AbstractGameObject {
         this.setOrigin(this.getWidth() / 2.0f, this.getHeight() / 2.0f);
     }
 
-    public Wall(Texture texture) {
-        super(texture);
+    public Wall(TextureRegion region) {
+        super(region);
         this.setSize(Constants.WALL_SIZE, Constants.WALL_SIZE);
         this.setOrigin(this.getWidth() / 2.0f, this.getHeight() / 2.0f);
     }
@@ -74,6 +75,9 @@ public abstract class Wall extends AbstractGameObject {
 
     public static Wall getInstance(WallType wallType){
         // TODO 得到实例类
+        switch (wallType) {
+            case IRON_WALL: return new IronWall(-3,-3);
+        }
         return null;
     }
 
