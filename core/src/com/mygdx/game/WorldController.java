@@ -52,7 +52,7 @@ public class WorldController {
     private void TankInit()
     {
         this.heroTank = new HeroTank(false, TankType.P1HERO);
-        this.heroTank.setSize(0.8f,0.8f);
+        this.heroTank.setSize(Constants.TANK_SIZE,Constants.TANK_SIZE);
         this.heroTank.setPosition(1, 3);
         HeroTank.heroTankManager.registerTank(this.heroTank);
     }

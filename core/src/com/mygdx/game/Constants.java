@@ -58,4 +58,7 @@ public class Constants {
     public static final int STAR_BUFF_DURATION = 3;
     public static final int TANK_BUFF_DURATION = 0;
     public static final int BONUS_DURATION = 8;
+
+    //坦克大小
+    public static  final float TANK_SIZE = 0.8f;
 }
