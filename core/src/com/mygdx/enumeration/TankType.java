@@ -4,22 +4,15 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Pixmap;
 
 public enum TankType {
-    P1HERO(new Pixmap(new FileHandle(""))),
-    P2HERO(new Pixmap(new FileHandle(""))),
-    NORMALENEMY(new Pixmap(new FileHandle(""))),
-    FASTENEMY(new Pixmap(new FileHandle(""))),
-    HARDENEMY(new Pixmap(new FileHandle("")));
+    P1HERO(0),
+    P2HERO(1),
+    NORMALENEMY(2),
+    FASTENEMY(3),
+    HARDENEMY(4);
 
-    private Pixmap appearance;
-    private TankType(Pixmap appearance) {
-        this.appearance = appearance;
+    private int index;
+    private TankType(int index) {
+        this.index = index;
     }
 
-    public Pixmap getAppearance() {
-        return this.appearance;
-    }
-
-    public void setAppearance(Pixmap appearance) {
-        this.appearance = appearance;
-    }
 }

@@ -8,6 +8,9 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
+import com.mygdx.bonus.Bonus;
+import com.mygdx.bonus.BonusManager;
+import com.mygdx.enumeration.BonusType;
 import com.mygdx.enumeration.TankType;
 import com.mygdx.enumeration.WallType;
 import com.mygdx.map.MapGenerator;
@@ -79,6 +82,10 @@ public class WorldController {
             // Set first sprite as selected one
             selectedSprite = 0;
         }
+        float randomX = MathUtils.random(-2.0f, 2.0f);
+        float randomY = MathUtils.random(-2.0f, 2.0f);
+        Bonus bonus = Bonus.bonusManager.createBonus(BonusType.BOOM);
+        bonus.setPosition(3, 3);
     }
 
     // 自定义的创建以一个像素图的方法，在这里是画一个箱子

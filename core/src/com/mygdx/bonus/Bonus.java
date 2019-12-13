@@ -1,5 +1,6 @@
 package com.mygdx.bonus;
 
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.mygdx.enumeration.BonusType;
 import com.mygdx.enumeration.ObjectType;
@@ -25,6 +26,7 @@ public abstract class Bonus extends AbstractGameObject {
     public Bonus(TextureRegion region) {
         super(region);
         this.isActive = false;
+        this.setSize(1, 1);
     }
 
     public void addBuff(HeroTank heroTank) {
@@ -106,5 +108,10 @@ public abstract class Bonus extends AbstractGameObject {
 
     public void setDuration(float duration) {
         this.duration = duration;
+    }
+
+    @Override
+    public void render(SpriteBatch spriteBatch) {
+        this.draw(spriteBatch);
     }
 }

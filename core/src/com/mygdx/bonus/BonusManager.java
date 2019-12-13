@@ -15,7 +15,7 @@ public class BonusManager extends Timer {
     private ArrayList<Bonus> bonuses;
     // 构造函数
     public BonusManager() {
-
+        this.bonuses = new ArrayList<>();
     }
 
     // 注册创建的Bonus
@@ -53,9 +53,10 @@ public class BonusManager extends Timer {
     // 渲染所有不是活跃状态的bonus
     public void render(SpriteBatch spriteBatch) {
         for (Bonus bonus : this.bonuses) {
-            if (!bonus.isActive()) {
-                bonus.render(spriteBatch);
-            }
+//            if (!bonus.isActive()) {
+//                bonus.render(spriteBatch);
+//            }
+            bonus.render(spriteBatch);
         }
     }
 
