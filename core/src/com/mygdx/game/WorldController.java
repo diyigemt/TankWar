@@ -42,7 +42,7 @@ public class WorldController {
     //
     private void WallInit()
     {
-        this.generator.generate(2);
+        this.generator.generate(3);
         //this.wallList.add(new BrickWall(0,Constants.WALL_SIZE));
     }
 
@@ -91,7 +91,7 @@ public class WorldController {
             // Set first sprite as selected one
             selectedSprite = 0;
         }
-        Bonus bonus = Bonus.bonusManager.createBonus(BonusType.BOOM, 3, 3);
+        //Bonus bonus = Bonus.bonusManager.createBonus(BonusType.BOOM, 3, 3);
         //bonus.addBuff(new HeroTank(false));
     }
 
