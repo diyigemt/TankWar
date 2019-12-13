@@ -1,5 +1,6 @@
 package com.mygdx.tank;
 
+import com.mygdx.enumeration.ObjectType;
 import com.mygdx.enumeration.TankType;
 import com.mygdx.game.Constants;
 import com.mygdx.utils.Assets;
@@ -23,6 +24,7 @@ public class HeroTank extends Tank {
 
     public HeroTank(boolean isProtected, TankType tankType) {
         super(tankType);
+        this.setType(ObjectType.HEROTANK);
         this.isProtected = isProtected;
         this.chances = Constants.MAX_CHANCES;
     }
