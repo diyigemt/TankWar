@@ -26,7 +26,7 @@ public class WallManager {
         //初始化基地
         this.base = new BrickWall(Assets.instance.assetGame.symbol, -0.5f + Constants.MAP_TRANSLATION_X, -6.5f + Constants.MAP_TRANSLATION_Y);
         this.base.setSize(Constants.WALL_SIZE * 2,Constants.WALL_SIZE * 2);
-        this.initBaseWall();
+        this.initBaseWall(WallType.BRICK_WALL);
     }
 
     // 注册创建的普通墙
@@ -101,31 +101,37 @@ public class WallManager {
     }
 
     // 创建基地部分的墙
-    public void initBaseWall() {
-        this.baseWalls.add(new BrickWall(-1.0f + Constants.MAP_TRANSLATION_X, -6.5f + Constants.MAP_TRANSLATION_Y));
-        this.baseWalls.add(new BrickWall(-1.0f + Constants.MAP_TRANSLATION_X, -6.0f + Constants.MAP_TRANSLATION_Y));
-        this.baseWalls.add(new BrickWall(-1.0f + Constants.MAP_TRANSLATION_X, -5.5f + Constants.MAP_TRANSLATION_Y));
-        this.baseWalls.add(new BrickWall(-0.5f + Constants.MAP_TRANSLATION_X, -5.5f + Constants.MAP_TRANSLATION_Y));
-        this.baseWalls.add(new BrickWall(0.0f + Constants.MAP_TRANSLATION_X, -5.5f + Constants.MAP_TRANSLATION_Y));
-        this.baseWalls.add(new BrickWall(0.5f + Constants.MAP_TRANSLATION_X, -5.5f + Constants.MAP_TRANSLATION_Y));
-        this.baseWalls.add(new BrickWall(0.5f + Constants.MAP_TRANSLATION_X, -6.0f + Constants.MAP_TRANSLATION_Y));
-        this.baseWalls.add(new BrickWall(0.5f + Constants.MAP_TRANSLATION_X, -6.5f + Constants.MAP_TRANSLATION_Y));
+    public void initBaseWall(WallType wallType) {
+        if (wallType == WallType.BRICK_WALL) {
+            this.baseWalls.add(new BrickWall(-1.0f + Constants.MAP_TRANSLATION_X, -6.5f + Constants.MAP_TRANSLATION_Y));
+            this.baseWalls.add(new BrickWall(-1.0f + Constants.MAP_TRANSLATION_X, -6.0f + Constants.MAP_TRANSLATION_Y));
+            this.baseWalls.add(new BrickWall(-1.0f + Constants.MAP_TRANSLATION_X, -5.5f + Constants.MAP_TRANSLATION_Y));
+            this.baseWalls.add(new BrickWall(-0.5f + Constants.MAP_TRANSLATION_X, -5.5f + Constants.MAP_TRANSLATION_Y));
+            this.baseWalls.add(new BrickWall(0.0f + Constants.MAP_TRANSLATION_X, -5.5f + Constants.MAP_TRANSLATION_Y));
+            this.baseWalls.add(new BrickWall(0.5f + Constants.MAP_TRANSLATION_X, -5.5f + Constants.MAP_TRANSLATION_Y));
+            this.baseWalls.add(new BrickWall(0.5f + Constants.MAP_TRANSLATION_X, -6.0f + Constants.MAP_TRANSLATION_Y));
+            this.baseWalls.add(new BrickWall(0.5f + Constants.MAP_TRANSLATION_X, -6.5f + Constants.MAP_TRANSLATION_Y));
+        }
+        if (wallType == WallType.IRON_WALL) {
+            this.baseWalls.add(new IronWall(-1.0f + Constants.MAP_TRANSLATION_X, -6.5f + Constants.MAP_TRANSLATION_Y));
+            this.baseWalls.add(new IronWall(-1.0f + Constants.MAP_TRANSLATION_X, -6.0f + Constants.MAP_TRANSLATION_Y));
+            this.baseWalls.add(new IronWall(-1.0f + Constants.MAP_TRANSLATION_X, -5.5f + Constants.MAP_TRANSLATION_Y));
+            this.baseWalls.add(new IronWall(-0.5f + Constants.MAP_TRANSLATION_X, -5.5f + Constants.MAP_TRANSLATION_Y));
+            this.baseWalls.add(new IronWall(0.0f + Constants.MAP_TRANSLATION_X, -5.5f + Constants.MAP_TRANSLATION_Y));
+            this.baseWalls.add(new IronWall(0.5f + Constants.MAP_TRANSLATION_X, -5.5f + Constants.MAP_TRANSLATION_Y));
+            this.baseWalls.add(new IronWall(0.5f + Constants.MAP_TRANSLATION_X, -6.0f + Constants.MAP_TRANSLATION_Y));
+            this.baseWalls.add(new IronWall(0.5f + Constants.MAP_TRANSLATION_X, -6.5f + Constants.MAP_TRANSLATION_Y));
+        }
     }
 
     // 改变基地部分的墙的状态，用于ShovelBonus的调用
     public void protectBase(boolean isProtected) {
         if (isProtected) {
             this.baseWalls.clear();
-            for (int i = 0; i < 8; i++) {
-                Wall wall = new IronWall();
-                this.baseWalls.add(wall);
-            }
+            initBaseWall(WallType.IRON_WALL);
         } else {
             this.baseWalls.clear();
-            for (int i = 0; i < 8; i++) {
-                Wall wall = new BrickWall();
-                this.baseWalls.add(wall);
-            }
+            initBaseWall(WallType.BRICK_WALL);
         }
     }
 
