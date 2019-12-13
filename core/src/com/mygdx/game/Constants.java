@@ -33,8 +33,8 @@ public class Constants {
 
     // 默认移动速度等
     //TODO 确定移动速度
-    public static final int DEFAULT_SHOOT_SPEED = 2;
-    public static final int DEFAULT_MOVE_SPEED = 3;
+    public static final float DEFAULT_SHOOT_SPEED = 0.06f;
+    public static final float DEFAULT_MOVE_SPEED = 0.04f;
 
     // 游戏窗口的设置常量
     public static final int WINDOW_WIDTH = 900;
