@@ -76,7 +76,10 @@ public abstract class Wall extends AbstractGameObject {
     public static Wall getInstance(WallType wallType){
         // TODO 得到实例类
         switch (wallType) {
-            case IRON_WALL: return new IronWall(-3,-3);
+            case BRICK_WALL: return new BrickWall();
+            case IRON_WALL: return new IronWall();
+            case GRASS_WALL: return new GrassWall();
+            case WATER_WALL: return new WaterWall();
         }
         return null;
     }

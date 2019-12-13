@@ -22,7 +22,7 @@ public class BrickWall extends Wall implements Destroyable {
     {
         super(Assets.instance.assetWall.brick);
         this.setWallType(WallType.BRICK_WALL);
-        this.setSize(1,1);
+        this.setSize(0.5f,0.5f);
     }
 
     @Override

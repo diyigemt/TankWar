@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.mygdx.enumeration.WallType;
+import com.mygdx.map.MapGenerator;
 import com.mygdx.wall.*;
 
 import java.util.ArrayList;
@@ -16,6 +17,8 @@ import java.util.List;
 
 public class WorldController {
     private static final String TAG = WorldController.class.getName();
+    //地图生成器
+    private final MapGenerator generator = new MapGenerator();
     public Sprite[] testSprites;
     public int selectedSprite;
     //墙
@@ -30,6 +33,7 @@ public class WorldController {
     {
         this.wallList = new ArrayList<Wall>();
         this.wallList.add(new BrickWall(-9,-9));
+        this.generator.generate(1);
         //this.wallList.add(new BrickWall(0,Constants.WALL_SIZE));
     }
 

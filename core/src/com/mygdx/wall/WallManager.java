@@ -40,6 +40,21 @@ public class WallManager {
         }
     }
 
+    public Wall createWall(WallType wallType, float x, float y) {
+        // 创建实例
+        Wall wall = Wall.getInstance(wallType);
+        wall.setX(x);
+        wall.setY(y);
+        // 如果不为空，注册
+        if (wall != null) {
+            this.registerWall(wall);
+            return wall;
+        } else {
+            System.err.println("未能成功创建一个指定类别的墙实例！");
+            return null;
+        }
+    }
+
     // 删除一个普通墙
     public boolean deleteWall(Wall wall) {
         if (this.walls.contains(wall)) {
