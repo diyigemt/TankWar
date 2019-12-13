@@ -17,6 +17,7 @@ import com.mygdx.map.MapGenerator;
 import com.mygdx.tank.EnemyTank;
 import com.mygdx.tank.HeroTank;
 import com.mygdx.tank.Tank;
+import com.mygdx.tank.TankManager;
 import com.mygdx.wall.*;
 
 import java.util.ArrayList;
@@ -28,9 +29,11 @@ public class WorldController {
     private final MapGenerator generator = new MapGenerator();
     public Sprite[] testSprites;
     public int selectedSprite;
-    private ArrayList<Wall> wallLsit = Wall.wallManager.getWalls();
+    private WallManager wallManager = Wall.wallManager;
+    private BonusManager bonusManager = Bonus.bonusManager;
+    private TankManager heroTankManger = HeroTank.heroTankManager;
+    private TankManager enemyTankManger = EnemyTank.enemyTankManager;
     //墙
-    public List<Wall> wallList;
 
     public WorldController() {
         this.init();
@@ -39,8 +42,6 @@ public class WorldController {
     //
     private void WallInit()
     {
-        this.wallList = new ArrayList<Wall>();
-        this.wallList.add(new BrickWall(-9,-9));
         this.generator.generate(1);
         //this.wallList.add(new BrickWall(0,Constants.WALL_SIZE));
     }
@@ -120,8 +121,10 @@ public class WorldController {
             return;
         // Selected Sprite Controls
         float sprMoveSpeed = 5 * deltaTime;
-        if (Gdx.input.isKeyPressed(Input.Keys.A))
+        if (Gdx.input.isKeyPressed(Input.Keys.A)) {
             moveSelectedSprite(-sprMoveSpeed, 0);
+            this.heroTankManger.getTanks().get(0).moveTank(Constants.DIRECT.WEST);
+        }
         if (Gdx.input.isKeyPressed(Input.Keys.D))
             moveSelectedSprite(sprMoveSpeed, 0);
         if (Gdx.input.isKeyPressed(Input.Keys.W))

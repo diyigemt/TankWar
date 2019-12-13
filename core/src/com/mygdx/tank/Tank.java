@@ -28,10 +28,10 @@ public class Tank extends AbstractGameObject {
     //坦克方向
     private Constants.DIRECT direct;
     //方向是否堵塞
-    private boolean north;
-    private boolean south;
-    private boolean east;
-    private boolean west;
+    private boolean north = true;
+    private boolean south = true;
+    private boolean east = true;
+    private boolean west = true;
 
 
     public Tank(TankType tankType) {
@@ -100,25 +100,25 @@ public class Tank extends AbstractGameObject {
         {
             case SOUTH:
                 if(this.south) {
-                    this.setY(this.getY() - this.moveSpeed);
+                    this.translate(0,this.getY() - this.moveSpeed);
                     this.north = true;
                 }
                 break;
             case NORTH:
                 if(this.north) {
-                    this.setY(this.getY() + this.moveSpeed);
+                    this.translate(0,this.getY() + this.moveSpeed);
                     this.south = true;
                 }
                 break;
             case WEST:
                 if(this.west) {
-                    this.setX(this.getX() - this.moveSpeed);
+                    this.translate(this.getX() - this.moveSpeed, 0);
                     this.east = true;
                 }
                 break;
             case EAST:
                 if(this.east) {
-                    this.setX(this.getX() + this.moveSpeed);
+                    this.translate(this.getX() + this.moveSpeed,0);
                     this.west = true;
                 }
                 break;
