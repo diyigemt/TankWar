@@ -6,6 +6,7 @@ import com.mygdx.bonus.BonusManager;
 import com.mygdx.bonus.TankBonus;
 import com.mygdx.enumeration.TankType;
 import com.mygdx.game.AbstractGameObject;
+import com.mygdx.game.Bullet;
 import com.mygdx.game.Constants;
 import com.mygdx.wall.Wall;
 import com.mygdx.wall.WallManager;
@@ -23,7 +24,7 @@ public class Tank extends AbstractGameObject {
     // 坦克的射速
     private int shootSpeed;
     //坦克方向
-    private Constants.DIRECT direc;
+    private Constants.DIRECT direct;
     //
     public static TankManager tankManager;
 
@@ -83,7 +84,11 @@ public class Tank extends AbstractGameObject {
         this.moveSpeed = moveSpeed;
     }
 
-
+    //射击
+    public Bullet shoot()
+    {
+        return null;
+    }
     //碰撞检测
     @Override
     public boolean checkCrash()
