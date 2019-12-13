@@ -39,7 +39,6 @@ public abstract class Wall extends AbstractGameObject {
      */
     @Override
     public boolean checkCrash() {
-
         return super.checkCrash();
     }
 
@@ -100,4 +99,6 @@ public abstract class Wall extends AbstractGameObject {
     public void setLife(int life) {
         this.life = life;
     }
+
+
 }

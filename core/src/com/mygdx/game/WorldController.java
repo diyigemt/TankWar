@@ -8,8 +8,10 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
+import com.mygdx.enumeration.TankType;
 import com.mygdx.enumeration.WallType;
 import com.mygdx.map.MapGenerator;
+import com.mygdx.tank.EnemyTank;
 import com.mygdx.wall.*;
 
 import java.util.ArrayList;
@@ -40,7 +42,6 @@ public class WorldController {
 
     private void TankInit()
     {
-        
     }
     //
 
@@ -50,7 +51,10 @@ public class WorldController {
 
     private void initTestObjects() {
         this.WallInit();
+        //
 
+
+        //
         // Create new array for 5 sprites
         testSprites = new Sprite[5];
         // Create empty POT-sized Pixmap with 8 bit RGBA pixel data

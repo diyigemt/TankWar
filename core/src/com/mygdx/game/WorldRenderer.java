@@ -22,15 +22,14 @@ public class WorldRenderer implements Disposable {
         camera.update();
     }
     public void render() {
-        this.batch.setProjectionMatrix(camera.combined);
-        this.batch.begin();
         this.renderTestObjects();
-        Wall.wallManager.render(this.batch);
-        this.batch.end();
 
     }
 
     private void renderTestObjects() {
+        this.batch.setProjectionMatrix(camera.combined);
+        this.batch.begin();
+
         for (Sprite sprite : worldController.testSprites) {
             sprite.draw(this.batch);
         }
@@ -41,6 +40,7 @@ public class WorldRenderer implements Disposable {
             this.worldController.wallList.get(i).render(this.batch);
         }
 
+        this.batch.end();
 
         WaterWall temp = new WaterWall(1,1);
         temp.render(new SpriteBatch());
