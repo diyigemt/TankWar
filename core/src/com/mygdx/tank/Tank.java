@@ -221,7 +221,7 @@ public class Tank extends AbstractGameObject {
         }
         //和边界碰撞
         if(this.getX() < -Constants.VIEWPORT_WIDTH/2 ||
-                this.getX() + this.getWidth() > Constants.VIEWPORT_WIDTH/2 ||
+                this.getX() + this.getWidth() > Constants.VIEWPORT_WIDTH/2 + Constants.MAP_TRANSLATION_X*2||
                 this.getY() < -Constants.VIEWPORT_HEIGHT/2 ||
                 this.getY() + this.getHeight() > Constants.VIEWPORT_HEIGHT
         )
@@ -270,7 +270,7 @@ public class Tank extends AbstractGameObject {
                     this.setY(Constants.VIEWPORT_HEIGHT/2 - this.getHeight());
                     break;
                 case EAST:
-                    this.setX(Constants.VIEWPORT_WIDTH/2 - this.getWidth());
+                    this.setX(Constants.VIEWPORT_WIDTH/2 + Constants.MAP_TRANSLATION_X*2 - this.getWidth());
                     break;
                 case SOUTH:
                     this.setY(-Constants.VIEWPORT_HEIGHT/2);

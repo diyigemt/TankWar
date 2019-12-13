@@ -11,6 +11,7 @@ import com.mygdx.utils.Assets;
 import com.mygdx.wall.BrickWall;
 import com.mygdx.wall.Wall;
 import com.mygdx.wall.WallManager;
+import com.sun.org.apache.bcel.internal.Const;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -122,10 +123,9 @@ public class Bullet extends AbstractGameObject {
         }
         //和边界碰撞
         if(this.getX() < -Constants.VIEWPORT_WIDTH/2 ||
-                this.getX() + this.getWidth() > Constants.VIEWPORT_WIDTH/2 ||
+                this.getX() + this.getWidth() > Constants.VIEWPORT_WIDTH/2 + Constants.MAP_TRANSLATION_X*2 ||
                 this.getY() < -Constants.VIEWPORT_HEIGHT/2 ||
                 this.getY() + this.getHeight() > Constants.VIEWPORT_HEIGHT
-
         )
         {
             //和边界碰撞
