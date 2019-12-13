@@ -72,7 +72,7 @@ public class Bullet extends AbstractGameObject {
         return isCrash;
     }
 
-    public ArrayList<Bullet>getBullets()
+    public ArrayList<Bullet> getBullets()
     {
         return Bullet.bullets;
     }
