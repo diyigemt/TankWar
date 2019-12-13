@@ -16,6 +16,7 @@ import com.mygdx.enumeration.WallType;
 import com.mygdx.map.MapGenerator;
 import com.mygdx.tank.EnemyTank;
 import com.mygdx.tank.HeroTank;
+import com.mygdx.tank.Tank;
 import com.mygdx.wall.*;
 
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ public class WorldController {
     private final MapGenerator generator = new MapGenerator();
     public Sprite[] testSprites;
     public int selectedSprite;
+    private ArrayList<Wall> wallLsit = Wall.wallManager.getWalls();
     //墙
     public List<Wall> wallList;
 
@@ -46,11 +48,16 @@ public class WorldController {
 
     private void TankInit()
     {
+        Tank tank = new HeroTank(false, TankType.P1HERO);
+        tank.setSize(1,1);
+        tank.setPosition(1, 3);
+        HeroTank.heroTankManager.registerTank(tank);
     }
     //
 
     private void init() {
         this.initTestObjects();
+        this.TankInit();
     }
 
     private void initTestObjects() {

@@ -57,19 +57,7 @@ public abstract class Wall extends AbstractGameObject {
 
     @Override
     public void render(SpriteBatch spriteBatch) {
-//        OrthographicCamera camera = new OrthographicCamera(Constants.VIEWPORT_WIDTH, Constants.VIEWPORT_HEIGHT);
-//        camera.position.set(0, 0, 0);
-//        camera.update();
-//        spriteBatch.setProjectionMatrix(camera.combined);
-//        spriteBatch.begin();
-//        SpriteBatch batch = new SpriteBatch();
-//        batch.begin();
-//        spriteBatch.draw(this.getTexture(), this.getX() - 50, this.getY() - 50, this.getTexture().getWidth(), this.getTexture().getHeight());
         this.draw(spriteBatch);
-//        batch.end();
-//        spriteBatch.draw(this.getTexture(), this.getTexture().getWidth(), this.getTexture().getHeight());
-//        spriteBatch.end();
-
     }
 
 

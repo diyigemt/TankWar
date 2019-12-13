@@ -33,7 +33,6 @@ public class Tank extends AbstractGameObject {
     private boolean east;
     private boolean west;
 
-    public static TankManager tankManager;
 
     public Tank(TankType tankType) {
         super(tankType.getTankRegion());
@@ -45,7 +44,7 @@ public class Tank extends AbstractGameObject {
 
     @Override
     public void render(SpriteBatch spriteBatch) {
-
+        this.draw(spriteBatch);
     }
 
     // 根据类别得到一个坦克的实例
