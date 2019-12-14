@@ -1,9 +1,12 @@
 package com.mygdx.wall;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.mygdx.enumeration.ObjectType;
 import com.mygdx.enumeration.WallType;
 import com.mygdx.game.AbstractGameObject;
 import com.mygdx.game.Constants;
+import com.mygdx.game.MyGdxGame;
 import com.mygdx.utils.Assets;
 
 import java.util.ArrayList;
@@ -165,6 +168,16 @@ public class WallManager {
                 crashWall.add(wall);
             }
         }
+        Wall wall = Wall.wallManager.base;
+        if(wall.getX() < gameObject.getX() + gameObject.getWidth() &&
+                wall.getX() + wall.getWidth() > gameObject.getX() &&
+                wall.getY() < gameObject.getY() + gameObject.getHeight() &&
+                wall.getY() + wall.getHeight() > gameObject.getY())
+        {
+            if(gameObject.getType().equals(ObjectType.BULLET))
+                MyGdxGame.isOver=true;
+        }
+
         if (Wall.wallManager.getBaseWalls().contains(crashWall)) {
             baseState = false;
         }
