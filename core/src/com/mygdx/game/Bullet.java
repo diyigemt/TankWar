@@ -21,12 +21,19 @@ public class Bullet extends AbstractGameObject {
     private Constants.DIRECT direct;
     //子弹集合
     static private ArrayList<Bullet> bullets = new ArrayList<Bullet>();
+    //
+    public boolean isHeroTank;
     //子弹速度
     private float speed = 0.06f;
 
     public Bullet() {
         super(Assets.instance.assetGame.bullet);
         this.setType(ObjectType.BULLET);
+    }
+
+    public void setIsHeroTank(boolean isHeroTank)
+    {
+        this.isHeroTank = isHeroTank;
     }
 
     public Bullet(float x, float y, Constants.DIRECT direct)

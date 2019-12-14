@@ -153,6 +153,15 @@ public class Tank extends AbstractGameObject {
         Bullet bullet = new Bullet();
         bullet.registerBullet(bullet);
         bullet.setSize(0.1f, 0.1f);
+        if(bullet.getType().equals(ObjectType.HEROTANK))
+        {
+            bullet.setIsHeroTank(true);
+        }
+        else
+        {
+            bullet.setIsHeroTank(false);
+        }
+
         if(this.direct == Constants.DIRECT.EAST)
         {
             bullet.setPosition(this.getX() + this.getWidth() + 0.1f, this.getY() + this.getHeight()/2);
