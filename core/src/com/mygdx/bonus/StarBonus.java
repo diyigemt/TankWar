@@ -23,6 +23,7 @@ public class StarBonus extends Bonus {
     public void addBuff(HeroTank heroTank) {
         super.addBuff(heroTank);
         // TODO 暂时采用直接双倍射速方法
+        this.acceptorTank = heroTank;
         heroTank.setShootSpeed(2 * heroTank.getShootSpeed());
     }
 
