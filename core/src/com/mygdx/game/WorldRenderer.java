@@ -1,12 +1,8 @@
 package com.mygdx.game;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
-import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 import com.badlogic.gdx.utils.Disposable;
 import com.mygdx.bonus.Bonus;
 import com.mygdx.tank.EnemyTank;
@@ -40,11 +36,6 @@ public class WorldRenderer implements Disposable {
         HeroTank.heroTankManager.render(this.batch);
         EnemyTank.enemyTankManager.render(this.batch);
         Bullet.renderCopy(this.batch);
-        Stage stage = new Stage();
-        Skin skin = new Skin(Gdx.files.internal("skin/uiskin.json"));
-        TextButton button = new TextButton("start", skin);
-        stage.addActor(button);
-        stage.draw();
         this.batch.end();
 
     }
