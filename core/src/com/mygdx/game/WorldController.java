@@ -2,24 +2,18 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.*;
 import com.badlogic.gdx.graphics.Pixmap;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.MathUtils;
 import com.mygdx.bonus.Bonus;
 import com.mygdx.bonus.BonusManager;
-import com.mygdx.enumeration.BonusType;
 import com.mygdx.enumeration.TankType;
-import com.mygdx.enumeration.WallType;
 import com.mygdx.map.MapGenerator;
 import com.mygdx.tank.EnemyTank;
 import com.mygdx.tank.HeroTank;
-import com.mygdx.tank.Tank;
 import com.mygdx.tank.TankManager;
-import com.mygdx.wall.*;
+import com.mygdx.wall.Wall;
+import com.mygdx.wall.WallManager;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class WorldController extends InputAdapter {
     private static final String TAG = WorldController.class.getName();
@@ -39,7 +33,6 @@ public class WorldController extends InputAdapter {
 
     public WorldController(Game game) {
         this.game = game;
-        this.init();
     }
 
     private void WallInit()
@@ -182,6 +175,8 @@ public class WorldController extends InputAdapter {
 
     public void setMap(int mapId) {
         this.mapId = mapId;
+        Wall.wallManager.deleteAll();
+        this.init();
     }
 
 }
