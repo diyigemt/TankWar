@@ -228,13 +228,21 @@ public class EnemyTank extends Tank {
 
     @Override
     public void beenAttacked() {
-        super.beenAttacked();
         if (hasBonus) {
             Random random = new Random();
             BonusType bonusType = BonusType.getInstance(random.nextInt(6));
             float randomX = random.nextFloat();
             float randomY = random.nextFloat();
             Bonus bonus = Bonus.bonusManager.createBonus(bonusType, randomX, randomY);
+            this.hasBonus = false;
+        }
+        this.setLife(this.getLife() - 1);
+        if (this.getLife() <= 0) {
+            this.setAlive(false);
+        }
+
+        if (!this.isAlive()) {
+            EnemyTank.enemyTankManager.deleteTank(this);
         }
     }
 

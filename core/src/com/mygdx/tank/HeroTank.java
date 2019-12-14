@@ -3,6 +3,7 @@ package com.mygdx.tank;
 import com.mygdx.enumeration.ObjectType;
 import com.mygdx.enumeration.TankType;
 import com.mygdx.game.Constants;
+import com.mygdx.game.MyGdxGame;
 import com.mygdx.utils.Assets;
 
 public class HeroTank extends Tank {
@@ -53,9 +54,16 @@ public class HeroTank extends Tank {
     //坦克被攻击
     public void beenAttacked()
     {
-        this.setChances(this.getChances() - 1);
-        if(this.getChances() <= 0)
-            this.changeStatus(Constants.DEAD);
+        if (!isProtected) {
+            this.setChances(this.getChances() - 1);
+            if(this.getChances() <= 0)
+                this.changeStatus(Constants.DEAD);
+        }
+        if (!isAlive()) {
+            // 移除坦克
+            HeroTank.heroTankManager.deleteTank(this);
+        }
+
     }
 
 
