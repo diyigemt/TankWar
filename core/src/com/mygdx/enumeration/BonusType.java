@@ -3,7 +3,6 @@ package com.mygdx.enumeration;
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Pixmap;
 import com.mygdx.bonus.Bonus;
-import sun.jvm.hotspot.debugger.linux.LinuxDebugger;
 
 /**
  * 这是用来表示Buff种类的枚举类

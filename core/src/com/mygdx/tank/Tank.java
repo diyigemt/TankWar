@@ -315,8 +315,7 @@ public class Tank extends AbstractGameObject {
                     Wall wall = (Wall)gameObject;
                     if(wall.getWallType().equals(WallType.BRICK_WALL) ||
                             wall.getWallType().equals(WallType.IRON_WALL) ||
-                            wall.getWallType().equals(WallType.WATER_WALL)||
-                            wall.getWallType().equals(WallType.GRASS_WALL)
+                            wall.getWallType().equals(WallType.WATER_WALL)
                     )
                     {
                         switch (this.direct)
