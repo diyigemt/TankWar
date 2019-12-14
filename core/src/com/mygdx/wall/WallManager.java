@@ -6,7 +6,6 @@ import com.mygdx.game.AbstractGameObject;
 import com.mygdx.game.Constants;
 import com.mygdx.utils.Assets;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -20,12 +19,15 @@ public class WallManager {
     // 基地周围的8块特殊的墙
     private ArrayList<Wall> baseWalls;
 
+    private static boolean baseState;
+
     public WallManager() {
         this.walls = new ArrayList<>();
         this.baseWalls = new ArrayList<>(8);
         //初始化基地
         this.base = new BrickWall(Assets.instance.assetGame.symbol, -0.5f + Constants.MAP_TRANSLATION_X, -6.5f + Constants.MAP_TRANSLATION_Y);
         this.base.setSize(Constants.WALL_SIZE * 2,Constants.WALL_SIZE * 2);
+        this.baseState = true;
         this.initBaseWall(WallType.BRICK_WALL);
     }
 
@@ -163,6 +165,17 @@ public class WallManager {
                 crashWall.add(wall);
             }
         }
+        if (Wall.wallManager.getBaseWalls().contains(crashWall)) {
+            baseState = false;
+        }
         return crashWall;
+    }
+
+    public static boolean getBaseState() {
+        return baseState;
+    }
+
+    public static void setBaseState(boolean newState) {
+        baseState = newState;
     }
 }

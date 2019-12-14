@@ -30,6 +30,7 @@ public class MenuScreen implements Screen {
 				onStartButtonClicked();
 			}
 		});
+		button.setSize(100,100);
 		button.setPosition((Constants.WINDOW_WIDTH - button.getWidth()) / 2, (Constants.WINDOW_HEIGHT - button.getHeight()) / 2);
 		Image image = new Image(new Texture(Gdx.files.internal("images/title.png")));
 		image.setPosition((Constants.WINDOW_WIDTH - image.getWidth()) / 2, (Constants.WINDOW_HEIGHT - image.getHeight()) / 2 + 200);

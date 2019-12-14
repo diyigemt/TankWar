@@ -4,8 +4,10 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Timer;
 import com.mygdx.enumeration.ObjectType;
 import com.mygdx.enumeration.TankType;
-import com.mygdx.game.*;
-import com.mygdx.wall.Wall;
+import com.mygdx.game.AbstractGameObject;
+import com.mygdx.game.Constants;
+import com.mygdx.game.EnemyTankGenerator;
+import com.mygdx.game.ShootTask;
 
 import java.util.ArrayList;
 
@@ -142,4 +144,5 @@ public class TankManager extends Timer {
     public void setFrozen(boolean frozen) {
         isFrozen = frozen;
     }
+
 }
