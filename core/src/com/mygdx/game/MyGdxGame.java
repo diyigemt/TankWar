@@ -41,6 +41,8 @@ public class MyGdxGame extends Game {
 
 	@Override
 	public void render () {
+		Gdx.gl.glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		if (isOver) {
 			setGameOver();
 			this.screen.render(Gdx.graphics.getDeltaTime());
@@ -71,6 +73,7 @@ public class MyGdxGame extends Game {
 	public void dispose () {
 		this.worldRenderer.dispose();
 		Assets.instance.dispose();
+		System.exit(0);
 	}
 
 	/** Sets the current screen. {@link Screen#hide()} is called on any old screen, and {@link Screen#show()} is called on the new
@@ -114,6 +117,10 @@ public class MyGdxGame extends Game {
 	}
 
 	public void setGameOver() {
+		if (GameOverScreen.class.isInstance(screen)) {
+			paused = true;
+			return;
+		}
 		this.setScreen(new GameOverScreen(this));
 		paused = true;
 	}
