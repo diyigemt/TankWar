@@ -22,9 +22,11 @@ import com.mygdx.utils.Assets;
 public class MenuScreen implements Screen {
 	private Stage menuStage;
 	private MyGdxGame game;
+	private boolean pause;
 
 	public MenuScreen(MyGdxGame game) {
 		this.game = game;
+		this.pause = false;
 		menuStage = new Stage();
 		Skin skin = new Skin(Gdx.files.internal("skin/uiskin.json"));
 
@@ -48,19 +50,15 @@ public class MenuScreen implements Screen {
 	}
 
 	private void onStartButtonClicked() {
-		Gdx.gl.glClearColor(0.0f, 0.0f, 0.0F, 1);
-		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-		Image image = new Image(new Texture(Gdx.files.internal("images/title.png")));
-		image.setPosition(0f,0f);
-		menuStage.addActor(image);
-		game.setMenu(false);
-		game.setPaused(false);
-		//Screen mapChooseScreen = new MapChooseScreen(this.game);
-		//game.setScreen(mapChooseScreen);
+		Screen mapChooseScreen = new MapChooseScreen(this.game);
+		game.setScreen(mapChooseScreen);
 	}
 
 	@Override
 	public void render(float delta) {
+		Gdx.gl.glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		menuStage.draw();
 	}
 
 	@Override
@@ -70,7 +68,7 @@ public class MenuScreen implements Screen {
 
 	@Override
 	public void pause() {
-
+		this.pause = true;
 	}
 
 	@Override
@@ -80,6 +78,8 @@ public class MenuScreen implements Screen {
 
 	@Override
 	public void hide() {
+		this.pause();
+		menuStage.dispose();
 	}
 
 	@Override

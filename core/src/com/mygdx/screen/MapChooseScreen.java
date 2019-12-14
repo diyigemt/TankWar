@@ -1,7 +1,9 @@
 package com.mygdx.screen;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -55,6 +57,7 @@ public class MapChooseScreen implements Screen {
 			}
 		});
 		mapChooseStage.addActor(image);
+		Gdx.input.setInputProcessor(mapChooseStage);
 	}
 
 
@@ -65,13 +68,17 @@ public class MapChooseScreen implements Screen {
 	}
 	@Override
 	public void show() {
-		Gdx.input.setInputProcessor(mapChooseStage);
 		mapChooseStage.draw();
 	}
 
 	@Override
 	public void render(float delta) {
-
+		Gdx.gl.glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+		if (Gdx.input.isButtonPressed(Input.Buttons.LEFT)) {
+			System.err.println(Gdx.input.getX());
+		}
+		mapChooseStage.draw();
 	}
 
 	@Override

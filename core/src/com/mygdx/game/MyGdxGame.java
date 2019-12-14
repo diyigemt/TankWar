@@ -14,7 +14,6 @@ public class MyGdxGame extends Game {
 	private Screen screen;
 	private boolean paused;
 	private boolean isMenu;
-	private float start, end;
 	@Override
 	public void create () {
 		// Set libgdx log level to DEBUG
@@ -22,35 +21,30 @@ public class MyGdxGame extends Game {
 		// 初始化资源
 		Assets.instance.init(new AssetManager());
 		// 初始化controller和renderer
-		this.worldController = new WorldController(this);
-		this.worldRenderer = new WorldRenderer(this.worldController);
-		this.paused = true;
-		this.isMenu = true;
+//		this.worldController = new WorldController(this);
+//		this.worldRenderer = new WorldRenderer(this.worldController);
+//		this.paused = true;
+//		this.isMenu = true;
 		this.setScreen(new MenuScreen(this));
-		start = Gdx.graphics.getDeltaTime();
 	}
 
 	@Override
 	public void resize(int width, int height) {
-		worldRenderer.resize(width, height);
+//		worldRenderer.resize(width, height);
 	}
 
 	@Override
 	public void render () {
-		end = Gdx.graphics.getDeltaTime();
-		if (this.isMenu) {
-			if (end - start > 10) {
-				end = start;
-				this.screen.show();
-			}
-		}
-			this.screen.show();
-		if (!this.paused) {
-			worldController.update(Gdx.graphics.getDeltaTime());
-			Gdx.gl.glClearColor(0x64 / 255.0f, 0x95 / 255.0f, 0xed / 255.0f, 0xff / 255.0f);
-			Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-			this.worldRenderer.render();
-		}
+		this.screen.render(Gdx.graphics.getDeltaTime());
+//		if (this.isMenu) {
+//			this.screen.render(Gdx.graphics.getDeltaTime());
+//		}
+//		if (!this.paused) {
+//			worldController.update(Gdx.graphics.getDeltaTime());
+//			Gdx.gl.glClearColor(0x64 / 255.0f, 0x95 / 255.0f, 0xed / 255.0f, 0xff / 255.0f);
+//			Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+//			this.worldRenderer.render();
+//		}
 	}
 
 	@Override
