@@ -50,8 +50,11 @@ public class MenuScreen implements Screen {
 	}
 
 	private void onStartButtonClicked() {
-		Screen mapChooseScreen = new MapChooseScreen(this.game);
-		game.setScreen(mapChooseScreen);
+		game.setMenu(false);
+		game.setPaused(false);
+		game.setMapId(1);
+//		Screen mapChooseScreen = new MapChooseScreen(this.game);
+//		game.setScreen(mapChooseScreen);
 	}
 
 	@Override
