@@ -110,7 +110,7 @@ public class MyGdxGame extends Game {
 
 	public static void setGameOver() {
 		Stage stage = new Stage();
-		Image image = new Image(new Texture(Gdx.files.internal("images/gameOver.pnj")));
+		Image image = new Image(new Texture(Gdx.files.internal("images/gameOver.png")));
 		image.setPosition((Constants.WINDOW_WIDTH - image.getImageWidth()) / 2, (Constants.WINDOW_HEIGHT - image.getImageWidth()) / 2);
 		image.setSize(150,150);
 		stage.addActor(image);
