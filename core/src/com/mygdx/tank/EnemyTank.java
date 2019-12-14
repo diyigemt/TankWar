@@ -61,16 +61,17 @@ public class EnemyTank extends Tank {
                 int north = 1;
                 int south = 1;
                 int east = 1;
+                if (!HeroTank.heroTankManager.getTanks().isEmpty()) {
+                    if ((HeroTank.heroTankManager.getTanks().get(0).getX() - this.getX()) > Constants.TANK_SIZE/2)
+                        east++;
+                    else if ((HeroTank.heroTankManager.getTanks().get(0).getX() - this.getX()) < -Constants.TANK_SIZE/2)
+                        west++;
 
-                if ((HeroTank.heroTankManager.getTanks().get(0).getX() - this.getX()) > Constants.TANK_SIZE/2)
-                    east++;
-                else if ((HeroTank.heroTankManager.getTanks().get(0).getX() - this.getX()) < -Constants.TANK_SIZE/2)
-                    west++;
-
-                if ((HeroTank.heroTankManager.getTanks().get(0).getY() - this.getY()) > Constants.TANK_SIZE/2)
-                    north++;
-                else if ((HeroTank.heroTankManager.getTanks().get(0).getY() - this.getY()) < -Constants.TANK_SIZE/2)
-                    south++;
+                    if ((HeroTank.heroTankManager.getTanks().get(0).getY() - this.getY()) > Constants.TANK_SIZE/2)
+                        north++;
+                    else if ((HeroTank.heroTankManager.getTanks().get(0).getY() - this.getY()) < -Constants.TANK_SIZE/2)
+                        south++;
+                }
 
                 if ((-0.5 - this.getX()) > Constants.TANK_SIZE)
                     east++;
