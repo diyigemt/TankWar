@@ -37,7 +37,7 @@ public class WorldController extends InputAdapter {
 
     private void WallInit()
     {
-        this.generator.generate(3);
+        this.generator.generate(mapId);
     }
 
 
