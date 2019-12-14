@@ -176,6 +176,7 @@ public class Tank extends AbstractGameObject {
         }
         return bullet;
     }
+
     //碰撞检测
     @Override
     public boolean checkCrash()
@@ -193,7 +194,6 @@ public class Tank extends AbstractGameObject {
                 temp.add(this);
                 gameObject.isCrashed(temp);
             }
-
             isCrash = true;
         }
         //和buff
@@ -251,6 +251,7 @@ public class Tank extends AbstractGameObject {
         {
             if(this.getType().equals(ObjectType.HEROTANK))
             {
+                HeroTank.heroTankManager.getTanks().remove(this);
                 //game over
             }
             else
@@ -339,6 +340,7 @@ public class Tank extends AbstractGameObject {
                         }
                     }
                 }
+                //和坦克相撞
                 else if(gameObject.getType() == ObjectType.ENEMYTANK ||
                         gameObject.getType() == ObjectType.HEROTANK)
                 {

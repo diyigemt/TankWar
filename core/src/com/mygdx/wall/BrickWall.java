@@ -60,10 +60,6 @@ public class BrickWall extends Wall implements Destroyable {
         }
     }
 
-//    @Override
-//    public void render(SpriteBatch spriteBatch) {
-//
-//    }
 
     @Override
     public void beenAttacked(int hit)
