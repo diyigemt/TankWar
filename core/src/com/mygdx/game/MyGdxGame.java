@@ -7,8 +7,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.scenes.scene2d.Stage;
-import com.badlogic.gdx.scenes.scene2d.ui.Image;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.mygdx.screen.MenuScreen;
 import com.mygdx.utils.Assets;
 
@@ -49,6 +48,7 @@ public class MyGdxGame extends Game {
 			Gdx.gl.glClearColor(0x64 / 255.0f, 0x95 / 255.0f, 0xed / 255.0f, 0xff / 255.0f);
 			Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 			this.worldRenderer.render();
+			setGameOver();
 		}
 	}
 
@@ -109,11 +109,9 @@ public class MyGdxGame extends Game {
 	}
 
 	public static void setGameOver() {
-		Stage stage = new Stage();
-		Image image = new Image(new Texture(Gdx.files.internal("images/gameOver.pnj")));
-		image.setPosition((Constants.WINDOW_WIDTH - image.getImageWidth()) / 2, (Constants.WINDOW_HEIGHT - image.getImageWidth()) / 2);
-		image.setSize(150,150);
-		stage.addActor(image);
+		Texture texture = new Texture(Gdx.files.internal("images/gameOver.png"));
+		Sprite sprite = new Sprite(texture);
+
 		paused = true;
 	}
 }
