@@ -67,7 +67,6 @@ public class Bullet extends AbstractGameObject {
             default:
                 break;
         }
-        this.checkCrash();
     }
 
     @Override
