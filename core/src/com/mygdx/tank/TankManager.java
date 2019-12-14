@@ -52,7 +52,7 @@ public class TankManager extends Timer {
         if (this.tanks.contains(tank)) {
             this.tanks.remove(tank);
             if (this.tanks.isEmpty()) {
-                MyGdxGame.setGameOver();
+                MyGdxGame.isOver = true;
             }
             return true;
         }
