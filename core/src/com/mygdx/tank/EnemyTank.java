@@ -1,9 +1,10 @@
 package com.mygdx.tank;
 
+import com.mygdx.bonus.Bonus;
+import com.mygdx.enumeration.BonusType;
 import com.mygdx.enumeration.ObjectType;
 import com.mygdx.enumeration.TankType;
 import com.mygdx.game.Constants;
-import com.sun.org.apache.bcel.internal.Const;
 
 import java.util.Random;
 
@@ -242,6 +243,17 @@ public class EnemyTank extends Tank {
         return  Constants.DIRECT.NORTH;
     }
 
+    @Override
+    public void beenAttacked() {
+        super.beenAttacked();
+        if (hasBonus) {
+            Random random = new Random();
+            BonusType bonusType = BonusType.getInstance(random.nextInt(6));
+            float randomX = random.nextFloat();
+            float randomY = random.nextFloat();
+            Bonus bonus = Bonus.bonusManager.createBonus(bonusType, randomX, randomY);
+        }
+    }
 
     public boolean isHasBonus() {
         return hasBonus;
@@ -259,14 +271,5 @@ public class EnemyTank extends Tank {
         this.hasBonus = hasBonus;
     }
 
-    @Override
-    public boolean checkCrash() {
-        boolean result = super.checkCrash();
-        if (result) {
-            if (this.hasBonus) {
-                // TODO
-            }
-        }
-        return result;
-    }
+
 }

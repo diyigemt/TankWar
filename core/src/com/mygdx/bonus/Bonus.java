@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.mygdx.enumeration.BonusType;
 import com.mygdx.enumeration.ObjectType;
 import com.mygdx.game.AbstractGameObject;
+import com.mygdx.game.Constants;
 import com.mygdx.tank.HeroTank;
 
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ public abstract class Bonus extends AbstractGameObject {
         this.setType(ObjectType.BONUS);
         this.isActive = false;
         this.duration = 0;
-        this.setSize(1, 1);
+        this.setSize(Constants.BONUS_SIZE, Constants.BONUS_SIZE);
         this.setOrigin(this.getWidth() / 2.0f, this.getHeight() / 2.0f);
     }
 

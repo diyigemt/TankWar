@@ -2,6 +2,8 @@ package com.mygdx.enumeration;
 
 import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Pixmap;
+import com.mygdx.bonus.Bonus;
+import sun.jvm.hotspot.debugger.linux.LinuxDebugger;
 
 /**
  * 这是用来表示Buff种类的枚举类
@@ -19,9 +21,21 @@ public enum BonusType {
      *
      * @param index 用来为不同种类的Buff设置图片
      */
-    private BonusType(int index) {
+    BonusType(int index) {
         this.index = index;
     }
 
+    public static BonusType getInstance(int index) {
+        for (BonusType bonusType : BonusType.values()) {
+            if (bonusType.getIndex() == index) {
+                return bonusType;
+            }
+        }
+        return null;
+    }
+
+    public int getIndex() {
+        return index;
+    }
 
 }

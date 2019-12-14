@@ -62,6 +62,7 @@ public class Constants {
 
     //坦克大小
     public static final float TANK_SIZE = 0.8f;
+    public static final float BONUS_SIZE = 0.4f;
 
     public static final int HEROTANK_LIFE = 1;
     public static final int NORMAL_ENEMYTANK_LIFE = 1;
