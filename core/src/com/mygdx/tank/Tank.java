@@ -306,9 +306,6 @@ public class Tank extends AbstractGameObject {
                 //子弹
                 if(gameObject.getType() == ObjectType.BULLET)
                 {
-//                    System.out.println(((Bullet)gameObject).isHeroTank);
-//                    System.out.println(this.getType());
-//                    System.out.println();
                     if(this.getType().equals(ObjectType.HEROTANK) && (!(((Bullet)gameObject).isHeroTank))) {
                         this.beenAttacked();
                     }
@@ -368,6 +365,10 @@ public class Tank extends AbstractGameObject {
                             this.west = false;
                             break;
                     }
+                }
+                else
+                {
+                    return;
                 }
             }
         }
