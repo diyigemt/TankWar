@@ -41,6 +41,7 @@ public class MapChooseScreen implements Screen {
 		game.setPaused(false);
 		game.setMenu(false);
 		game.setMapId(id);
+		MyGdxGame.isOver = false;
 		Gdx.input.setInputProcessor(game.getWorldController());
 	}
 	@Override
