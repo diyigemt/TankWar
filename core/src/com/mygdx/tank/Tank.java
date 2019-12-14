@@ -153,7 +153,7 @@ public class Tank extends AbstractGameObject {
         Bullet bullet = new Bullet();
         bullet.registerBullet(bullet);
         bullet.setSize(0.1f, 0.1f);
-        if(bullet.getType().equals(ObjectType.HEROTANK))
+        if(this.getType().equals(ObjectType.HEROTANK))
         {
             bullet.setIsHeroTank(true);
         }
@@ -256,23 +256,6 @@ public class Tank extends AbstractGameObject {
 
     public void beenAttacked()
     {
-        this.Life -= 1;
-        if(this.Life <= 0)
-        {
-            this.isAlive = false;
-        }
-
-        if(this.isAlive == false)
-        {
-            if(this.getType().equals(ObjectType.HEROTANK))
-            {
-                HeroTank.heroTankManager.getTanks().remove(this);
-            }
-            else
-            {
-                EnemyTank.enemyTankManager.getTanks().remove(this);
-            }
-        }
     }
 
     public void blockForward()
@@ -323,6 +306,9 @@ public class Tank extends AbstractGameObject {
                 //子弹
                 if(gameObject.getType() == ObjectType.BULLET)
                 {
+//                    System.out.println(((Bullet)gameObject).isHeroTank);
+//                    System.out.println(this.getType());
+//                    System.out.println();
                     if(this.getType().equals(ObjectType.HEROTANK) && (!(((Bullet)gameObject).isHeroTank))) {
                         this.beenAttacked();
                     }

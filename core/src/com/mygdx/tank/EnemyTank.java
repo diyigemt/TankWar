@@ -47,7 +47,6 @@ public class EnemyTank extends Tank {
         {
             return;
         }
-        //System.out.println(""+this.isNorth()+this.isSouth()+this.isWest()+this.isEast());
         Constants.DIRECT direct = this.getDirect();
         if (this.getDirect().equals(Constants.DIRECT.EAST) && this.isEast()) {
             direct = Constants.DIRECT.EAST;
@@ -88,7 +87,6 @@ public class EnemyTank extends Tank {
                     west++;
 
                 int sum = east + west + south + north;
-                System.out.println(""+east+" "+west+" "+north+" "+south);
                 if ((float) rInt / 100 < (float) north / sum && this.isNorth()) {
                     direct = Constants.DIRECT.NORTH;
                 } else if ((float) rInt / 100 < (float) (north + east) / sum && this.isEast()) {
@@ -134,7 +132,6 @@ public class EnemyTank extends Tank {
                     west++;
 
                 int sum = east + west + south + north;
-                System.out.println("" + east + " " + west + " " + north + " " + south);
                 if ((float) rInt / 100 < (float) north / sum && this.isNorth()) {
                     direct = Constants.DIRECT.NORTH;
                 } else if ((float) rInt / 100 < (float) (north + east) / sum && this.isEast()) {
@@ -152,47 +149,6 @@ public class EnemyTank extends Tank {
     }
 
 
-
-    //坦克移动
-//    public void move(Constants.DIRECT direct) {
-//        this.setDirect(direct);
-//        //改变图片
-//        switch (direct) {
-//            case SOUTH:
-//                if (this.isSouth()) {
-//                    this.translate(0, -this.getMoveSpeed());
-//                    this.setNorth(true);
-//                    this.setEast(true);
-//                    this.setWest(true);
-//                }
-//                break;
-//            case NORTH:
-//                if (this.isNorth()) {
-//                    this.translate(0, this.getMoveSpeed());
-//                    this.setSouth(true);
-//                    this.setWest(true);
-//                    this.setEast(true);
-//                    ;
-//                }
-//                break;
-//            case WEST:
-//                if (this.isWest()) {
-//                    this.translate(-this.getMoveSpeed(), 0);
-//                    this.setEast(true);
-//                    this.setNorth(true);
-//                    ;this.setSouth(true);
-//                }
-//                break;
-//            case EAST:
-//                if (this.isEast()) {
-//                    this.translate(this.getMoveSpeed(), 0);
-//                    this.setWest(true);
-//                    this.setNorth(true);
-//                    this.setSouth(true);
-//                }
-//                break;
-//        }
-//    }
 
     @Override
     //停车调整方向

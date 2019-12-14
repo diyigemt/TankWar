@@ -59,7 +59,6 @@ public class Bullet extends AbstractGameObject {
         switch (this.direct)
         {
             case NORTH:
-                System.out.println(this.getY());
                 this.translateY(this.speed);
                 break;
             case SOUTH:
