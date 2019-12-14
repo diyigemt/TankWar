@@ -101,6 +101,7 @@ public abstract class Bonus extends AbstractGameObject {
         for (AbstractGameObject conflict : conflicts) {
             if (conflict.getType().equals(ObjectType.HEROTANK)) {
                 this.addBuff((HeroTank)conflict);
+                Bonus.bonusManager.deleteBonus(this);
                 break;
             }
         }

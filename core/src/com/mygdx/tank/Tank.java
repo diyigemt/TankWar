@@ -409,4 +409,8 @@ public class Tank extends AbstractGameObject {
     public int getLife() {
         return Life;
     }
+
+    public void setLife(int life) {
+        Life = life;
+    }
 }

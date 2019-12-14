@@ -106,16 +106,18 @@ public class EnemyTank extends Tank {
                 int north = 1;
                 int south = 1;
                 int east = 1;
+                // TODO
+                if (!HeroTank.heroTankManager.getTanks().isEmpty()) {
+                    if ((HeroTank.heroTankManager.getTanks().get(0).getX() - this.getX()) > Constants.TANK_SIZE / 2)
+                        east++;
+                    else if ((HeroTank.heroTankManager.getTanks().get(0).getX() - this.getX()) < -Constants.TANK_SIZE / 2)
+                        west++;
 
-                if ((HeroTank.heroTankManager.getTanks().get(0).getX() - this.getX()) > Constants.TANK_SIZE / 2)
-                    east++;
-                else if ((HeroTank.heroTankManager.getTanks().get(0).getX() - this.getX()) < -Constants.TANK_SIZE / 2)
-                    west++;
-
-                if ((HeroTank.heroTankManager.getTanks().get(0).getY() - this.getY()) > Constants.TANK_SIZE / 2)
-                    north++;
-                else if ((HeroTank.heroTankManager.getTanks().get(0).getY() - this.getY()) < -Constants.TANK_SIZE / 2)
-                    south++;
+                    if ((HeroTank.heroTankManager.getTanks().get(0).getY() - this.getY()) > Constants.TANK_SIZE / 2)
+                        north++;
+                    else if ((HeroTank.heroTankManager.getTanks().get(0).getY() - this.getY()) < -Constants.TANK_SIZE / 2)
+                        south++;
+                }
 
                 if ((-0.5 - this.getX()) > Constants.TANK_SIZE)
                     east++;
@@ -228,13 +230,21 @@ public class EnemyTank extends Tank {
 
     @Override
     public void beenAttacked() {
-        super.beenAttacked();
         if (hasBonus) {
             Random random = new Random();
             BonusType bonusType = BonusType.getInstance(random.nextInt(6));
             float randomX = random.nextFloat();
             float randomY = random.nextFloat();
             Bonus bonus = Bonus.bonusManager.createBonus(bonusType, randomX, randomY);
+            this.hasBonus = false;
+        }
+        this.setLife(this.getLife() - 1);
+        if (this.getLife() <= 0) {
+            this.setAlive(false);
+        }
+
+        if (!this.isAlive()) {
+            EnemyTank.enemyTankManager.deleteTank(this);
         }
     }
 
