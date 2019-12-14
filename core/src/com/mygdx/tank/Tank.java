@@ -341,8 +341,8 @@ public class Tank extends AbstractGameObject {
                     }
                 }
                 //和坦克相撞
-                else if(gameObject.getType() == ObjectType.ENEMYTANK ||
-                        gameObject.getType() == ObjectType.HEROTANK)
+                else if(gameObject.getType().equals(ObjectType.ENEMYTANK) ||
+                        gameObject.getType().equals(ObjectType.HEROTANK))
                 {
                     switch (this.direct) {
                         case NORTH:

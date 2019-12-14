@@ -20,7 +20,7 @@ public class EnemyTankGenerator extends Timer.Task {
         EnemyTank enemyTank = new EnemyTank(hasBonus, tankType);
         EnemyTank.enemyTankManager.registerTank(enemyTank);
         enemyTank.setSize(Constants.TANK_SIZE, Constants.TANK_SIZE);
-        enemyTank.setPosition(0, 0);
+        enemyTank.setPosition(0, -6.5f);
         // TODO
     }
 }
