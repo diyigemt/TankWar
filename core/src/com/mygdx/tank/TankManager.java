@@ -28,8 +28,10 @@ public class TankManager extends Timer {
         this.tanks = new ArrayList<>();
         this.isFrozen = false;
         this.enemyTankNum = Constants.ENEMY_NUMBER;
-        this.scheduleTask(new ShootTask(), 0, Constants.SHOOT_CD, Constants.INFINITY);
-        this.scheduleTask(new EnemyTankGenerator(), 0, Constants.CREATE_ENEMY_CD, Constants.ENEMY_NUMBER);
+        if (this.managerType == Constants.ENEMYTANK_MANAGER) {
+            this.scheduleTask(new ShootTask(), 0, Constants.SHOOT_CD, Constants.INFINITY);
+            this.generateTank();
+        }
     }
 
     // 注册创建的坦克
@@ -156,4 +158,10 @@ public class TankManager extends Timer {
         isFrozen = frozen;
     }
 
+
+    // 生成敌方坦克的函数
+    public void generateTank() {
+        this.enemyTankNum = Constants.ENEMY_NUMBER;
+        this.scheduleTask(new EnemyTankGenerator(), 0, Constants.CREATE_ENEMY_CD, Constants.ENEMY_NUMBER);
+    }
 }
