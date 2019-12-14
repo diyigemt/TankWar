@@ -102,6 +102,13 @@ public class Tank extends AbstractGameObject {
     {
         this.direct = direct;
         //改变图片
+        if(this.getType().equals(ObjectType.HEROTANK))
+        {
+            this.north = true;
+            this.west = true;
+            this.east = true;
+            this.south = true;
+        }
         switch(direct)
         {
             case SOUTH:
