@@ -124,14 +124,12 @@ public class TankManager extends Timer {
             }
         }
         //敌方坦克
-        if(!gameObject.getType().equals(ObjectType.ENEMYTANK)) {
-            for (Tank tank : EnemyTank.enemyTankManager.getTanks()) {
-                if (tank.getX() < gameObject.getX() + gameObject.getWidth() &&
-                        tank.getX() + tank.getWidth() > gameObject.getX() &&
-                        tank.getY() < gameObject.getY() + gameObject.getHeight() &&
-                        tank.getY() + tank.getHeight() > gameObject.getHeight()) {
-                    crashTank.add(tank);
-                }
+        for (Tank tank : EnemyTank.enemyTankManager.getTanks()) {
+            if ((!tank.equals(gameObject)) && tank.getX() < gameObject.getX() + gameObject.getWidth() &&
+                    tank.getX() + tank.getWidth() > gameObject.getX() &&
+                    tank.getY() < gameObject.getY() + gameObject.getHeight() &&
+                    tank.getY() + tank.getHeight() > gameObject.getY()) {
+                crashTank.add(tank);
             }
         }
         return crashTank;

@@ -176,6 +176,7 @@ public class Tank extends AbstractGameObject {
         }
         return bullet;
     }
+
     //碰撞检测
     @Override
     public boolean checkCrash()
@@ -193,7 +194,6 @@ public class Tank extends AbstractGameObject {
                 temp.add(this);
                 gameObject.isCrashed(temp);
             }
-
             isCrash = true;
         }
         //和buff
@@ -220,7 +220,6 @@ public class Tank extends AbstractGameObject {
             {
                 temp.clear();
                 temp.add(this);
-                //gameObject.isCrashed(temp);
             }
             isCrash = true;
         }
@@ -251,7 +250,7 @@ public class Tank extends AbstractGameObject {
         {
             if(this.getType().equals(ObjectType.HEROTANK))
             {
-                //game over
+                HeroTank.heroTankManager.getTanks().remove(this);
             }
             else
             {
@@ -277,6 +276,7 @@ public class Tank extends AbstractGameObject {
                 break;
         }
     }
+
     //碰撞反应,碰到子弹后生命值减少
     @Override
     public void isCrashed(ArrayList<AbstractGameObject> conflicts) {
@@ -315,7 +315,8 @@ public class Tank extends AbstractGameObject {
                     Wall wall = (Wall)gameObject;
                     if(wall.getWallType().equals(WallType.BRICK_WALL) ||
                             wall.getWallType().equals(WallType.IRON_WALL) ||
-                            wall.getWallType().equals(WallType.WATER_WALL)
+                            wall.getWallType().equals(WallType.WATER_WALL)||
+                            wall.getWallType().equals(WallType.GRASS_WALL)
                     )
                     {
                         switch (this.direct)
@@ -339,8 +340,9 @@ public class Tank extends AbstractGameObject {
                         }
                     }
                 }
-                else if(gameObject.getType() == ObjectType.ENEMYTANK ||
-                        gameObject.getType() == ObjectType.HEROTANK)
+                //和坦克相撞
+                else if(gameObject.getType().equals(ObjectType.ENEMYTANK) ||
+                        gameObject.getType().equals(ObjectType.HEROTANK))
                 {
                     switch (this.direct) {
                         case NORTH:

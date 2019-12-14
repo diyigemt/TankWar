@@ -132,6 +132,7 @@ public class WorldController extends InputAdapter {
         for(i=0;i<this.bullets.size();i++)
         {
             this.bullets.get(i).move();
+            this.bullets.get(i).checkCrash();
         }
     }
 
