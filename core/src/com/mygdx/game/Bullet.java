@@ -67,7 +67,6 @@ public class Bullet extends AbstractGameObject {
             default:
                 break;
         }
-        this.checkCrash();
     }
 
     @Override
@@ -138,7 +137,22 @@ public class Bullet extends AbstractGameObject {
     //碰撞反应函数
     @Override
     public void isCrashed(ArrayList<AbstractGameObject> conflicts) {
+        if(conflicts == null)
             Bullet.bullets.remove(this);
+        else if(conflicts.isEmpty() == false)
+        {
+            if(conflicts.get(0).getType().equals(ObjectType.HEROTANK) || conflicts.get(0).getType().equals(ObjectType.ENEMYTANK))
+            {
+                Bullet.bullets.remove(this);
+            }
+            if(conflicts.get(0).getType().equals(ObjectType.WALL))
+            {
+                if(((Wall)conflicts.get(0)).getWallType().equals(WallType.BRICK_WALL) ||
+                        ((Wall)conflicts.get(0)).getWallType().equals(WallType.IRON_WALL)
+                )
+                    Bullet.bullets.remove(this);
+            }
+        }
     }
 
     static public ArrayList<Bullet> getBullets()

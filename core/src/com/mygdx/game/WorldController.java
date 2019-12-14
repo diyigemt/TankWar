@@ -54,13 +54,9 @@ public class WorldController extends InputAdapter {
         this.heroTank.setSize(Constants.TANK_SIZE,Constants.TANK_SIZE);
         this.heroTank.setPosition(Constants.MAP_TRANSLATION_X + -2.5f, Constants.MAP_TRANSLATION_Y + -6.5f);
         HeroTank.heroTankManager.registerTank(this.heroTank);
-<<<<<<< HEAD
-        addEnemyTank();
-=======
 
         addEnemyTank(-9, 0);
         addEnemyTank(3,0);
->>>>>>> af607ec72b278021f6ee32bb7611c20024e70a2e
     }
 
     private void addEnemyTank(float x, float y)
@@ -137,6 +133,7 @@ public class WorldController extends InputAdapter {
         for(i=0;i<this.bullets.size();i++)
         {
             this.bullets.get(i).move();
+            this.bullets.get(i).checkCrash();
         }
     }
 
