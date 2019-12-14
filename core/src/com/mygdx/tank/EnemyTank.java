@@ -193,22 +193,6 @@ public class EnemyTank extends Tank {
     //停车调整方向
     public void blockForward() {
         //调头
-        switch (this.getDirect()) {
-            case NORTH:
-                this.setDirect(Constants.DIRECT.SOUTH);
-                break;
-            case SOUTH:
-                this.setDirect(Constants.DIRECT.NORTH);
-                break;
-            case WEST:
-                this.setDirect(Constants.DIRECT.EAST);
-                break;
-            case EAST:
-                this.setDirect(Constants.DIRECT.WEST);
-                break;
-        }
-
-        this.moveTank(this.getDirect());
 
         switch (this.getDirect()) {
             case NORTH:

@@ -220,7 +220,6 @@ public class Tank extends AbstractGameObject {
             {
                 temp.clear();
                 temp.add(this);
-                //gameObject.isCrashed(temp);
             }
             isCrash = true;
         }
@@ -252,7 +251,6 @@ public class Tank extends AbstractGameObject {
             if(this.getType().equals(ObjectType.HEROTANK))
             {
                 HeroTank.heroTankManager.getTanks().remove(this);
-                //game over
             }
             else
             {

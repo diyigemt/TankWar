@@ -54,7 +54,6 @@ public class WorldController extends InputAdapter {
         this.heroTank.setSize(Constants.TANK_SIZE,Constants.TANK_SIZE);
         this.heroTank.setPosition(Constants.MAP_TRANSLATION_X + -2.5f, Constants.MAP_TRANSLATION_Y + -6.5f);
         HeroTank.heroTankManager.registerTank(this.heroTank);
-
         addEnemyTank(-9, 0);
         addEnemyTank(3,0);
     }
