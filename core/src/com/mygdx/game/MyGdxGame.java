@@ -6,8 +6,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.mygdx.screen.GameOverScreen;
 import com.mygdx.screen.MenuScreen;
 import com.mygdx.utils.Assets;
 
@@ -31,6 +30,7 @@ public class MyGdxGame extends Game {
 		this.worldRenderer = new WorldRenderer(this.worldController);
 		this.paused = true;
 		this.isMenu = true;
+		isOver = false;
 		this.setScreen(new MenuScreen(this));
 	}
 
@@ -41,6 +41,11 @@ public class MyGdxGame extends Game {
 
 	@Override
 	public void render () {
+		if (isOver) {
+			setGameOver();
+			this.screen.render(Gdx.graphics.getDeltaTime());
+			return;
+		}
 		if (this.isMenu) {
 			this.screen.render(Gdx.graphics.getDeltaTime());
 		}
@@ -49,7 +54,6 @@ public class MyGdxGame extends Game {
 			Gdx.gl.glClearColor(0x64 / 255.0f, 0x95 / 255.0f, 0xed / 255.0f, 0xff / 255.0f);
 			Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 			this.worldRenderer.render();
-			setGameOver();
 		}
 	}
 
@@ -109,10 +113,8 @@ public class MyGdxGame extends Game {
 		return worldController;
 	}
 
-	public static void setGameOver() {
-		Texture texture = new Texture(Gdx.files.internal("images/gameOver.png"));
-		Sprite sprite = new Sprite(texture);
-
+	public void setGameOver() {
+		this.setScreen(new GameOverScreen(this));
 		paused = true;
 	}
 }
