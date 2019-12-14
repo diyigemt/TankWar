@@ -43,6 +43,10 @@ public class EnemyTank extends Tank {
     }
 
     public void move() {
+        if(this.isFrozen == true)
+        {
+            return;
+        }
         //System.out.println(""+this.isNorth()+this.isSouth()+this.isWest()+this.isEast());
         Constants.DIRECT direct = this.getDirect();
         if (this.getDirect().equals(Constants.DIRECT.EAST) && this.isEast()) {

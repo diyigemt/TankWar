@@ -323,7 +323,12 @@ public class Tank extends AbstractGameObject {
                 //子弹
                 if(gameObject.getType() == ObjectType.BULLET)
                 {
-                    this.beenAttacked();
+                    if(this.getType().equals(ObjectType.HEROTANK) && (!(((Bullet)gameObject).isHeroTank))) {
+                        this.beenAttacked();
+                    }
+                    else if(this.getType().equals(ObjectType.ENEMYTANK) && (((Bullet)gameObject).isHeroTank)) {
+                        this.beenAttacked();
+                    }
                 }
                 //墙
                 else if(gameObject.getType() == ObjectType.WALL)
