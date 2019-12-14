@@ -175,7 +175,14 @@ public class WorldController extends InputAdapter {
 
     public void setMap(int mapId) {
         this.mapId = mapId;
-        Wall.wallManager.deleteAll();
+        Wall.wallManager = new WallManager();
+        HeroTank.heroTankManager = new TankManager(Constants.HEROTANK_MANAGER);
+        EnemyTank.enemyTankManager = new TankManager(Constants.ENEMYTANK_MANAGER);
+        Bonus.bonusManager = new BonusManager();
+        wallManager = Wall.wallManager;
+        bonusManager = Bonus.bonusManager;
+        heroTankManger = HeroTank.heroTankManager;
+        enemyTankManger = EnemyTank.enemyTankManager;
         this.init();
     }
 

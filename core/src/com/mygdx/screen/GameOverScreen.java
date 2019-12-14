@@ -51,10 +51,11 @@ public class GameOverScreen implements Screen {
     }
 
     private void onBackToMenuClicked() {
-        gdxGame.setScreen(new MenuScreen(this.gdxGame));
-        gdxGame.setMenu(true);
+        gdxGame.setMapId(1);
         gdxGame.setPaused(true);
+        gdxGame.setMenu(true);
         MyGdxGame.isOver = false;
+        gdxGame.setScreen(new MenuScreen(this.gdxGame));
     }
 
     private void onExitClicked() {
