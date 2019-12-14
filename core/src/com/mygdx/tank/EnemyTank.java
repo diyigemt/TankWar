@@ -195,7 +195,7 @@ public class EnemyTank extends Tank {
             BonusType bonusType = BonusType.getInstance(random.nextInt(6));
             float randomX = random.nextFloat();
             float randomY = random.nextFloat();
-            Bonus bonus = Bonus.bonusManager.createBonus(bonusType, randomX, randomY);
+            Bonus bonus = Bonus.bonusManager.createBonus(bonusType, randomX * 10, randomY * 10);
             this.hasBonus = false;
         }
         this.setLife(this.getLife() - 1);
