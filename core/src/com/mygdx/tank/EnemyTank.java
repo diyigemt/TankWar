@@ -96,7 +96,7 @@ public class EnemyTank extends Tank {
                 }
             }
         }
-        move(direct);
+        moveTank(direct);
         if(this.checkCrash())
         {
             Random r = new Random();
@@ -141,7 +141,6 @@ public class EnemyTank extends Tank {
                 }
                 this.setDirect(direct);
             }
-
         }
 
     }
@@ -149,45 +148,45 @@ public class EnemyTank extends Tank {
 
 
     //坦克移动
-    public void move(Constants.DIRECT direct) {
-        this.setDirect(direct);
-        //改变图片
-        switch (direct) {
-            case SOUTH:
-                if (this.isSouth()) {
-                    this.translate(0, -this.getMoveSpeed());
-                    this.setNorth(true);
-                    this.setEast(true);
-                    this.setWest(true);
-                }
-                break;
-            case NORTH:
-                if (this.isNorth()) {
-                    this.translate(0, this.getMoveSpeed());
-                    this.setSouth(true);
-                    this.setWest(true);
-                    this.setEast(true);
-                    ;
-                }
-                break;
-            case WEST:
-                if (this.isWest()) {
-                    this.translate(-this.getMoveSpeed(), 0);
-                    this.setEast(true);
-                    this.setNorth(true);
-                    ;this.setSouth(true);
-                }
-                break;
-            case EAST:
-                if (this.isEast()) {
-                    this.translate(this.getMoveSpeed(), 0);
-                    this.setWest(true);
-                    this.setNorth(true);
-                    this.setSouth(true);
-                }
-                break;
-        }
-    }
+//    public void move(Constants.DIRECT direct) {
+//        this.setDirect(direct);
+//        //改变图片
+//        switch (direct) {
+//            case SOUTH:
+//                if (this.isSouth()) {
+//                    this.translate(0, -this.getMoveSpeed());
+//                    this.setNorth(true);
+//                    this.setEast(true);
+//                    this.setWest(true);
+//                }
+//                break;
+//            case NORTH:
+//                if (this.isNorth()) {
+//                    this.translate(0, this.getMoveSpeed());
+//                    this.setSouth(true);
+//                    this.setWest(true);
+//                    this.setEast(true);
+//                    ;
+//                }
+//                break;
+//            case WEST:
+//                if (this.isWest()) {
+//                    this.translate(-this.getMoveSpeed(), 0);
+//                    this.setEast(true);
+//                    this.setNorth(true);
+//                    ;this.setSouth(true);
+//                }
+//                break;
+//            case EAST:
+//                if (this.isEast()) {
+//                    this.translate(this.getMoveSpeed(), 0);
+//                    this.setWest(true);
+//                    this.setNorth(true);
+//                    this.setSouth(true);
+//                }
+//                break;
+//        }
+//    }
 
     @Override
     //停车调整方向
