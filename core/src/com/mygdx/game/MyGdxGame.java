@@ -1,8 +1,14 @@
 package com.mygdx.game;
 
-import com.badlogic.gdx.*;
+import com.badlogic.gdx.Application;
+import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.mygdx.screen.MenuScreen;
 import com.mygdx.utils.Assets;
 
@@ -12,7 +18,7 @@ public class MyGdxGame extends Game {
 	private WorldController worldController;
 	private WorldRenderer worldRenderer;
 	private Screen screen;
-	private boolean paused;
+	private static boolean paused;
 	private boolean isMenu;
 	@Override
 	public void create () {
@@ -100,5 +106,14 @@ public class MyGdxGame extends Game {
 
 	public WorldController getWorldController() {
 		return worldController;
+	}
+
+	public static void setGameOver() {
+		Stage stage = new Stage();
+		Image image = new Image(new Texture(Gdx.files.internal("images/gameOver.pnj")));
+		image.setPosition((Constants.WINDOW_WIDTH - image.getImageWidth()) / 2, (Constants.WINDOW_HEIGHT - image.getImageWidth()) / 2);
+		image.setSize(150,150);
+		stage.addActor(image);
+		paused = true;
 	}
 }
