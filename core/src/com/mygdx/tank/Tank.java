@@ -261,7 +261,7 @@ public class Tank extends AbstractGameObject {
 
     public void blockForward()
     {
-        switch(this.direct) {
+        /*switch(this.direct) {
             case NORTH:
                 this.north = false;
                 break;
@@ -274,7 +274,7 @@ public class Tank extends AbstractGameObject {
             case EAST:
                 this.east = false;
                 break;
-        }
+        }*/
     }
 
     //碰撞反应,碰到子弹后生命值减少
