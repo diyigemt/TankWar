@@ -43,6 +43,10 @@ public class EnemyTank extends Tank {
     }
 
     public void move() {
+        if(this.isFrozen == true)
+        {
+            return;
+        }
         //System.out.println(""+this.isNorth()+this.isSouth()+this.isWest()+this.isEast());
         Constants.DIRECT direct = this.getDirect();
         if (this.getDirect().equals(Constants.DIRECT.EAST) && this.isEast()) {
@@ -91,7 +95,7 @@ public class EnemyTank extends Tank {
                     direct = Constants.DIRECT.EAST;
                 } else if ((float) rInt / 100 < (float) (north + east + south) / sum && this.isSouth()) {
                     direct = Constants.DIRECT.SOUTH;
-                } else// if ((float) rInt / 100 <= 1 && this.isWest())
+                } else
                 {
                     direct = Constants.DIRECT.WEST;
                 }
@@ -107,7 +111,6 @@ public class EnemyTank extends Tank {
                 int north = 1;
                 int south = 1;
                 int east = 1;
-                // TODO
                 if (!HeroTank.heroTankManager.getTanks().isEmpty()) {
                     if ((HeroTank.heroTankManager.getTanks().get(0).getX() - this.getX()) > Constants.TANK_SIZE / 2)
                         east++;
@@ -138,7 +141,7 @@ public class EnemyTank extends Tank {
                     direct = Constants.DIRECT.EAST;
                 } else if ((float) rInt / 100 < (float) (north + east + south) / sum && this.isSouth()) {
                     direct = Constants.DIRECT.SOUTH;
-                } else// if ((float) rInt / 100 <= 1 && this.isWest())
+                } else
                 {
                     direct = Constants.DIRECT.WEST;
                 }

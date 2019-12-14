@@ -5,6 +5,7 @@ import com.badlogic.gdx.utils.Timer;
 import com.mygdx.enumeration.ObjectType;
 import com.mygdx.enumeration.TankType;
 import com.mygdx.game.*;
+import com.sun.org.apache.bcel.internal.Const;
 
 import java.util.ArrayList;
 
@@ -19,11 +20,14 @@ public class TankManager extends Timer {
     private ArrayList<Tank> tanks;
     // 整个场景目前的冰冻状态
     private boolean isFrozen;
+    // 存放现有敌方坦克数量
+    private int enemyTankNum;
 
     public TankManager(int managerType) {
         this.managerType = managerType;
         this.tanks = new ArrayList<>();
         this.isFrozen = false;
+        this.enemyTankNum = Constants.ENEMY_NUMBER;
         this.scheduleTask(new ShootTask(), 0, Constants.SHOOT_CD, Constants.INFINITY);
         this.scheduleTask(new EnemyTankGenerator(), 0, Constants.CREATE_ENEMY_CD, Constants.ENEMY_NUMBER);
     }
@@ -51,8 +55,15 @@ public class TankManager extends Timer {
     public boolean deleteTank(Tank tank) {
         if (this.tanks.contains(tank)) {
             this.tanks.remove(tank);
-            if (this.tanks.isEmpty()) {
-                MyGdxGame.isOver = true;
+            if (this.managerType == Constants.ENEMYTANK_MANAGER) {
+                this.enemyTankNum--;
+                if (this.enemyTankNum == 0) {
+                    MyGdxGame.hasWon = true;
+                }
+            } else {
+                if (this.tanks.isEmpty()) {
+                    MyGdxGame.isOver = true;
+                }
             }
             return true;
         }

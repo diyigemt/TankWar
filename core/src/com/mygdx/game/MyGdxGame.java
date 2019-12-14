@@ -19,6 +19,7 @@ public class MyGdxGame extends Game {
 	private static boolean paused;
 	private boolean isMenu;
 	public static boolean isOver = false;
+	public static boolean hasWon = false;
 	@Override
 	public void create () {
 		// Set libgdx log level to DEBUG
